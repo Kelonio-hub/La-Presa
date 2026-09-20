@@ -4,4 +4,4 @@ Allow: /
 # Opcional: Evitar que los buscadores indexen la plantilla vacía
 Disallow: /guias/plantilla.html
 
-Sitemap: https://kelonio-hub.github.io/Archivos-Kelonio/sitemap.xml
+Sitemap: https://kelonio.eu.org/sitemap.xml
