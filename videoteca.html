@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title id="pageTitle">Centro de Vídeos | La Presa</title>
+<link href="img/Lucario.gif" rel="icon" type="image/gif"/>
+<style>
+/* ================= VARIABLES Y TEMA AUTOMÁTICO/MANUAL ================= */
+:root, :root[data-theme="dark"] {
+  --red: #00aaff; 
+  --glow-rgb: 0, 170, 255; 
+  --bg: #141414;
+  --text-main: #ffffff;
+  --text-muted: #aaa;
+  --glass: rgba(20,20,20,.78);
+  --glass-border: rgba(255,255,255,.08);
+  --topbar-bg: rgba(0,0,0,.88);
+  --card-bg: rgba(255,255,255,0.02);
+  --input-bg: rgba(255,255,255,.08);
+  --btn-bg: rgba(255,255,255,.05);
+  --icon-color: #ffffff;
+  --loader-border: rgba(255,255,255,0.1);
+}
+
+:root[data-theme="light"] {
+  --bg: #f8f9fa;
+  --text-main: #141414;
+  --text-muted: #555555;
+  --glass: rgba(255,255,255,.9);
+  --glass-border: rgba(0,0,0,.15);
+  --topbar-bg: rgba(255,255,255,.95);
+  --card-bg: #ffffff;
+  --input-bg: rgba(0,0,0,.05);
+  --btn-bg: rgba(0,0,0,.05);
+  --icon-color: #333333;
+  --loader-border: rgba(0,0,0,0.1);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f8f9fa;
+    --text-main: #141414;
+    --text-muted: #555555;
+    --glass: rgba(255,255,255,.9);
+    --glass-border: rgba(0,0,0,.15);
+    --topbar-bg: rgba(255,255,255,.95);
+    --card-bg: #ffffff;
+    --input-bg: rgba(0,0,0,.05);
+    --btn-bg: rgba(0,0,0,.05);
+    --icon-color: #333333;
+    --loader-border: rgba(0,0,0,0.1);
+  }
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',sans-serif; background:var(--bg); color:var(--text-main); overflow-x:hidden; transition: background 0.3s, color 0.3s; }
+
+/* ================= TOPBAR ================= */
+.topbar { position:fixed; top:0; left:0; right:0; z-index:9999; background:var(--topbar-bg); backdrop-filter:blur(16px); display:flex; justify-content:space-between; align-items:center; padding:8px 3%; gap: 10px; transition: background 0.3s; }
+.topbar-left { display:flex; align-items:center; gap: 15px; flex-shrink: 0; }
+.logo { font-size:1.8rem; font-weight:900; color:var(--red); letter-spacing:-1.5px; transition: color 0.3s ease; text-decoration: none; cursor: pointer;}
+.social-group { display: flex; gap: 4px; border-left: 1px solid var(--glass-border); padding-left: 15px; transition: border-color 0.3s; }
+
+.social-icon-btn { background:transparent; border:none; cursor: pointer; color: var(--icon-color); opacity: 0.55; transition: 0.3s; display: flex; align-items: center; justify-content: center; padding: 4px; position: relative;}
+.social-icon-btn:hover { opacity: 1; transform: scale(1.15); color: var(--red); }
+.radar-badge { position:absolute; top:-2px; right:-2px; width:10px; height:10px; background:var(--red); border-radius:50%; box-shadow:0 0 8px var(--red); display: none; }
+
+.right-tools { display:flex; align-items:center; gap:12px; flex-shrink: 0; }
+.config-group { display:flex; flex-direction:column; align-items:center; gap:4px; }
+.theme-dots-container { display:flex; gap:5px; align-items: center;}
+.color-dot { width:12px; height:12px; border-radius:50%; cursor:pointer; border:1px solid rgba(0,0,0,0.4); transition:transform .2s, border-color .2s; }
+.color-dot:hover { transform:scale(1.3); }
+.color-dot.active-dot { border:2px solid var(--text-main); transform:scale(1.15); box-shadow: 0 0 8px rgba(128,128,128,0.6); }
+
+#languageSelector { background:var(--input-bg); border:1px solid var(--glass-border); color:var(--text-main); padding:4px 8px; border-radius:6px; outline: none; cursor: pointer; font-size:11px; transition: 0.3s; }
+#languageSelector option { background: var(--bg); color: var(--text-main); }
+
+#fileSearch { background:var(--input-bg); border:1px solid transparent; color:var(--text-main); width:170px; padding:8px 14px; border-radius:50px; font-size:13px; outline:none; transition: width 0.3s ease, border-color 0.3s, background 0.3s; }
+#fileSearch:focus { width: 200px; border-color: var(--red); }
+#fileSearch::placeholder { color:var(--text-muted); }
+
+/* ================= ENCABEZADO CLÁSICO ================= */
+.page-header {
+  padding: 100px 5% 20px;
+  text-align: center;
+}
+.page-header h1 {
+  font-size: 2.5rem;
+  color: var(--text-main);
+  margin-bottom: 10px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+.page-header p {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+}
+
+.hero-guide-icon { 
+  width: 3.2rem; 
+  height: 3.2rem; 
+  color: var(--red); 
+  filter: drop-shadow(0 0 14px rgba(var(--glow-rgb), 0.7)); 
+  transition: color 0.3s ease; 
+  animation: satPulse 3.5s infinite ease-in-out; 
+  flex-shrink: 0; 
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+@keyframes satPulse { 
+  0%, 100% { 
+    transform: scale(1) translateY(0px); 
+    filter: drop-shadow(0 0 12px rgba(var(--glow-rgb), 0.6)); 
+  } 
+  50% { 
+    transform: scale(1.12) translateY(-4px); 
+    filter: drop-shadow(0 0 26px rgba(var(--glow-rgb), 1)); 
+  } 
+}
+
+/* ================= HERO CAROUSEL (ESTILO DISNEY+) ================= */
+.hero-carousel {
+  position: relative;
+  width: 90%;
+  margin: 10px auto 40px auto;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 60vh;
+  min-height: 400px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 1s ease-in-out;
+  display: flex;
+  align-items: flex-end;
+  padding: 50px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to top, var(--bg) 0%, rgba(var(--glow-rgb), 0.1) 40%, transparent 100%);
+  z-index: 1;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  animation: fadeIn 1s ease-in-out;
+}
+@keyframes fadeIn { 
+  from { opacity: 0; transform: translateY(20px); } 
+  to { opacity: 1; transform: translateY(0); } 
+}
+.hero-tag {
+  display: inline-block;
+  background: var(--red);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 15px rgba(var(--glow-rgb), 0.5);
+  letter-spacing: 1px;
+}
+.hero-title {
+  font-size: 3rem;
+  font-weight: 900;
+  margin-bottom: 15px;
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.9);
+  line-height: 1.1;
+  color: #fff;
+}
+.hero-desc {
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 25px;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.9);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-height: 1.5;
+}
+.hero-btn {
+  background: #fff;
+  color: #000 !important;
+  border: none;
+  padding: 14px 28px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+.hero-btn:hover {
+  transform: scale(1.05);
+  background: #e6e6e6;
+  box-shadow: 0 6px 20px rgba(255,255,255,0.3);
+}
+
+/* ================= ZONA PERSONAL (RECOMENDACIONES) ================= */
+.personal-zone { padding: 0 5% 30px; }
+.personal-section-container { margin-bottom: 10px; }
+.personal-title { font-size: 1.3rem; font-weight: 800; margin-bottom: 15px; color: var(--text-main); display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--glass-border); padding-bottom: 8px; }
+.personal-title.centered-title { justify-content: center; border-bottom: none; font-size: 1.6rem; margin-top: 20px; }
+.personal-row { display: flex; gap: 20px; overflow-x: auto; padding: 10px 5px 20px; scroll-snap-type: x mandatory; scrollbar-width: thin; scrollbar-color: var(--red) var(--glass-border); }
+.personal-row::-webkit-scrollbar { height: 6px; }
+.personal-row::-webkit-scrollbar-thumb { background: var(--red); border-radius: 10px; }
+.personal-row::-webkit-scrollbar-track { background: var(--glass-border); border-radius: 10px; }
+.personal-card { flex: 0 0 280px; scroll-snap-align: start; }
+.empty-personal-msg { color: var(--text-muted); font-size: 0.95rem; font-style: italic; background: var(--card-bg); border: 1px dashed var(--glass-border); padding: 25px; border-radius: 12px; text-align: center; width: 100%; }
+
+/* ================= CONSOLE BUTTONS ================= */
+.console-buttons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 10px; padding: 10px 5% 30px; }
+.console-btn { background: var(--btn-bg); border: 1px solid var(--glass-border); border-radius: 10px; padding: 8px 14px; display: flex; align-items: center; gap: 6px; cursor: pointer; transition: .3s ease; color: var(--text-main); font-weight: 700; font-size: 12px; white-space: nowrap; }
+.console-btn:hover { transform: scale(1.05); border-color: var(--red); background: rgba(var(--glow-rgb),.15); }
+.console-btn.fav-active-btn { border-color: var(--red); background: rgba(var(--glow-rgb),.25); box-shadow: 0 0 10px rgba(var(--glow-rgb), 0.5); }
+.console-btn span { color: var(--text-main); letter-spacing: .5px; transition: color 0.3s; }
+.console-btn img { width: 18px; height: 18px; object-fit: contain; filter: drop-shadow(0 0 2px rgba(0,0,0,0.5)); }
+
+/* ================= GRID DE VÍDEOS ================= */
+.updates-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; padding: 0 5% 60px; }
+.update-card { background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 18px; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s, background 0.3s; display: flex; flex-direction: column; height: 100%; cursor: pointer; position: relative; }
+.update-card:hover { transform: translateY(-5px); border-color: var(--red); box-shadow: 0 0 20px rgba(var(--glow-rgb), 0.25), 0 10px 20px rgba(0,0,0,0.15); }
+
+/* Estilos de Miniaturas */
+.thumbnail-wrapper { position: relative; width: 100%; padding-top: 56.25%; background-color: #000; border-radius: 10px; overflow: hidden; margin-bottom: 15px; border: 1px solid var(--glass-border); }
+.thumbnail-wrapper img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+.update-card:hover .thumbnail-wrapper img { transform: scale(1.05); }
+
+.play-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50px; height: 50px; background-color: rgba(0, 0, 0, 0.75); border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 2px solid #fff; transition: background-color 0.3s, border-color 0.3s, transform 0.3s; box-shadow: 0 0 15px rgba(0,0,0,0.5); pointer-events: none; }
+.play-icon::after { content: ""; display: block; width: 0; height: 0; border-left: 16px solid #fff; border-top: 10px solid transparent; border-bottom: 10px solid transparent; margin-left: 4px; transition: border-left-color 0.3s; }
+.update-card:hover .play-icon { background-color: var(--red); border-color: var(--red); transform: translate(-50%, -50%) scale(1.1); box-shadow: 0 0 20px rgba(var(--glow-rgb), 0.8); }
+
+/* CORAZÓN DE FAVORITOS & ETIQUETA VISTO */
+.fav-heart { position: absolute; top: 8px; right: 8px; z-index: 10; background: rgba(0,0,0,0.65); border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.7); border-radius: 50%; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); backdrop-filter: blur(4px); }
+.fav-heart:hover { transform: scale(1.2); color: #fff; border-color: #fff; background: rgba(0,0,0,0.85); }
+.fav-heart.active-heart { background: var(--red); color: #fff; border-color: var(--red); box-shadow: 0 0 12px rgba(var(--glow-rgb), 0.8); animation: heartPop 0.3s ease; }
+@keyframes heartPop { 0% { transform: scale(1); } 50% { transform: scale(1.35); } 100% { transform: scale(1); } }
+
+.watched-badge { position: absolute; top: 8px; left: 8px; z-index: 10; background: rgba(0,0,0,0.8); border: 1px solid var(--red); color: #fff; font-size: 10px; font-weight: bold; padding: 3px 8px; border-radius: 20px; display: flex; align-items: center; gap: 4px; backdrop-filter: blur(4px); letter-spacing: 0.5px; }
+
+.update-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.update-tag { background: var(--btn-bg); border: 1px solid var(--glass-border); color: var(--text-main); padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: bold; text-transform: uppercase; transition: background 0.3s, color 0.3s; }
+.update-card h3, 
+.update-card h3 a { font-size: 1.15rem; margin-bottom: 8px; line-height: 1.3; color: var(--red); text-decoration: none; transition: color 0.3s ease, filter 0.3s ease; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.update-card:hover h3, .update-card:hover h3 a { filter: brightness(1.25); }
+.update-body { color: var(--text-muted); font-size: 0.88rem; line-height: 1.4; margin-bottom: 16px; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; transition: color 0.3s; }
+.update-footer { margin-top: auto; }
+.download-link { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background: var(--red); color: white !important; text-decoration: none; padding: 10px; border-radius: 8px; font-weight: bold; font-size: 0.95rem; transition: filter 0.3s, background 0.3s; }
+.download-link:hover { filter: brightness(1.2); }
+
+/* ================= LOADER ================= */
+.loader-container { text-align: center; padding: 50px; width: 100%; grid-column: 1 / -1; display: none; }
+.spinner { width: 50px; height: 50px; border: 5px solid var(--loader-border); border-top-color: var(--red); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px; transition: border-color 0.3s; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ================= BOTÓN SUBIR ================= */
+#backToTopBtn { display: none; position: fixed; bottom: 30px; right: 30px; z-index: 9998; background: var(--red); color: white; border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; font-size: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: opacity 0.3s, transform 0.3s; }
+#backToTopBtn:hover { transform: scale(1.1); }
+
+/* ================= VENTANA FLOTANTE (MODAL DE VÍDEO) ================= */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.85); backdrop-filter: blur(8px); display: flex; align-items: center; justify-content: center; z-index: 10000; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; padding: 20px; }
+.modal-overlay.active { opacity: 1; visibility: visible; }
+.modal-content { position: relative; width: 100%; max-width: 850px; background: var(--bg); border: 1px solid var(--glass-border); border-radius: 16px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 30px rgba(var(--glow-rgb), 0.3); }
+.modal-header { padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--glass-border); background: var(--card-bg); }
+.modal-title { font-size: 1.2rem; font-weight: bold; color: var(--text-main); }
+.close-btn { background: none; border: none; color: var(--text-muted); font-size: 2rem; cursor: pointer; line-height: 1; transition: color 0.2s, transform 0.2s; }
+.close-btn:hover { color: var(--red); transform: scale(1.1); }
+.video-container { position: relative; padding-bottom: 56.25%; height: 0; background: #000; }
+.video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+@media(max-width: 1150px) { 
+  .topbar { flex-wrap: wrap; padding: 10px 4%; justify-content: center; } 
+  .topbar-left { order: 1; } 
+  .right-tools { order: 2; margin-top: 5px; flex-wrap: wrap; justify-content: center; } 
+  
+  /* Añade esto para proteger el título en pantallas intermedias/tablets */
+  .page-header { padding-top: 150px; }
+  
+}@media(max-width: 650px) { 
+  .right-tools { width: 100%; gap: 15px; } 
+  #fileSearch { width: 100%; order: 3; margin-top: 10px; } 
+  #fileSearch:focus { width: 100%; } 
+  .config-group { flex-direction: row; order: 2; gap: 15px; justify-content: center; width: 100%; } 
+  
+  /* --- CÓDIGO CORREGIDO --- */
+  /* Aumentamos de 140px a 230px para compensar la altura de la barra en móviles */
+  .page-header { padding: 230px 5% 10px; }
+  
+  .page-header h1 { font-size: 2rem; }
+  
+  /* Ajustamos proporcionalmente el tamaño del icono/emoticono en móviles */
+  .hero-guide-icon { width: 2.2rem; height: 2.2rem; margin-right: 6px; }
+  /* ------------------------ */
+
+  .hero-carousel { width: 100%; border-radius: 0; height: 50vh; padding: 30px 5%; margin-top: 0; }
+  .hero-title { font-size: 2rem; }
+  .hero-desc { font-size: 1rem; }
+}
+</style>
+<script>
+  /* ================= PRE-CARGA DE TEMA PARA EVITAR FLASH ================= */
+  (function() {
+    // 1. Aplicar Modo Oscuro/Claro
+    const savedMode = localStorage.getItem('selectedMode');
+    if (savedMode === 'dark' || savedMode === 'light') {
+      document.documentElement.setAttribute('data-theme', savedMode);
+    }
+
+    // 2. Aplicar Color de Acento
+    const savedTheme = localStorage.getItem('selectedThemeColor');
+    if (savedTheme) {
+      const paleta = {
+        rojo:     { hex: '#e50914', rgb: '229, 9, 20' },
+        naranja:  { hex: '#ff6600', rgb: '255, 102, 0' },
+        amarillo: { hex: '#ffcc00', rgb: '255, 204, 0' },
+        verde:    { hex: '#2ecc71', rgb: '46, 204, 113' },
+        azul:     { hex: '#00aaff', rgb: '0, 170, 255' },
+        violeta:  { hex: '#9b59b6', rgb: '155, 89, 182' },
+        rosa:     { hex: '#ff80ab', rgb: '255, 128, 171' }
+      };
+      
+      const theme = paleta[savedTheme];
+      if (theme) {
+        document.documentElement.style.setProperty('--red', theme.hex);
+        document.documentElement.style.setProperty('--glow-rgb', theme.rgb);
+      }
+    }
+  })();
+</script>
+
+<link href="assets/accessibility.css" rel="stylesheet"/>
+<meta content="Videoteca de tutoriales y guías de La Presa." name="description"/>
+<meta content="#00aaff" name="theme-color"/>
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-left">
+<div class="logo" onclick="window.location.href='index.html'">LA PRESA</div>
+<div class="social-group">
+<button class="social-icon-btn" id="discordBtn" onclick="window.open('https://discord.gg/8Fv8GDg', '_blank')" title="Discord" aria-label="Discord"><svg fill="currentColor" height="22" viewbox="0 0 24 24" width="22"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"></path></svg></button>
+<button class="social-icon-btn" id="kofiBtn" onclick="window.open('https://ko-fi.com/lapresa', '_blank')" title="Ko-fi" aria-label="Ko-fi"><svg fill="currentColor" height="22" viewbox="0 0 24 24" width="22"><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.034-3.954-.709-.965-1.041-2.7-.091-3.71.951-1.01 3.005-1.086 4.363.407 0 0 1.565-1.782 3.468-.963 1.904.82 1.832 3.011.723 4.311zm6.173.478c-.928.116-1.682.028-1.682.028V7.284h1.77s1.971.551 1.971 2.638c0 1.913-.985 2.667-2.059 3.015z"></path></svg></button>
+</div>
+</div>
+<nav class="right-tools">
+<button class="social-icon-btn" id="guideBtn" onclick="window.open('https://kelonio-hub.github.io/Archivos-Kelonio/', '_self')" title="Guías" aria-label="Guías"><svg fill="currentColor" height="24" viewbox="0 0 24 24" width="24"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zM21 18.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"></path></svg></button>
+<button class="social-icon-btn" id="productsBtn" onclick="window.open('https://kelonio-hub.github.io/Archivos-Kelonio/productos.html', '_self')" title="Productos" aria-label="Productos"><svg fill="currentColor" height="24" viewbox="0 0 24 24" width="24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1v2zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"></path></svg></button>
+<button class="social-icon-btn" id="videosBtn" onclick="window.open('https://kelonio-hub.github.io/Archivos-Kelonio/videoteca.html', '_self')" title="Vídeos" aria-label="Vídeos"><svg fill="currentColor" height="24" viewbox="0 0 24 24" width="24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"></path></svg></button>
+<button class="social-icon-btn" id="radarBtn" onclick="abrirRadar()" title="Radar de Actualizaciones" aria-label="Radar de Actualizaciones"><svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24"><path d="M13 7 9 3 5 7l4 4" fill="rgba(255,255,255,0.08)"></path><path d="m17 11 4 4-4 4-4-4" fill="rgba(255,255,255,0.08)"></path><path d="m8 12 4 4 6-6-4-4Z" fill="currentColor"></path><path d="m16 8 3-3"></path><path d="M9 21a6 6 0 0 0-6-6"></path><path d="M5 21a2 2 0 0 0-2-2"></path></svg><span class="radar-badge" id="radarBadge"></span></button>
+<input id="fileSearch" placeholder="Buscar vídeos..." type="text" aria-label="Buscar"/>
+<div class="config-group">
+<div class="theme-dots-container" id="themeDots"></div>
+<select id="languageSelector" aria-label="Selector de idioma"></select>
+</div>
+</nav>
+</header>
+
+<!-- ================= ENCABEZADO PRINCIPAL ESTÁTICO ================= -->
+<div class="page-header" id="pageHeader">
+  <h1 id="heroTitle"><svg class="hero-guide-icon" fill="currentColor" viewbox="0 0 24 24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4zM14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2z"></path></svg><span id="mainTitle"> Centro de Vídeos</span></h1>
+  <p id="mainSubtitle">Colección de vídeos y tutoriales paso a paso para sacar el máximo provecho a tus consolas.</p>
+</div>
+
+
+<!-- ================= HERO CAROUSEL DISNEY+ ================= -->
+<div id="heroCarousel" class="hero-carousel" style="display: none;">
+  <div class="hero-overlay"></div>
+  <div class="hero-content" id="heroContent">
+    <span class="hero-tag" id="heroTag">CONSOLA</span>
+    <h1 class="hero-title" id="heroTitleEl">Cargando...</h1>
+    <p class="hero-desc" id="heroDescEl">Por favor, espera un momento.</p>
+    <button class="hero-btn" id="heroPlayBtn" onclick="">▶ Reproducir</button>
+  </div>
+</div>
+
+<!-- ================= ZONA PERSONAL (SOLO RECOMENDACIONES) ================= -->
+<section class="personal-zone" id="personalZone" style="padding-top: 15px;">
+  <!-- RECOMENDACIONES (Oculto por defecto) -->
+  <div class="personal-section-container" id="recommendationContainer" style="display: none;">
+    <div class="personal-title" id="titleRecommendations">💡 Recomendaciones</div>
+    <div class="personal-row" id="rowRecommendations"></div>
+  </div>
+</section>
+
+<!-- ================= PANEL DE VÍDEOS ================= -->
+<section class="personal-zone" style="padding-bottom: 0;">
+  <div class="personal-title centered-title" id="titleVideoPanel">� Panel de vídeos</div>
+</section>
+
+<!-- BOTONES DE CONSOLA Y FILTROS PERSONALES -->
+<div class="console-buttons" id="consoleButtons"></div>
+
+<main class="updates-container" id="updatesGrid">
+<div class="loader-container" id="mainLoader">
+<div class="spinner"></div>
+<p id="loaderText" style="color:#aaa;">Cargando videoteca...</p>
+</div>
+</main>
+
+<button id="backToTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Volver arriba">↑</button>
+
+<!-- VENTANA FLOTANTE (MODAL DE VÍDEO) -->
+<div class="modal-overlay" id="video-modal" onclick="closeModal(event)">
+  <div class="modal-content">
+    <div class="modal-header">
+      <div class="modal-title" id="modal-title-text">Reproductor de Vídeo</div>
+      <button class="close-btn" onclick="closeModalBtn()" aria-label="Cerrar reproductor">&times;</button>
+    </div>
+    <div class="video-container">
+      <iframe id="youtube-frame" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Reproductor de vídeo"></iframe>
+    </div>
+    
+    <!-- SECCIÓN DE NOTAS PERSONALES (IDIOMAS DINÁMICOS) -->
+    <div style="padding: 15px 20px; background: var(--card-bg); border-top: 1px solid var(--glass-border);">
+      <label id="notesLabel" for="videoNotes" style="display: block; font-size: 0.95rem; color: var(--red); font-weight: bold; margin-bottom: 8px;">📝 Tus apuntes personales</label>
+      <textarea id="videoNotes" placeholder="Aquí podrás apuntar anotaciones sobre cada paso..." style="width: 100%; height: 90px; background: var(--input-bg); color: var(--text-main); border: 1px solid var(--glass-border); border-radius: 8px; padding: 12px; resize: vertical; font-family: inherit; font-size: 0.9rem; outline: none; transition: border-color 0.3s;"></textarea>
+      <div style="display: flex; justify-content: flex-end; margin-top: 5px;">
+        <span id="saveIndicator" style="font-size: 0.8rem; color: var(--text-muted); opacity: 0; transition: opacity 0.3s; font-weight: bold;">Guardado automáticamente ✓</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ================= DICCIONARIO COMPLETO (8 IDIOMAS) ================= */
+const translations = {
+  es: { title: "Videoteca | La Presa", mainTitle: "Centro de Vídeos", mainSubtitle: "Colección de vídeos y tutoriales paso a paso para tus consolas.", search: "Buscar vídeos...", all: "Todas", read: "▶ Ver Vídeo", empty: "No se encontraron vídeos.", products: "Productos", videos: "Vídeos", radar: "Radar de Actualizaciones", guides: "Guías", discord: "Únete a Discord", kofi: "Apóyanos en Ko-fi", 
+    favs: "❤️ Favoritos", history: "🍿 Seguir viendo", recommendations: "💡 Recomendaciones", videoPanel: "📺 Panel de vídeos", 
+    favEmpty: "Aún no tienes vídeos favoritos. ¡Pulsa el corazón en cualquier miniatura!", histEmpty: "No has visto ningún vídeo recientemente.", watched: "✔ Visto",
+    recsPrefix: "💡 Porque viste ", recsSuffix: ", te recomendamos...", notesTitle: "📝 Tus apuntes personales", notesPlaceholder: "Aquí podrás apuntar anotaciones sobre cada paso...", saveSuccess: "Guardado automáticamente ✓", playNow: "▶ Reproducir" },
+  en: { title: "Video Library | La Presa", mainTitle: "Video Center", mainSubtitle: "Step-by-step video tutorials collection for your consoles.", search: "Search videos...", all: "All", read: "▶ Watch Video", empty: "No videos found.", products: "Products", videos: "Videos", radar: "Update Radar", guides: "Guides", discord: "Join Discord", kofi: "Support us on Ko-fi", 
+    favs: "❤️ Favorites", history: "🍿 Continue Watching", recommendations: "💡 Recommendations", videoPanel: "📺 Video Panel", 
+    favEmpty: "No favorite videos yet. Click the heart on any thumbnail!", histEmpty: "You haven't watched any videos recently.", watched: "✔ Watched",
+    recsPrefix: "💡 Because you watched ", recsSuffix: ", we recommend...", notesTitle: "📝 Your personal notes", notesPlaceholder: "You can write down notes for each step here...", saveSuccess: "Saved automatically ✓", playNow: "▶ Play Now" },
+  fr: { title: "Vidéothèque | La Presa", mainTitle: "Centre Vidéo", mainSubtitle: "Collection de tutoriels vidéo étape par étape pour vos consoles.", search: "Rechercher des vidéos...", all: "Toutes", read: "▶ Voir la Vidéo", empty: "Aucune vidéo trouvée.", products: "Produits", videos: "Vidéos", radar: "Radar des Mises à jour", guides: "Guides", discord: "Rejoindre Discord", kofi: "Soutenez-nous sur Ko-fi", 
+    favs: "❤️ Favoris", history: "🍿 Reprendre la lecture", recommendations: "💡 Recommandations", videoPanel: "📺 Panneau de vidéos", 
+    favEmpty: "Aucun favori pour l'instant. Cliquez sur le cœur d'une vidéo !", histEmpty: "Vous n'avez pas regardé de vidéo récemment.", watched: "✔ Vu",
+    recsPrefix: "💡 Parce que vous avez regardé ", recsSuffix: ", nous recommandons...", notesTitle: "📝 Vos notes personnelles", notesPlaceholder: "Vous pouvez noter des informations pour chaque étape ici...", saveSuccess: "Enregistré automatiquement ✓", playNow: "▶ Lecture" },
+  de: { title: "Videobibliothek | La Presa", mainTitle: "Video-Center", mainSubtitle: "Schritt-für-Schritt-Video-Tutorials für deine Konsolen.", search: "Videos suchen...", all: "Alle", read: "▶ Video ansehen", empty: "Keine Videos gefunden.", products: "Produkte", videos: "Videos", radar: "Update-Radar", guides: "Anleitungen", discord: "Treten Sie Discord bei", kofi: "Unterstützen Sie uns auf Ko-fi", 
+    favs: "❤️ Favoriten", history: "🍿 Weiter ansehen", recommendations: "💡 Empfehlungen", videoPanel: "📺 Video-Panel", 
+    favEmpty: "Noch keine Favoriten. Klicke auf das Herz bei einem Video!", histEmpty: "Du hast in letzter Zeit keine Videos gesehen.", watched: "✔ Gesehen",
+    recsPrefix: "💡 Weil du ", recsSuffix: " gesehen hast, empfehlen wir...", notesTitle: "📝 Deine persönlichen Notizen", notesPlaceholder: "Hier kannst du dir Notizen zu jedem Schritt machen...", saveSuccess: "Automatisch gespeichert ✓", playNow: "▶ Abspielen" },
+  it: { title: "Videoteca | La Presa", mainTitle: "Centro Video", mainSubtitle: "Collezione di video tutorial passo dopo passo per le tue console.", search: "Cerca video...", all: "Tutte", read: "▶ Guarda Video", empty: "Nessun video trovato.", products: "Prodotti", videos: "Video", radar: "Radar Aggiornamenti", guides: "Guide", discord: "Unisciti a Discord", kofi: "Supportaci su Ko-fi", 
+    favs: "❤️ Preferiti", history: "🍿 Continua a guardare", recommendations: "💡 Raccomandazioni", videoPanel: "📺 Pannello video", 
+    favEmpty: "Nessun video preferito. Clicca sul cuore su qualsiasi video!", histEmpty: "Non hai guardato nessun video di recente.", watched: "✔ Visto",
+    recsPrefix: "💡 Poiché hai guardato ", recsSuffix: ", ti consigliamo...", notesTitle: "📝 I tuoi appunti personali", notesPlaceholder: "Qui puoi annotare appunti per ogni passaggio...", saveSuccess: "Salvato automaticamente ✓", playNow: "▶ Riproduci" },
+  pt: { title: "Videoteca | La Presa", mainTitle: "Centro de Vídeos", mainSubtitle: "Coleção de tutoriais em vídeo passo a passo para as tuas consolas.", search: "Procurar vídeos...", all: "Todas", read: "▶ Ver Vídeo", empty: "Nenhum vídeo encontrado.", products: "Produtos", videos: "Vídeos", radar: "Radar de Atualizações", guides: "Guias", discord: "Junte-se ao Discord", kofi: "Apoie-nos no Ko-fi", 
+    favs: "❤️ Favoritos", history: "🍿 Continuar a ver", recommendations: "💡 Recomendações", videoPanel: "📺 Painel de vídeos", 
+    favEmpty: "Ainda não tens favoritos. Clica no coração de qualquer vídeo!", histEmpty: "Não assististe a nenhum vídeo recentemente.", watched: "✔ Visto",
+    recsPrefix: "💡 Porque viste ", recsSuffix: ", recomendamos...", notesTitle: "📝 As tuas notas pessoais", notesPlaceholder: "Podes apontar notas sobre cada passo aqui...", saveSuccess: "Guardado automaticamente ✓", playNow: "▶ Reproduzir" },
+  ja: { title: "ビデオライブラリ | La Presa", mainTitle: "ビデオセンター", mainSubtitle: "コンソール向けのステップバイステップのビデオチュートリアルコレクション。", search: "ビデオを検索...", all: "すべて", read: "▶ ビデオを見る", empty: "ビデオが見つかりませんでした。", products: "製品", videos: "ビデオ", radar: "更新レーダー", guides: "ガイド", discord: "Discordに参加する", kofi: "Ko-fiでサポート", 
+    favs: "❤️ お気に入り", history: "🍿 続きを見る", recommendations: "💡 おすすめ", videoPanel: "📺 ビデオパネル", 
+    favEmpty: "お気に入りはまだありません。サムネイルのハートをクリックしてください！", histEmpty: "最近見たビデオはありません。", watched: "✔ 視聴済み",
+    recsPrefix: "💡 「", recsSuffix: "」を見たあなたへのおすすめ...", notesTitle: "📝 個人的なメモ", notesPlaceholder: "ここで各ステップのメモを取ることができます...", saveSuccess: "自動保存されました ✓", playNow: "▶ 再生する" },
+  ko: { title: "비디오 라이브러리 | La Presa", mainTitle: "비디오 센터", mainSubtitle: "콘솔을 위한 단계별 비디오 튜토리얼 모음.", search: "비디오 검색...", all: "모든", read: "▶ 비디오 시청", empty: "비디오를 찾을 수 없습니다.", products: "제품", videos: "비디오", radar: "업데이트 레이더", guides: "가이드", discord: "Discord 가입하기", kofi: "Ko-fi에서 지원하기", 
+    favs: "❤️ 즐겨찾기", history: "🍿 계속 시청하기", recommendations: "💡 추천", videoPanel: "📺 비디오 패널", 
+    favEmpty: "아직 즐겨찾기가 없습니다. 썸네일의 하트를 클릭하세요!", histEmpty: "최근에 시청한 비디오가 없습니다.", watched: "✔ 시청함",
+    recsPrefix: "💡 '", recsSuffix: "' 시청 기록 기반 추천...", notesTitle: "📝 개인 메모", notesPlaceholder: "여기에 각 단계에 대한 메모를 작성할 수 있습니다...", saveSuccess: "자동으로 저장됨 ✓", playNow: "▶ 재생" }
+};
+
+/* ================= VARIABLES GLOBALES ================= */
+let idiomaActual = 'es'; 
+let categoriasUnicas = new Set();
+let filtroActual = 'ALL'; 
+let todosLosVideos = [];
+let currentVideoModalId = null; 
+
+/* Variables Hero */
+let heroTimer;
+let heroIndex = 0;
+let heroPool = [];
+
+const fileSearch = document.getElementById('fileSearch');
+const updatesGrid = document.getElementById('updatesGrid');
+const consoleButtons = document.getElementById('consoleButtons');
+const themeDotsContainer = document.getElementById('themeDots');
+const mybutton = document.getElementById("backToTopBtn");
+
+/* ================= PALETA DE COLORES ================= */
+const paletaTemas = {
+  rojo: { hex: '#e50914', rgb: '229, 9, 20' }, naranja: { hex: '#ff6600', rgb: '255, 102, 0' }, amarillo: { hex: '#ffcc00', rgb: '255, 204, 0' },
+  verde: { hex: '#2ecc71', rgb: '46, 204, 113' }, azul: { hex: '#00aaff', rgb: '0, 170, 255' }, violeta: { hex: '#9b59b6', rgb: '155, 89, 182' }, rosa: { hex: '#ff80ab', rgb: '255, 128, 171' }
+};
+
+function initThemeDots() {
+  const savedTheme = localStorage.getItem('selectedThemeColor') || 'azul';
+  const savedMode = localStorage.getItem('selectedMode') || 'dark';
+  
+  themeDotsContainer.innerHTML = '';
+  Object.keys(paletaTemas).forEach(colorKey => {
+    const dot = document.createElement('div'); 
+    dot.className = 'color-dot theme-color-dot'; 
+    dot.style.backgroundColor = paletaTemas[colorKey].hex;
+    if (colorKey === savedTheme) dot.classList.add('active-dot');
+    dot.addEventListener('click', () => {
+      document.querySelectorAll('.theme-color-dot').forEach(d => d.classList.remove('active-dot'));
+      dot.classList.add('active-dot'); localStorage.setItem('selectedThemeColor', colorKey); applyTheme(colorKey);
+    });
+    themeDotsContainer.appendChild(dot);
+  });
+  const separador = document.createElement('div'); separador.style.width = '2px'; separador.style.backgroundColor = 'var(--glass-border)'; separador.style.margin = '0 6px'; themeDotsContainer.appendChild(separador);
+
+  const dotOscuro = document.createElement('div'); dotOscuro.className = 'color-dot mode-dot'; dotOscuro.style.backgroundColor = '#141414'; dotOscuro.style.border = '1px solid #555';
+  const dotClaro = document.createElement('div'); dotClaro.className = 'color-dot mode-dot'; dotClaro.style.backgroundColor = '#f8f9fa'; dotClaro.style.border = '1px solid #ccc';
+
+  if (savedMode === 'dark') { dotOscuro.classList.add('active-dot'); document.documentElement.setAttribute('data-theme', 'dark'); } 
+  else { dotClaro.classList.add('active-dot'); document.documentElement.setAttribute('data-theme', 'light'); }
+
+  dotOscuro.addEventListener('click', () => { document.querySelectorAll('.mode-dot').forEach(d => d.classList.remove('active-dot')); dotOscuro.classList.add('active-dot'); localStorage.setItem('selectedMode', 'dark'); document.documentElement.setAttribute('data-theme', 'dark'); });
+  dotClaro.addEventListener('click', () => { document.querySelectorAll('.mode-dot').forEach(d => d.classList.remove('active-dot')); dotClaro.classList.add('active-dot'); localStorage.setItem('selectedMode', 'light'); document.documentElement.setAttribute('data-theme', 'light'); });
+  themeDotsContainer.appendChild(dotOscuro); themeDotsContainer.appendChild(dotClaro); applyTheme(savedTheme);
+}
+function applyTheme(colorKey) { const theme = paletaTemas[colorKey] || paletaTemas.azul; document.documentElement.style.setProperty('--red', theme.hex); document.documentElement.style.setProperty('--glow-rgb', theme.rgb); }
+
+/* ================= SELECTOR DE IDIOMAS ================= */
+function createLanguageSelector(){
+  const selector = document.getElementById('languageSelector'); selector.innerHTML = '';
+  const langs = { es:'Español', en:'English', fr:'Français', de:'Deutsch', it:'Italiano', pt:'Português', ja:'日本語', ko:'한국어' };
+  Object.keys(langs).forEach(code=>{ const opt = document.createElement('option'); opt.value = code; opt.textContent = langs[code]; selector.appendChild(opt); });
+  
+  const savedLang = localStorage.getItem('preferredLanguage');
+  const browserLang = (navigator.language || navigator.userLanguage || 'es').split('-')[0].toLowerCase();
+  if (savedLang && translations[savedLang]) { idiomaActual = savedLang; } else if (translations[browserLang]) { idiomaActual = browserLang; } else { idiomaActual = 'es'; }
+  
+  selector.value = idiomaActual;
+  selector.addEventListener('change', e => { idiomaActual = e.target.value; localStorage.setItem('preferredLanguage', idiomaActual); updateLanguage(); renderFilterButtons(); renderVideos(); renderizarSeccionesPersonales(); });
+}
+
+function updateLanguage(){
+  const t = translations[idiomaActual] || translations['es'];
+  document.title = t.title;
+  fileSearch.placeholder = t.search;
+
+  /* TEXTOS HEADER CLÁSICO */
+  if(document.getElementById('mainTitle')) document.getElementById('mainTitle').textContent = t.mainTitle;
+  if(document.getElementById('mainSubtitle')) document.getElementById('mainSubtitle').textContent = t.mainSubtitle;
+
+  /* TÍTULOS Y ETIQUETAS */
+  if(document.getElementById('titleRecommendations')) document.getElementById('titleRecommendations').textContent = t.recommendations;
+  if(document.getElementById('titleVideoPanel')) document.getElementById('titleVideoPanel').textContent = t.videoPanel;
+  
+  document.getElementById('notesLabel').textContent = t.notesTitle;
+  document.getElementById('videoNotes').placeholder = t.notesPlaceholder;
+  document.getElementById('saveIndicator').textContent = t.saveSuccess;
+
+  /* Tooltips iconos topbar */
+  if (document.getElementById('videosBtn')) document.getElementById('videosBtn').title = t.videos;
+  if (document.getElementById('radarBtn')) document.getElementById('radarBtn').title = t.radar;
+  if (document.getElementById('productsBtn')) document.getElementById('productsBtn').title = t.products;
+  if (document.getElementById('guideBtn')) document.getElementById('guideBtn').title = t.guides;
+  if (document.getElementById('discordBtn')) document.getElementById('discordBtn').title = t.discord;
+  if (document.getElementById('kofiBtn')) document.getElementById('kofiBtn').title = t.kofi;
+
+  /* Actualizar Hero Inmediatamente */
+  if (heroPool.length > 0) { renderCurrentHero(); }
+}
+
+/* ================= LÓGICA DEL HERO (CARRUSEL) ================= */
+function iniciarHeroCarousel() {
+  if (todosLosVideos.length === 0) return;
+  
+  let shuffled = [...todosLosVideos].sort(() => 0.5 - Math.random());
+  heroPool = shuffled.slice(0, 5);
+  
+  document.getElementById('heroCarousel').style.display = 'flex';
+  renderCurrentHero();
+  
+  clearInterval(heroTimer);
+  heroTimer = setInterval(nextHero, 5000);
+}
+
+function renderCurrentHero() {
+  if (heroPool.length === 0) return;
+  const video = heroPool[heroIndex];
+  const t = translations[idiomaActual] || translations['es'];
+  
+  const heroCarousel = document.getElementById('heroCarousel');
+  const contentBox = document.getElementById('heroContent');
+  
+  contentBox.style.animation = 'none';
+  void contentBox.offsetWidth; 
+  contentBox.style.animation = 'fadeIn 1s ease-in-out';
+  
+  const imgMaxResUrl = `https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`;
+  const imgHqUrl = `https://img.youtube.com/vi/${video.id}/hqdefault.jpg`;
+  heroCarousel.style.backgroundImage = `url('${imgMaxResUrl}'), url('${imgHqUrl}')`;
+  
+  document.getElementById('heroTag').textContent = video.console;
+  
+  const titulo = video.label[idiomaActual] || video.label['en'] || video.label['es'] || 'Vídeo';
+  const safeTitle = titulo.replace(/"/g, '&quot;').replace(/'/g, "\\'");
+  document.getElementById('heroTitleEl').textContent = titulo;
+  
+  const desc = video.desc[idiomaActual] || video.desc['en'] || video.desc['es'] || '';
+  document.getElementById('heroDescEl').textContent = desc;
+  
+  const btn = document.getElementById('heroPlayBtn');
+  btn.textContent = t.playNow || '▶ Reproducir';
+  btn.onclick = () => openModal(video.id, safeTitle);
+}
+
+function nextHero() {
+  heroIndex = (heroIndex + 1) % heroPool.length;
+  renderCurrentHero();
+}
+
+/* ================= HISTORIAL Y FAVORITOS ================= */
+function registrarVideoVisto(videoId) {
+  let historial = JSON.parse(localStorage.getItem('kelonio_history')) || [];
+  historial = historial.filter(id => id !== videoId);
+  historial.unshift(videoId);
+  if (historial.length > 20) historial.pop(); // Aumentamos límite para que el botón valga la pena
+  localStorage.setItem('kelonio_history', JSON.stringify(historial));
+  renderizarSeccionesPersonales(); 
+  if (filtroActual === 'HISTORY') renderVideos(); // Refrescar si estamos en esa pestaña
+}
+
+function toggleFavorito(event, videoId) {
+  event.stopPropagation();
+  let favoritos = JSON.parse(localStorage.getItem('kelonio_favs')) || [];
+  if (favoritos.includes(videoId)) { favoritos = favoritos.filter(id => id !== videoId); } else { favoritos.unshift(videoId); }
+  localStorage.setItem('kelonio_favs', JSON.stringify(favoritos));
+  if (filtroActual === 'FAVORITES') renderVideos(); // Refrescar si estamos en esa pestaña
+  else {
+    // Si no estamos en la pestaña, solo actualizamos el corazón visualmente en la tarjeta clickeada
+    const btn = event.currentTarget;
+    btn.classList.toggle('active-heart');
+  }
+}
+
+function esFavorito(videoId) { return (JSON.parse(localStorage.getItem('kelonio_favs')) || []).includes(videoId); }
+function esVisto(videoId) { return (JSON.parse(localStorage.getItem('kelonio_history')) || []).includes(videoId); }
+
+/* ================= RENDERIZAR RECOMENDACIONES Y TARJETAS ================= */
+function crearTarjetaHTML(video, t) {
+  const videoId = video.id;
+  const titulo = video.label[idiomaActual] || video.label['en'] || video.label['es'] || 'Vídeo';
+  const descripcion = video.desc[idiomaActual] || video.desc['en'] || video.desc['es'] || '';
+  const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+  const safeTitle = titulo.replace(/"/g, '&quot;').replace(/'/g, "\\'");
+  
+  const isFav = esFavorito(videoId);
+  const heartClass = isFav ? 'fav-heart active-heart' : 'fav-heart';
+  const vistoHTML = esVisto(videoId) ? `<div class="watched-badge">${t.watched}</div>` : '';
+
+  return `
+    <div class="update-card personal-card" onclick="openModal('${videoId}', '${safeTitle}')">
+      <div class="thumbnail-wrapper">
+        <img src="${thumbnailUrl}" alt="${titulo}" loading="lazy">
+        <div class="play-icon"></div>
+        ${vistoHTML}
+        <button class="${heartClass}" onclick="toggleFavorito(event, '${videoId}')"><svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button>
+      </div>
+      <div class="update-header"><span class="update-tag">${video.console}</span></div>
+      <h3><a href="javascript:void(0);">${titulo}</a></h3>
+      <div class="update-body">${descripcion}</div>
+      <div class="update-footer"><span class="download-link">${t.read}</span></div>
+    </div>
+  `;
+}
+
+function renderizarSeccionesPersonales() {
+  const t = translations[idiomaActual] || translations['es'];
+  const rowRecommendations = document.getElementById('rowRecommendations');
+  const recommendationContainer = document.getElementById('recommendationContainer');
+  const titleRecommendations = document.getElementById('titleRecommendations');
+  
+  const histIds = JSON.parse(localStorage.getItem('kelonio_history')) || [];
+  const mapVideos = new Map(); todosLosVideos.forEach(v => mapVideos.set(v.id, v));
+
+  if (histIds.length > 0) {
+    const lastWatchedVideo = mapVideos.get(histIds[0]);
+    if (lastWatchedVideo) {
+      const consoleName = lastWatchedVideo.console;
+      const tituloUltimo = lastWatchedVideo.label[idiomaActual] || lastWatchedVideo.label['es'] || '';
+      
+      const recommendedVideos = todosLosVideos.filter(v => v.console === consoleName && !histIds.includes(v.id));
+      if (recommendedVideos.length > 0) {
+        recommendationContainer.style.display = 'block';
+        titleRecommendations.innerHTML = `${t.recsPrefix}<span style="color: var(--red); margin: 0 6px;">${tituloUltimo}</span>${t.recsSuffix}`;
+        
+        let htmlRecs = '';
+        recommendedVideos.slice(0, 5).forEach(vid => { htmlRecs += crearTarjetaHTML(vid, t); });
+        rowRecommendations.innerHTML = htmlRecs;
+      } else {
+        recommendationContainer.style.display = 'none'; 
+      }
+    } else { recommendationContainer.style.display = 'none'; }
+  } else {
+    recommendationContainer.style.display = 'none';
+  }
+}
+
+/* ================= BOTONES DINÁMICOS ================= */
+function renderFilterButtons() {
+  consoleButtons.innerHTML = '';
+  const t = translations[idiomaActual] || translations['es'];
+  
+  // Botón Todas
+  const btnAll = document.createElement('button');
+  btnAll.className = 'console-btn' + (filtroActual === 'ALL' ? ' fav-active-btn' : '');
+  btnAll.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg><span>${t.all.toUpperCase()}</span>`;
+  btnAll.onclick = () => { filtroActual = 'ALL'; renderFilterButtons(); renderVideos(); };
+  consoleButtons.appendChild(btnAll);
+
+  // Botón Historial
+  const histText = t.history.replace(/🍿 /g, '').toUpperCase();
+  const btnHistory = document.createElement('button');
+  btnHistory.className = 'console-btn' + (filtroActual === 'HISTORY' ? ' fav-active-btn' : '');
+  btnHistory.innerHTML = `<span>🍿</span><span>${histText}</span>`;
+  btnHistory.onclick = () => { filtroActual = 'HISTORY'; renderFilterButtons(); renderVideos(); };
+  consoleButtons.appendChild(btnHistory);
+
+  // Botón Favoritos
+  const favText = t.favs.replace(/❤️ /g, '').toUpperCase();
+  const btnFav = document.createElement('button');
+  btnFav.className = 'console-btn' + (filtroActual === 'FAVORITES' ? ' fav-active-btn' : '');
+  btnFav.innerHTML = `<span>❤️</span><span>${favText}</span>`;
+  btnFav.onclick = () => { filtroActual = 'FAVORITES'; renderFilterButtons(); renderVideos(); };
+  consoleButtons.appendChild(btnFav);
+
+  // Iconos de consolas
+  const iconMap = {
+    'SWITCH':'img/Logo Switch.png', '3DS':'img/Logo 3DS.png',
+    'NDS':'img/Logo NDS.png', 'NDSI':'img/Logo NDS.png',
+    'WII':'img/Logo Wii.png', 'WII MINI':'img/Logo Mini.png',
+    'WII U':'img/Logo WiiU.png', 'VWII':'img/Logo vWii.png',
+    'SD':'img/Logo SD.png', 'SONY':'https://api.iconify.design/ri:playstation-line.svg?color=%23ffffff',
+    'XBOX':'https://api.iconify.design/ri:xbox-line.svg?color=%23ffffff'
+  };
+  const ordenDeseado = ['SWITCH', '3DS', 'NDS', 'NDSI', 'WII', 'WII MINI', 'WII U', 'VWII', 'SD', 'SONY', 'XBOX'];
+  const categoriasOrdenadas = Array.from(categoriasUnicas).sort((a, b) => {
+    const iA = ordenDeseado.indexOf(a), iB = ordenDeseado.indexOf(b);
+    if (iA !== -1 && iB !== -1) return iA - iB;
+    if (iA !== -1) return -1; if (iB !== -1) return 1; return a.localeCompare(b);
+  });
+  
+  categoriasOrdenadas.forEach(cat => {
+    const btn = document.createElement('button'); btn.className = 'console-btn' + (filtroActual === cat ? ' fav-active-btn' : '');
+    const iconSrc = iconMap[cat] ? `<img src="${iconMap[cat]}" alt="Logo ${cat}">` : `<span>📁</span>`;
+    btn.innerHTML = `${iconSrc}<span>${cat}</span>`; btn.onclick = () => { filtroActual = cat; renderFilterButtons(); renderVideos(); };
+    consoleButtons.appendChild(btn);
+  });
+}
+
+/* ================= LÓGICA RADAR ================= */
+async function verificarNotificacionesRadar() {
+  const badge = document.getElementById('radarBadge'); if (!badge) return;
+  try {
+    const response = await fetch('radar/ultimas_noticias.json'); if(!response.ok) return;
+    const noticias = await response.json();
+    if(noticias.length > 0) {
+      const uF = new Date(noticias[0].date).getTime(); const uV = localStorage.getItem('ultimaVisitaRadar');
+      if(!uV || uF > parseInt(uV)) { badge.style.display = 'block'; }
+    }
+  } catch (error) { }
+}
+function abrirRadar() { localStorage.setItem('ultimaVisitaRadar', Date.now().toString()); window.open('https://kelonio-hub.github.io/Archivos-Kelonio/actualizaciones.html', '_self'); }
+
+/* ================= GRID DE VÍDEOS ================= */
+function renderVideos() {
+  const t = translations[idiomaActual] || translations['es'];
+  const query = fileSearch.value.toLowerCase().trim();
+  updatesGrid.innerHTML = '';
+
+  let filtrados = todosLosVideos;
+  
+  if (filtroActual === 'FAVORITES') {
+    const favIds = JSON.parse(localStorage.getItem('kelonio_favs')) || [];
+    filtrados = favIds.map(id => todosLosVideos.find(v => v.id === id)).filter(v => v);
+  } else if (filtroActual === 'HISTORY') {
+    const histIds = JSON.parse(localStorage.getItem('kelonio_history')) || [];
+    filtrados = histIds.map(id => todosLosVideos.find(v => v.id === id)).filter(v => v);
+  } else if (filtroActual !== 'ALL') { 
+    filtrados = filtrados.filter(v => v.console === filtroActual); 
+  }
+
+  // Aplicar buscador de texto
+  if (query) {
+    filtrados = filtrados.filter(v => {
+      let tA = (v.label[idiomaActual] || v.label['en'] || v.label['es'] || '').toLowerCase();
+      let dA = (v.desc[idiomaActual] || v.desc['en'] || v.desc['es'] || '').toLowerCase();
+      return tA.includes(query) || dA.includes(query) || v.console.toLowerCase().includes(query);
+    });
+  }
+
+  if (filtrados.length === 0) { 
+    let msgVacio = t.empty;
+    if (filtroActual === 'FAVORITES' && !query) msgVacio = t.favEmpty;
+    if (filtroActual === 'HISTORY' && !query) msgVacio = t.histEmpty;
+    
+    updatesGrid.innerHTML = `<p style="color:#aaa; text-align:center; grid-column:1/-1; font-size:1.15rem; padding: 50px 0;">${msgVacio}</p>`; 
+    return; 
+  }
+  
+  let htmlResult = ''; filtrados.forEach(video => { htmlResult += crearTarjetaHTML(video, t); });
+  updatesGrid.innerHTML = htmlResult;
+}
+
+/* ================= CARGA DE DATOS ================= */
+async function cargarDatosVideos() {
+  const loader = document.getElementById('mainLoader'); loader.style.display = 'block';
+  try {
+    const response = await fetch('videos/videos.json', { cache: "no-store" });
+    if (!response.ok) throw new Error("No se pudo cargar videos.json");
+    const consolasData = await response.json();
+    todosLosVideos = []; categoriasUnicas.clear();
+
+    for (const [consoleName, items] of Object.entries(consolasData)) {
+      const consoleUpper = consoleName.trim().toUpperCase();
+      items.forEach(item => {
+        if (item.videoYoutubeIds && item.videoYoutubeIds.length > 0) {
+          categoriasUnicas.add(consoleUpper);
+          if (item.videoYoutubeIds.length === 1) { todosLosVideos.push({ id: item.videoYoutubeIds[0], console: consoleUpper, label: item.label, desc: item.desc }); } 
+          else {
+            item.videoYoutubeIds.forEach((vidId, idx) => {
+              let multiLabel = {}; for (let lang in item.label) { multiLabel[lang] = `${item.label[lang]} (Pt. ${idx + 1})`; }
+              todosLosVideos.push({ id: vidId, console: consoleUpper, label: multiLabel, desc: item.desc });
+            });
+          }
+        }
+      });
+    }
+    loader.style.display = 'none'; 
+    renderFilterButtons(); 
+    renderizarSeccionesPersonales(); 
+    renderVideos();
+    iniciarHeroCarousel();
+  } catch (error) { loader.style.display = 'none'; updatesGrid.innerHTML = `<p style="text-align:center; grid-column:1/-1; color:var(--red);">Error cargando <b>videos.json</b>.</p>`; }
+}
+
+/* ================= VENTANA FLOTANTE Y NOTAS ================= */
+function openModal(videoId, title) {
+  registrarVideoVisto(videoId);
+  const modal = document.getElementById('video-modal');
+  const iframe = document.getElementById('youtube-frame');
+  const modalTitle = document.getElementById('modal-title-text');
+  const notesTextarea = document.getElementById('videoNotes');
+
+  currentVideoModalId = videoId; 
+  modalTitle.textContent = title;
+  iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+  notesTextarea.value = localStorage.getItem(`kelonio_notes_${videoId}`) || '';
+  modal.classList.add('active');
+}
+
+function closeModal(event) { if (event.target.classList.contains('modal-overlay')) closeModalBtn(); }
+function closeModalBtn() {
+  const modal = document.getElementById('video-modal');
+  const iframe = document.getElementById('youtube-frame');
+  modal.classList.remove('active');
+  iframe.src = ''; currentVideoModalId = null; 
+}
+
+document.getElementById('videoNotes').addEventListener('input', (event) => {
+  if (currentVideoModalId) {
+    localStorage.setItem(`kelonio_notes_${currentVideoModalId}`, event.target.value);
+    const indicator = document.getElementById('saveIndicator'); indicator.style.opacity = '1';
+    clearTimeout(indicator.timeout); indicator.timeout = setTimeout(() => { indicator.style.opacity = '0'; }, 2000);
+  }
+});
+document.getElementById('videoNotes').addEventListener('focus', function() { this.style.borderColor = 'var(--red)'; });
+document.getElementById('videoNotes').addEventListener('blur', function() { this.style.borderColor = 'var(--glass-border)'; });
+document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeModalBtn(); });
+
+/* ================= ARRANQUE ================= */
+let timeoutBuscador = null;
+fileSearch.addEventListener('input', () => { clearTimeout(timeoutBuscador); timeoutBuscador = setTimeout(() => { renderVideos(); }, 250); });
+window.onscroll = function() { mybutton.style.display = (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) ? "block" : "none"; };
+window.onload = () => { initThemeDots(); createLanguageSelector(); updateLanguage(); cargarDatosVideos(); verificarNotificacionesRadar(); };
+</script>
+</body>
+</html>

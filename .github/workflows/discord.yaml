@@ -1,0 +1,34 @@
+name: Publicar en Discord (La Presa y Wiide)
+
+on:
+  schedule:
+    - cron: '0 10 * * *' 
+  workflow_dispatch: 
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: Instalar dependencias
+        run: pip install requests
+        
+      # Envío a La Presa
+      - name: Publicar en La Presa
+        env:
+          WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_SERVIDOR_1 }}
+          NOMBRE_SERVIDOR: "La Presa"
+        run: python discord/discord_bot.py
+
+      # Envío a Wiide
+      - name: Publicar en Wiide
+        env:
+          WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_SERVIDOR_2 }}
+          NOMBRE_SERVIDOR: "Wiide"
+        run: python discord/discord_bot.py

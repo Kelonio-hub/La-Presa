@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title id="pageTitle">Centro de Guías | La Presa</title>
+<link href="https://raw.githubusercontent.com/Kelonio-hub/Archivos-Kelonio/main/img/Lucario.gif" rel="icon" type="image/gif"/>
+<style>
+
+/* ================= VARIABLES Y TEMA AUTOMÁTICO/MANUAL ================= */
+:root, :root[data-theme="dark"] {
+  --red: #00aaff; /* Acento Azul por defecto */
+  --glow-rgb: 0, 170, 255; 
+  
+  /* Tema Oscuro (Por defecto) */
+  --bg: #141414;
+  --text-main: #ffffff;
+  --text-muted: #aaa;
+  --glass: rgba(20,20,20,.78);
+  --glass-border: rgba(255,255,255,.08);
+  --topbar-bg: rgba(0,0,0,.88);
+  --card-bg: rgba(255,255,255,0.02);
+  --input-bg: rgba(255,255,255,.08);
+  --btn-bg: rgba(255,255,255,.05);
+  --icon-color: #ffffff;
+  --loader-border: rgba(255,255,255,0.1);
+}
+
+/* Tema Claro Forzado Manualmente */
+:root[data-theme="light"] {
+  --bg: #f8f9fa;
+  --text-main: #141414;
+  --text-muted: #555555;
+  --glass: rgba(255,255,255,.9);
+  --glass-border: rgba(0,0,0,.15);
+  --topbar-bg: rgba(255,255,255,.95);
+  --card-bg: #ffffff;
+  --input-bg: rgba(0,0,0,.05);
+  --btn-bg: rgba(0,0,0,.05);
+  --icon-color: #333333;
+  --loader-border: rgba(0,0,0,0.1);
+}
+
+/* Tema Claro Automático (Si el usuario no ha tocado los botones) */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f8f9fa;
+    --text-main: #141414;
+    --text-muted: #555555;
+    --glass: rgba(255,255,255,.9);
+    --glass-border: rgba(0,0,0,.15);
+    --topbar-bg: rgba(255,255,255,.95);
+    --card-bg: #ffffff;
+    --input-bg: rgba(0,0,0,.05);
+    --btn-bg: rgba(0,0,0,.05);
+    --icon-color: #333333;
+    --loader-border: rgba(0,0,0,0.1);
+  }
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',sans-serif; background:var(--bg); color:var(--text-main); overflow-x:hidden; transition: background 0.3s, color 0.3s; }
+
+/* ================= TOPBAR ================= */
+.topbar { position:fixed; top:0; left:0; right:0; z-index:9999; background:var(--topbar-bg); backdrop-filter:blur(16px); display:flex; justify-content:space-between; align-items:center; padding:8px 3%; gap: 10px; transition: background 0.3s; }
+.topbar-left { display:flex; align-items:center; gap: 15px; flex-shrink: 0; }
+.logo { font-size:1.8rem; font-weight:900; color:var(--red); letter-spacing:-1.5px; transition: color 0.3s ease; text-decoration: none; cursor: pointer;}
+.social-group { display: flex; gap: 4px; border-left: 1px solid var(--glass-border); padding-left: 15px; transition: border-color 0.3s; }
+
+.social-icon-btn { background:transparent; border:none; cursor: pointer; color: var(--icon-color); opacity: 0.55; transition: 0.3s; display: flex; align-items: center; justify-content: center; padding: 4px; position: relative;}
+.social-icon-btn:hover { opacity: 1; transform: scale(1.15); color: var(--red); }
+.radar-badge { position:absolute; top:-2px; right:-2px; width:10px; height:10px; background:var(--red); border-radius:50%; box-shadow:0 0 8px var(--red); display: none; }
+
+.right-tools { display:flex; align-items:center; gap:12px; flex-shrink: 0; }
+.config-group { display:flex; flex-direction:column; align-items:center; gap:4px; }
+.theme-dots-container { display:flex; gap:5px; align-items: center;}
+.color-dot { width:12px; height:12px; border-radius:50%; cursor:pointer; border:1px solid rgba(0,0,0,0.4); transition:transform .2s, border-color .2s; }
+.color-dot:hover { transform:scale(1.3); }
+.color-dot.active-dot { border:2px solid var(--text-main); transform:scale(1.15); box-shadow: 0 0 8px rgba(128,128,128,0.6); }
+
+/* Corrección del panel de idiomas */
+#languageSelector { background:var(--input-bg); border:1px solid var(--glass-border); color:var(--text-main); padding:4px 8px; border-radius:6px; outline: none; cursor: pointer; font-size:11px; transition: 0.3s; }
+#languageSelector option { background: var(--bg); color: var(--text-main); }
+
+#fileSearch { background:var(--input-bg); border:1px solid transparent; color:var(--text-main); width:170px; padding:8px 14px; border-radius:50px; font-size:13px; outline:none; transition: width 0.3s ease, border-color 0.3s, background 0.3s; }
+#fileSearch:focus { width: 200px; border-color: var(--red); }
+#fileSearch::placeholder { color:var(--text-muted); }
+
+/* ================= CONSOLE BUTTONS ================= */
+.console-buttons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 30px; padding: 5px 0; }
+.console-btn { background: var(--btn-bg); border: 1px solid var(--glass-border); border-radius: 10px; padding: 8px 14px; display: flex; align-items: center; gap: 6px; cursor: pointer; transition: .3s ease; color: var(--text-main); font-weight: 700; font-size: 12px; white-space: nowrap; }
+.console-btn:hover { transform: scale(1.05); border-color: var(--red); background: rgba(var(--glow-rgb),.15); }
+.console-btn.fav-active-btn { border-color: var(--red); background: rgba(var(--glow-rgb),.25); box-shadow: 0 0 10px rgba(var(--glow-rgb), 0.5); }
+.console-btn span { color: var(--text-main); letter-spacing: .5px; transition: color 0.3s; }
+.console-btn img { width: 18px; height: 18px; object-fit: contain; filter: drop-shadow(0 0 2px rgba(0,0,0,0.5)); }
+
+/* ================= HEADER HERO & ANIMACIÓN SATPULSE ================= */
+.header-section { padding: 130px 5% 40px; text-align: center; background: linear-gradient(to bottom, rgba(var(--glow-rgb),0.15) 0%, var(--bg) 100%); transition: background 0.3s; }
+.header-title-container { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 10px; }
+.header-section h1 { font-size: 3rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 16px; margin: 0 auto; }
+.hero-guide-icon { width: 3.2rem; height: 3.2rem; color: var(--red); filter: drop-shadow(0 0 14px rgba(var(--glow-rgb), 0.7)); transition: color 0.3s ease; animation: satPulse 3.5s infinite ease-in-out; flex-shrink: 0; }
+@keyframes satPulse { 0%, 100% { transform: scale(1) translateY(0px); filter: drop-shadow(0 0 12px rgba(var(--glow-rgb), 0.6)); } 50% { transform: scale(1.12) translateY(-4px); filter: drop-shadow(0 0 26px rgba(var(--glow-rgb), 1)); } }
+.header-section p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; transition: color 0.3s; }
+.hero-warning { color: var(--red); font-size: 0.85rem !important; font-style: italic; margin-top: 15px !important; font-weight: 600; opacity: 0.9; }
+
+/* ================= GRID DE GUÍAS ================= */
+.updates-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; padding: 0 5% 60px; }
+.update-card { background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 22px; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s, background 0.3s; display: flex; flex-direction: column; height: 100%; }
+.update-card:hover { transform: translateY(-5px); border-color: var(--red); box-shadow: 0 0 20px rgba(var(--glow-rgb), 0.25), 0 10px 20px rgba(0,0,0,0.15); }
+.update-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+.update-tag { background: var(--btn-bg); border: 1px solid var(--glass-border); color: var(--text-main); padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: bold; text-transform: uppercase; transition: background 0.3s, color 0.3s; }
+.update-date { color: var(--text-muted); font-size: 12px; transition: color 0.3s; }
+.update-card h3 { font-size: 1.35rem; margin-bottom: 12px; line-height: 1.3; }
+.update-card h3 a { color: var(--text-main); text-decoration: none; transition: color 0.2s; }
+.update-card h3 a:hover { color: var(--red); }
+.update-body { color: var(--text-muted); font-size: 0.92rem; line-height: 1.5; margin-bottom: 25px; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; transition: color 0.3s; }
+.update-footer { margin-top: auto; }
+.download-link { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background: var(--red); color: white !important; text-decoration: none; padding: 12px; border-radius: 8px; font-weight: bold; transition: filter 0.3s, background 0.3s; }
+.download-link:hover { filter: brightness(1.2); }
+
+/* ================= LOADER ================= */
+.loader-container { text-align: center; padding: 50px; width: 100%; grid-column: 1 / -1; display: none; }
+.spinner { width: 50px; height: 50px; border: 5px solid var(--loader-border); border-top-color: var(--red); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px; transition: border-color 0.3s; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ================= BOTÓN SUBIR ================= */
+#backToTopBtn { display: none; position: fixed; bottom: 30px; right: 30px; z-index: 9998; background: var(--red); color: white; border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; font-size: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: opacity 0.3s, transform 0.3s; }
+#backToTopBtn:hover { transform: scale(1.1); }
+
+@media(max-width: 1150px) { 
+  .topbar { flex-wrap: wrap; padding: 10px 4%; justify-content: center; } 
+  .topbar-left { order: 1; } 
+  .right-tools { order: 2; margin-top: 5px; flex-wrap: wrap; justify-content: center; } 
+}
+@media(max-width: 650px) { 
+  .right-tools { width: 100%; gap: 15px; } 
+  #fileSearch { width: 100%; order: 3; margin-top: 10px; } 
+  #fileSearch:focus { width: 100%; } 
+  .config-group { flex-direction: row; order: 2; gap: 15px; justify-content: center; width: 100%; } 
+  .header-section { padding-top: 250px; } /* Aumentamos el espacio para acomodar las 4 filas */
+}
+
+</style>
+
+<!-- ==========================================================
+     CANONICAL & HREFLANG (8 IDIOMAS + INGLÉS POR DEFECTO)
+=========================================================== -->
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/" rel="canonical"/>
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/?lang=es" hreflang="es" rel="alternate"/>
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/?lang=en" hreflang="en" rel="alternate"/>
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/?lang=fr" hreflang="fr" rel="alternate"/>
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/?lang=de" hreflang="de" rel="alternate"/>
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/?lang=it" hreflang="it" rel="alternate"/>
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/?lang=pt" hreflang="pt" rel="alternate"/>
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/?lang=ja" hreflang="ja" rel="alternate"/>
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/?lang=ko" hreflang="ko" rel="alternate"/>
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/?lang=en" hreflang="x-default" rel="alternate"/>
+<!-- ==========================================================
+     OPEN GRAPH & TWITTER CARDS
+=========================================================== -->
+<meta content="website" property="og:type"/>
+<meta content="La Presa" property="og:site_name"/>
+<meta content="Centro de Guías" property="og:title"/>
+<meta content="Descubre Centro de Guías en el centro de recursos de La Presa." property="og:description"/>
+<meta content="https://kelonio-hub.github.io/Archivos-Kelonio/" property="og:url"/>
+<meta content="https://raw.githubusercontent.com/Kelonio-hub/Archivos-Kelonio/main/img/Logo%20Zip.png" property="og:image"/>
+<meta content="es_ES" property="og:locale"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Centro de Guías" name="twitter:title"/>
+<meta content="Descubre Centro de Guías en el centro de recursos de La Presa." name="twitter:description"/>
+<meta content="https://raw.githubusercontent.com/Kelonio-hub/Archivos-Kelonio/main/img/Logo%20Zip.png" name="twitter:image"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://kelonio-hub.github.io/Archivos-Kelonio/#organization",
+  "name": "La Presa",
+  "url": "https://kelonio-hub.github.io/Archivos-Kelonio/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://raw.githubusercontent.com/Kelonio-hub/Archivos-Kelonio/main/img/Lucario.gif"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://kelonio-hub.github.io/Archivos-Kelonio/#webpage",
+  "url": "https://kelonio-hub.github.io/Archivos-Kelonio/",
+  "name": "Centro de Guías | La Presa",
+  "description": "Descubre Centro de Guías en el centro de recursos de La Presa.",
+  "inLanguage": [
+    "es",
+    "en",
+    "fr",
+    "de",
+    "it",
+    "pt",
+    "ja",
+    "ko"
+  ],
+  "publisher": {
+    "@id": "https://kelonio-hub.github.io/Archivos-Kelonio/#organization"
+  },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://raw.githubusercontent.com/Kelonio-hub/Archivos-Kelonio/main/img/Logo%20Zip.png"
+  },
+  "mainEntity": {
+    "@id": "https://kelonio-hub.github.io/Archivos-Kelonio/#website"
+  },
+  "dateModified": "2026-07-19"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://kelonio-hub.github.io/Archivos-Kelonio/index.html"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://kelonio-hub.github.io/Archivos-Kelonio/#website",
+  "url": "https://kelonio-hub.github.io/Archivos-Kelonio/",
+  "name": "La Presa",
+  "description": "Descubre Centro de Guías en el centro de recursos de La Presa.",
+  "publisher": {
+    "@id": "https://kelonio-hub.github.io/Archivos-Kelonio/#organization"
+  }
+}
+</script>
+<script>
+  /* ================= PRE-CARGA DE TEMA PARA EVITAR FLASH ================= */
+  (function() {
+    // 1. Aplicar Modo Oscuro/Claro
+    const savedMode = localStorage.getItem('selectedMode');
+    if (savedMode === 'dark' || savedMode === 'light') {
+      document.documentElement.setAttribute('data-theme', savedMode);
+    }
+
+    // 2. Aplicar Color de Acento
+    const savedTheme = localStorage.getItem('selectedThemeColor');
+    if (savedTheme) {
+      const paleta = {
+        rojo:     { hex: '#e50914', rgb: '229, 9, 20' },
+        naranja:  { hex: '#ff6600', rgb: '255, 102, 0' },
+        amarillo: { hex: '#ffcc00', rgb: '255, 204, 0' },
+        verde:    { hex: '#2ecc71', rgb: '46, 204, 113' },
+        azul:     { hex: '#00aaff', rgb: '0, 170, 255' },
+        violeta:  { hex: '#9b59b6', rgb: '155, 89, 182' },
+        rosa:     { hex: '#ff80ab', rgb: '255, 128, 171' }
+      };
+      
+      const theme = paleta[savedTheme];
+      if (theme) {
+        document.documentElement.style.setProperty('--red', theme.hex);
+        document.documentElement.style.setProperty('--glow-rgb', theme.rgb);
+      }
+    }
+  })();
+</script>
+
+<link href="assets/asistente-guia.css" rel="stylesheet"/>
+</head>
+<body>
+<header class="topbar">
+<div class="topbar-left">
+<div class="logo" onclick="window.location.href='index.html'">LA PRESA</div>
+<div class="social-group">
+<button class="social-icon-btn" id="discordBtn" onclick="window.open('https://discord.gg/8Fv8GDg', '_blank')" title="Discord">
+<svg fill="currentColor" height="22" viewbox="0 0 24 24" width="22"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"></path></svg>
+</button>
+<button class="social-icon-btn" id="kofiBtn" onclick="window.open('https://ko-fi.com/lapresa', '_blank')" title="Ko-fi">
+<svg fill="currentColor" height="22" viewbox="0 0 24 24" width="22"><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.034-3.954-.709-.965-1.041-2.7-.091-3.71.951-1.01 3.005-1.086 4.363.407 0 0 1.565-1.782 3.468-.963 1.904.82 1.832 3.011.723 4.311zm6.173.478c-.928.116-1.682.028-1.682.028V7.284h1.77s1.971.551 1.971 2.638c0 1.913-.985 2.667-2.059 3.015z"></path></svg>
+</button>
+</div>
+</div>
+<nav class="right-tools">
+<button class="social-icon-btn" id="guideBtn" onclick="window.open('https://kelonio-hub.github.io/Archivos-Kelonio/guias.html', '_self')" title="Guías">
+<svg fill="currentColor" height="24" viewbox="0 0 24 24" width="24"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zM21 18.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"></path></svg>
+</button>
+<button class="social-icon-btn" id="productsBtn" onclick="window.open('https://kelonio-hub.github.io/Archivos-Kelonio/productos.html', '_self')" title="Productos">
+<svg fill="currentColor" height="24" viewbox="0 0 24 24" width="24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1v2zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"></path></svg>
+</button>
+<!-- BOTÓN RADAR ESTILO SATÉLITE ORBITAL -->
+<button class="social-icon-btn" id="videosBtn" onclick="window.open('https://kelonio-hub.github.io/Archivos-Kelonio/videoteca.html', '_self')" title="Vídeos">
+<svg fill="currentColor" height="24" viewbox="0 0 24 24" width="24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"></path></svg>
+</button>
+<button class="social-icon-btn" id="radarBtn" onclick="window.open('https://kelonio-hub.github.io/Archivos-Kelonio/actualizaciones.html', '_self')" title="Radar de Actualizaciones">
+<svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24">
+<path d="M13 7 9 3 5 7l4 4" fill="rgba(255,255,255,0.08)"></path>
+<path d="m17 11 4 4-4 4-4-4" fill="rgba(255,255,255,0.08)"></path>
+<path d="m8 12 4 4 6-6-4-4Z" fill="currentColor"></path>
+<path d="m16 8 3-3"></path>
+<path d="M9 21a6 6 0 0 0-6-6"></path>
+<path d="M5 21a2 2 0 0 0-2-2"></path>
+</svg>
+<span class="radar-badge" id="radarBadge"></span>
+</button>
+<input id="fileSearch" placeholder="Buscar guías..." type="text"/>
+<div class="config-group">
+<div class="theme-dots-container" id="themeDots"></div>
+<select id="languageSelector" data-assistant-lang aria-label="Idioma"></select>
+</div>
+</nav>
+</header>
+<div class="header-section">
+<!-- TÍTULO CON ICONO DE GUÍAS CON ANIMACIÓN SATPULSE -->
+<h1 id="heroTitle">
+<svg class="hero-guide-icon" fill="currentColor" viewbox="0 0 24 24">
+<path d="M21 5c-1.1-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zM21 18.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"></path>
+</svg>
+<span> Centro de Guías</span>
+</h1>
+<p id="heroDesc">Guías y tutoriales paso a paso para sacar el máximo provecho a tus consolas.</p>
+<p class="hero-warning" id="heroWarning"></p>
+<div class="console-buttons" id="consoleButtons"></div>
+</div>
+
+<section class="guide-assistant-panel" id="guideAssistantPanel" aria-labelledby="guideAssistantTitle">
+  <div class="guide-assistant-intro">
+    <div class="guide-assistant-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C7.58 3 4 5.02 4 7.5v8C4 17.98 7.58 20 12 20s8-2.02 8-4.5v-8C20 5.02 16.42 3 12 3Zm0 2c3.37 0 6 1.4 6 2.5S15.37 10 12 10 6 8.6 6 7.5 8.63 5 12 5Zm0 13c-3.37 0-6-1.4-6-2.5v-1.87c1.47 1.08 3.68 1.72 6 1.72s4.53-.64 6-1.72v1.87c0 1.1-2.63 2.5-6 2.5Zm0-5c-3.37 0-6-1.4-6-2.5V8.63C7.47 9.71 9.68 10.35 12 10.35s4.53-.64 6-1.72v1.87c0 1.1-2.63 2.5-6 2.5Z"/></svg>
+    </div>
+    <div class="guide-assistant-copy">
+      <p class="guide-assistant-eyebrow" id="guideAssistantEyebrow">ASISTENTE DE GUÍAS</p>
+      <h2 class="guide-assistant-title" id="guideAssistantTitle">¿No sabes qué guía necesitas?</h2>
+      <p class="guide-assistant-desc" id="guideAssistantDesc">Elige tu consola y lo que quieres hacer. Te llevaremos directamente a las guías que encajan con tu duda.</p>
+    </div>
+    <button class="guide-assistant-toggle" id="guideAssistantToggle" type="button" aria-expanded="false" aria-controls="embeddedGuideAssistant">Abrir asistente</button>
+  </div>
+  <div class="embedded-guide-assistant" id="embeddedGuideAssistant" hidden>
+    <div class="assistant-tools">
+      <input id="assistantSearch" type="search" autocomplete="off" enterkeyhint="search" spellcheck="false" placeholder="Buscar guías..." aria-label="Buscar guías dentro del asistente"/>
+    </div>
+    <div class="assistant-content" aria-live="polite">
+      <div class="assistant-meta">
+        <div class="assistant-breadcrumb" id="assistantBreadcrumb"></div>
+        <div class="assistant-actions">
+          <button class="assistant-nav-btn" id="assistantBack" type="button">← Volver</button>
+          <button class="assistant-nav-btn" id="assistantRestart" type="button">Reiniciar</button>
+        </div>
+      </div>
+      <h3 class="assistant-question" id="assistantQuestion"></h3>
+      <div class="assistant-helper" id="assistantHelper"></div>
+      <div class="assistant-grid" id="assistantOptions"></div>
+    </div>
+  </div>
+</section>
+
+<main class="updates-container" id="updatesGrid">
+<div class="loader-container" id="mainLoader">
+<div class="spinner"></div>
+<p id="loaderText" style="color:#aaa;">Cargando guías...</p>
+</div>
+</main>
+<button id="backToTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+<script>
+/* ================= DICCIONARIO COMPLETO ================= */
+const translations = {
+  es: { title: "Guías y Tutoriales | La Presa", heroTitle: "Centro de Guías", heroDesc: "Guías y tutoriales paso a paso para sacar el máximo provecho a tus consolas.", search: "Buscar guías...", all: "Todas", read: "📖 Leer Guía", empty: "No se encontraron guías.", products: "Productos", videos: "Vídeos", radar: "Radar de Actualizaciones", guides: "Guías", discord: "Únete a Discord", kofi: "Apóyanos en Ko-fi", assistantEyebrow: "ASISTENTE DE GUÍAS", assistantPrompt: "¿No sabes qué guía necesitas?", assistantDesc: "Elige tu consola y lo que quieres hacer. Te llevaremos directamente a las guías que encajan con tu duda.", assistantOpen: "Abrir asistente", assistantClose: "Cerrar asistente" },
+  en: { title: "Guides & Tutorials | La Presa", heroTitle: "Guides Center", heroDesc: "Step-by-step manuals and tutorials to get the most out of your consoles.", search: "Search guides...", all: "All", read: "📖 Read Guide", empty: "No guides found.", products: "Products", videos: "Videos", radar: "Update Radar", guides: "Guides", discord: "Join Discord", kofi: "Support us on Ko-fi", assistantEyebrow: "GUIDE ASSISTANT", assistantPrompt: "Not sure which guide you need?", assistantDesc: "Choose your console and what you want to do. We’ll take you straight to the guides that match your question.", assistantOpen: "Open assistant", assistantClose: "Close assistant" },
+  fr: { title: "Guides et Tutoriels | La Presa", heroTitle: "Centre de Guides", heroDesc: "Manuels et tutoriels étape par étape pour vos consoles.", search: "Rechercher des guides...", all: "Toutes", read: "📖 Lire le Guide", empty: "Aucun guide trouvé.", products: "Produits", videos: "Vidéos", radar: "Radar des Mises à jour", guides: "Guides", discord: "Rejoindre Discord", kofi: "Soutenez-nous sur Ko-fi", assistantEyebrow: "ASSISTANT DES GUIDES", assistantPrompt: "Tu ne sais pas quel guide choisir ?", assistantDesc: "Choisis ta console et ce que tu veux faire. Nous t’emmènerons directement vers les guides adaptés à ta question.", assistantOpen: "Ouvrir l’assistant", assistantClose: "Fermer l’assistant" },
+  de: { title: "Anleitungen & Tutorials | La Presa", heroTitle: "Anleitungszentrum", heroDesc: "Schritt-für-Schritt-Anleitungen und Tutorials für deine Konsolen.", search: "Anleitungen suchen...", all: "Alle", read: "📖 Anleitung lesen", empty: "Keine Anleitungen gefunden.", products: "Produkte", videos: "Videos", radar: "Update-Radar", guides: "Anleitungen", discord: "Treten Sie Discord bei", kofi: "Unterstützen Sie uns auf Ko-fi", assistantEyebrow: "ANLEITUNGSASSISTENT", assistantPrompt: "Du weißt nicht, welche Anleitung du brauchst?", assistantDesc: "Wähle deine Konsole und dein Ziel. Wir führen dich direkt zu den passenden Anleitungen.", assistantOpen: "Assistent öffnen", assistantClose: "Assistent schließen" },
+  it: { title: "Guide e Tutorial | La Presa", heroTitle: "Centro Guide", heroDesc: "Manuali e tutorial passo passo per ottenere il massimo dalle tue console.", search: "Cerca guide...", all: "Tutte", read: "📖 Leggi Guida", empty: "Nessuna guida trovata.", products: "Prodotti", videos: "Video", radar: "Radar Aggiornamenti", guides: "Guide", discord: "Unisciti a Discord", kofi: "Supportaci su Ko-fi", assistantEyebrow: "ASSISTENTE GUIDE", assistantPrompt: "Non sai quale guida ti serve?", assistantDesc: "Scegli la tua console e cosa vuoi fare. Ti porteremo direttamente alle guide più adatte alla tua domanda.", assistantOpen: "Apri assistente", assistantClose: "Chiudi assistente" },
+  pt: { title: "Guias e Tutoriais | La Presa", heroTitle: "Centro de Guias", heroDesc: "Guias e tutoriais passo a passo para tirar o máximo proveito das tuas consolas.", search: "Procurar guias...", all: "Todas", read: "📖 Ler Guia", empty: "Nenhuma guia encontrada.", products: "Produtos", videos: "Vídeos", radar: "Radar de Atualizações", guides: "Guias", discord: "Junte-se ao Discord", kofi: "Apoie-nos no Ko-fi", assistantEyebrow: "ASSISTENTE DE GUIAS", assistantPrompt: "Não sabes de que guia precisas?", assistantDesc: "Escolhe a tua consola e o que queres fazer. Vamos levar-te diretamente aos guias que correspondem à tua dúvida.", assistantOpen: "Abrir assistente", assistantClose: "Fechar assistente" },
+  ja: { title: "ガイドとチュートリアル | La Presa", heroTitle: "ガイドセンター", heroDesc: "コンソールを最大限に活用するためのステップバイステップのガイド。", search: "ガイドを検索...", all: "すべて", read: "📖 ガイドを読む", empty: "ガイドが見つかりませんでした。", products: "製品", videos: "ビデオ", radar: "更新レーダー", guides: "ガイド", discord: "Discordに参加する", kofi: "Ko-fiでサポート", assistantEyebrow: "ガイドアシスタント", assistantPrompt: "どのガイドが必要かわかりませんか？", assistantDesc: "ゲーム機と目的を選ぶと、質問に合うガイドへ直接案内します。", assistantOpen: "アシスタントを開く", assistantClose: "アシスタントを閉じる" },
+  ko: { title: "가이드 및 튜토리얼 | La Presa", heroTitle: "가이드 센터", heroDesc: "콘솔을 최대한 활용하기 위한 단계별 매뉴얼 및 튜토리얼.", search: "가이드 검색...", all: "모든", read: "📖 가이드 읽기", empty: "가이드를 찾을 수 없습니다.", products: "제품", videos: "비디오", radar: "업데이트 레이더", guides: "가이드", discord: "Discord 가입하기", kofi: "Ko-fi에서 지원하기", assistantEyebrow: "가이드 도우미", assistantPrompt: "어떤 가이드가 필요한지 모르시겠나요?", assistantDesc: "콘솔과 원하는 작업을 선택하면 질문에 맞는 가이드로 바로 안내합니다.", assistantOpen: "도우미 열기", assistantClose: "도우미 닫기" }
+};
+
+/* ================= VARIABLES GLOBALES ================= */
+let idiomaActual = 'en'; 
+let categoriasUnicas = new Set();
+let filtroActual = 'ALL'; 
+let todasLasGuias = [];
+
+const fileSearch = document.getElementById('fileSearch');
+const updatesGrid = document.getElementById('updatesGrid');
+const consoleButtons = document.getElementById('consoleButtons');
+const themeDotsContainer = document.getElementById('themeDots');
+const mybutton = document.getElementById("backToTopBtn");
+
+/* ================= PALETA DE COLORES ================= */
+const paletaTemas = {
+  rojo: { hex: '#e50914', rgb: '229, 9, 20' }, naranja: { hex: '#ff6600', rgb: '255, 102, 0' }, amarillo: { hex: '#ffcc00', rgb: '255, 204, 0' },
+  verde: { hex: '#2ecc71', rgb: '46, 204, 113' }, azul: { hex: '#00aaff', rgb: '0, 170, 255' }, violeta: { hex: '#9b59b6', rgb: '155, 89, 182' }, rosa: { hex: '#ff80ab', rgb: '255, 128, 171' }
+};
+
+function initThemeDots() {
+  const savedTheme = localStorage.getItem('selectedThemeColor') || 'azul';
+  const savedMode = localStorage.getItem('selectedMode') || 'dark'; // <- Cambiado a 'dark'
+  
+  themeDotsContainer.innerHTML = '';
+  
+  // 1. Botones de colores de acento
+  Object.keys(paletaTemas).forEach(colorKey => {
+    const dot = document.createElement('div'); 
+    dot.className = 'color-dot theme-color-dot'; 
+    dot.style.backgroundColor = paletaTemas[colorKey].hex;
+    dot.setAttribute('aria-label', `Tema ${colorKey}`);
+    if (colorKey === savedTheme) dot.classList.add('active-dot');
+    dot.addEventListener('click', () => {
+      document.querySelectorAll('.theme-color-dot').forEach(d => d.classList.remove('active-dot'));
+      dot.classList.add('active-dot'); 
+      localStorage.setItem('selectedThemeColor', colorKey); 
+      applyTheme(colorKey);
+    });
+    themeDotsContainer.appendChild(dot);
+  });
+
+  // Separador visual
+  const separador = document.createElement('div');
+  separador.style.width = '2px';
+  separador.style.backgroundColor = 'var(--glass-border)';
+  separador.style.margin = '0 6px';
+  separador.style.borderRadius = '2px';
+  themeDotsContainer.appendChild(separador);
+
+  // 2. Botón MODO OSCURO (Negro)
+  const dotOscuro = document.createElement('div');
+  dotOscuro.className = 'color-dot mode-dot';
+  dotOscuro.style.backgroundColor = '#141414';
+  dotOscuro.style.border = '1px solid #555';
+  dotOscuro.setAttribute('title', 'Forzar Modo Oscuro');
+  
+  // 3. Botón MODO CLARO (Blanco)
+  const dotClaro = document.createElement('div');
+  dotClaro.className = 'color-dot mode-dot';
+  dotClaro.style.backgroundColor = '#f8f9fa';
+  dotClaro.style.border = '1px solid #ccc';
+  dotClaro.setAttribute('title', 'Forzar Modo Claro');
+
+  // Restaurar configuración al cargar
+  if (savedMode === 'dark') {
+    dotOscuro.classList.add('active-dot');
+    document.documentElement.setAttribute('data-theme', 'dark');
+  } else if (savedMode === 'light') {
+    dotClaro.classList.add('active-dot');
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+
+  // Eventos de click
+  dotOscuro.addEventListener('click', () => {
+    document.querySelectorAll('.mode-dot').forEach(d => d.classList.remove('active-dot'));
+    dotOscuro.classList.add('active-dot');
+    localStorage.setItem('selectedMode', 'dark');
+    document.documentElement.setAttribute('data-theme', 'dark');
+  });
+
+  dotClaro.addEventListener('click', () => {
+    document.querySelectorAll('.mode-dot').forEach(d => d.classList.remove('active-dot'));
+    dotClaro.classList.add('active-dot');
+    localStorage.setItem('selectedMode', 'light');
+    document.documentElement.setAttribute('data-theme', 'light');
+  });
+
+  themeDotsContainer.appendChild(dotOscuro);
+  themeDotsContainer.appendChild(dotClaro);
+
+  applyTheme(savedTheme);
+}
+
+function applyTheme(colorKey) {
+  const theme = paletaTemas[colorKey] || paletaTemas.rojo;
+  document.documentElement.style.setProperty('--red', theme.hex); document.documentElement.style.setProperty('--glow-rgb', theme.rgb);
+}
+
+/* ================= SELECTOR DE IDIOMAS ================= */
+function createLanguageSelector(){
+  const selector = document.getElementById('languageSelector'); selector.innerHTML = '';
+  const langs = { es:'Español', en:'English', fr:'Français', de:'Deutsch', it:'Italiano', pt:'Português', ja:'日本語', ko:'한국어' };
+  
+  Object.keys(langs).forEach(code=>{
+    const opt = document.createElement('option'); opt.value = code; opt.textContent = langs[code]; selector.appendChild(opt);
+  });
+  
+  const savedLang = localStorage.getItem('preferredLanguage');
+  const browserLang = (navigator.language || navigator.userLanguage || 'en').split('-')[0].toLowerCase();
+  
+  if (savedLang && translations[savedLang]) { idiomaActual = savedLang; } 
+  else if (translations[browserLang]) { idiomaActual = browserLang; } 
+  else { idiomaActual = 'en'; }
+  
+  selector.value = idiomaActual;
+  
+  selector.addEventListener('change', e => {
+    idiomaActual = e.target.value; localStorage.setItem('preferredLanguage', idiomaActual);
+    updateLanguage(); renderFilterButtons(); renderNoticias();
+    window.dispatchEvent(new CustomEvent('lapresa:languagechange', { detail: { lang: idiomaActual } }));
+  });
+}
+
+function updateLanguage(){
+  const t = translations[idiomaActual] || translations['en'];
+  document.title = t.title;
+  
+  const titleNode = document.getElementById('heroTitle');
+  const textSpan = titleNode.querySelector('span');
+  if (textSpan) {
+    textSpan.textContent = ' ' + t.heroTitle;
+  }
+
+  document.getElementById('heroDesc').textContent = t.heroDesc;
+  document.getElementById('heroWarning').textContent = t.heroWarning;
+  fileSearch.placeholder = t.search;
+
+  // Asistente de Guías integrado en esta página
+  const assistantEyebrow = document.getElementById('guideAssistantEyebrow');
+  const assistantTitle = document.getElementById('guideAssistantTitle');
+  const assistantDesc = document.getElementById('guideAssistantDesc');
+  const assistantToggle = document.getElementById('guideAssistantToggle');
+  const assistantPanel = document.getElementById('guideAssistantPanel');
+  if (assistantEyebrow) assistantEyebrow.textContent = t.assistantEyebrow || 'ASISTENTE DE GUÍAS';
+  if (assistantTitle) assistantTitle.textContent = t.assistantPrompt || '¿No sabes qué guía necesitas?';
+  if (assistantDesc) assistantDesc.textContent = t.assistantDesc || '';
+  if (assistantToggle) assistantToggle.textContent = assistantPanel?.classList.contains('open') ? (t.assistantClose || 'Cerrar asistente') : (t.assistantOpen || 'Abrir asistente');
+
+  if (document.getElementById('videosBtn')) {
+    const dictVideos = { es: 'Vídeos', en: 'Videos', fr: 'Vidéos', de: 'Videos', it: 'Video', pt: 'Vídeos', ja: 'ビデオ', ko: '비디오' };
+    document.getElementById('videosBtn').title = (t && t.videos) ? t.videos : (dictVideos[idiomaActual] || 'Vídeos');
+  }
+  if (document.getElementById('radarBtn')) document.getElementById('radarBtn').title = t.radar;
+  if (document.getElementById('productsBtn')) document.getElementById('productsBtn').title = t.products;
+  if (document.getElementById('guideBtn')) document.getElementById('guideBtn').title = t.guides;
+  if (document.getElementById('discordBtn')) document.getElementById('discordBtn').title = t.discord;
+  if (document.getElementById('kofiBtn')) document.getElementById('kofiBtn').title = t.kofi;
+}
+
+/* ================= BOTONES DINÁMICOS ================= */
+function renderFilterButtons() {
+  consoleButtons.innerHTML = '';
+  const t = translations[idiomaActual] || translations['en'];
+
+  const btnAll = document.createElement('button');
+  btnAll.className = 'console-btn' + (filtroActual === 'ALL' ? ' fav-active-btn' : '');
+  btnAll.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg><span>${t.all.toUpperCase()}</span>`;
+  btnAll.onclick = () => { filtroActual = 'ALL'; renderFilterButtons(); renderNoticias(); };
+  consoleButtons.appendChild(btnAll);
+
+  const iconMap = {
+    'SWITCH':'https://raw.githubusercontent.com/Kelonio-hub/Link-3DS/main/img/Logo%20Switch.png',
+    '3DS':'https://raw.githubusercontent.com/Kelonio-hub/Link-3DS/main/img/Logo%203DS.png',
+    'NDS':'https://raw.githubusercontent.com/Kelonio-hub/Link-3DS/main/img/Logo%20NDS.png',
+    'NDSI':'https://raw.githubusercontent.com/Kelonio-hub/Link-3DS/main/img/Logo%20NDS.png',
+    'WII':'https://raw.githubusercontent.com/Kelonio-hub/Link-3DS/main/img/Logo%20Wii.png',
+    'WII MINI':'https://raw.githubusercontent.com/Kelonio-hub/Link-3DS/main/img/Logo%20Mini.png',
+    'WII U':'https://raw.githubusercontent.com/Kelonio-hub/Link-3DS/main/img/Logo%20WiiU.png',
+    'VWII':'https://raw.githubusercontent.com/Kelonio-hub/Link-3DS/main/img/Logo%20vWii.png',
+    'SD':'https://raw.githubusercontent.com/Kelonio-hub/Link-3DS/main/img/Logo%20SD.png',
+    'SONY':'https://api.iconify.design/ri:playstation-line.svg?color=%23ffffff',
+    'XBOX':'https://api.iconify.design/ri:xbox-line.svg?color=%23ffffff'
+  };
+
+  const ordenDeseado = ['SWITCH', '3DS', 'NDS', 'NDSI', 'WII', 'WII MINI', 'WII U', 'VWII', 'SD'];
+
+  const categoriasOrdenadas = Array.from(categoriasUnicas).sort((a, b) => {
+    const indexA = ordenDeseado.indexOf(a);
+    const indexB = ordenDeseado.indexOf(b);
+    if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+    if (indexA !== -1) return -1;
+    if (indexB !== -1) return 1;
+    return a.localeCompare(b);
+  });
+
+  categoriasOrdenadas.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'console-btn' + (filtroActual === cat ? ' fav-active-btn' : '');
+    const iconSrc = iconMap[cat] ? `<img src="${iconMap[cat]}" alt="Logo ${cat}">` : `<span>📁</span>`;
+    btn.innerHTML = `${iconSrc}<span>${cat}</span>`;
+    btn.onclick = () => { filtroActual = cat; renderFilterButtons(); renderNoticias(); };
+    consoleButtons.appendChild(btn);
+  });
+}
+
+/* ================= LÓGICA RADAR DE ACTUALIZACIONES ================= */
+async function verificarNotificacionesRadar() {
+  const badge = document.getElementById('radarBadge');
+  if (!badge) return;
+  try {
+    const response = await fetch('ultimas_noticias.json');
+    if(!response.ok) return;
+    const noticias = await response.json();
+    if(noticias.length > 0) {
+      const ultimaFechaNoticia = new Date(noticias[0].date).getTime();
+      const ultimaVisitaRadar = localStorage.getItem('ultimaVisitaRadar');
+      if(!ultimaVisitaRadar || ultimaFechaNoticia > parseInt(ultimaVisitaRadar)) { badge.style.display = 'block'; }
+    }
+  } catch (error) { console.log("Aún no hay base de datos del radar."); }
+}
+
+function abrirRadar() {
+  localStorage.setItem('ultimaVisitaRadar', Date.now().toString());
+  window.open('actualizaciones.html', '_self');
+}
+
+/* ================= RENDERIZAR PARRILLA ================= */
+function renderNoticias() {
+  const t = translations[idiomaActual] || translations['en'];
+  const query = fileSearch.value.toLowerCase().trim();
+  updatesGrid.innerHTML = '';
+
+  let filtradas = todasLasGuias;
+  
+  if (filtroActual !== 'ALL') {
+    filtradas = filtradas.filter(n => n.tag && n.tag.split('/')[0].trim().toUpperCase() === filtroActual);
+  }
+  
+  if (query) {
+    filtradas = filtradas.filter(n => {
+      let tituloAct = n.titles[idiomaActual] || n.titles['en'] || '';
+      let descAct = n.descs[idiomaActual] || n.descs['en'] || '';
+      return tituloAct.toLowerCase().includes(query) || descAct.toLowerCase().includes(query) || (n.tag && n.tag.toLowerCase().includes(query));
+    });
+  }
+
+  if (filtradas.length === 0) {
+    updatesGrid.innerHTML = `<p style="color:#aaa; text-align:center; grid-column:1/-1; font-size:1.15rem; padding: 50px 0;">${t.empty}</p>`;
+    return;
+  }
+
+  let htmlResult = '';
+  filtradas.forEach(guia => {
+    const dateStr = new Date(guia.date).toLocaleDateString(idiomaActual, { year: 'numeric', month: 'short', day: 'numeric' });
+    const titulo = guia.titles[idiomaActual] || guia.titles['en'] || 'Guía';
+    const descripcion = guia.descs[idiomaActual] || guia.descs['en'] || '';
+
+    htmlResult += `
+      <div class="update-card">
+        <div class="update-header">
+          <span class="update-tag">${guia.tag}</span>
+          <span class="update-date">📅 ${dateStr}</span>
+        </div>
+        <h3><a href="${guia.link}" target="_self">${titulo}</a></h3>
+        <div class="update-body">${descripcion}</div>
+        <div class="update-footer">
+          <a href="${guia.link}" target="_self" class="download-link">${t.read}</a>
+        </div>
+      </div>
+    `;
+  });
+  updatesGrid.innerHTML = htmlResult;
+}
+
+/* ================= LECTURA DINÁMICA: CARGA INSTANTÁNEA (0ms) + FETCH SILENCIOSO ================= */
+async function cargarDatosGuias() {
+  const loader = document.getElementById('mainLoader');
+  const cacheData = localStorage.getItem('guiasCache_v2');
+  const cacheTime = localStorage.getItem('guiasCacheTime_v2');
+  
+  if (cacheData) {
+    try {
+      todasLasGuias = JSON.parse(cacheData);
+      categoriasUnicas.clear();
+      todasLasGuias.forEach(n => {
+        if (n.tag) categoriasUnicas.add(n.tag.split('/')[0].trim().toUpperCase());
+      });
+      loader.style.display = 'none';
+      renderFilterButtons();
+      renderNoticias();
+      console.log("⚡ Guías cargadas instantáneamente desde caché local.");
+    } catch (e) {
+      console.warn("Caché local dañado. Limpiando para descarga fresca...");
+      localStorage.removeItem('guiasCache_v2');
+    }
+  } else {
+    loader.style.display = 'block';
+  }
+
+  const TREINTA_MINUTOS_MS = 30 * 60 * 1000;
+  if (cacheTime && (Date.now() - parseInt(cacheTime) < TREINTA_MINUTOS_MS)) {
+    console.log("🛡️ Caché muy reciente. Se omite la petición en segundo plano a GitHub.");
+    return;
+  }
+
+  try {
+    console.log("🔄 Buscando updates en GitHub en segundo plano...");
+    const repo = 'Kelonio-hub/Archivos-Kelonio'; 
+    const apiURL = `https://api.github.com/repos/${repo}/contents/guias`;
+    
+    const response = await fetch(apiURL, { cache: "no-store" });
+    if (!response.ok) {
+      if (response.status === 403) {
+        console.warn("⚠️ Límite de la API de GitHub alcanzado. Se mantienen los datos locales.");
+      }
+      throw new Error("No se pudo contactar con la API de GitHub");
+    }
+    
+    const archivos = await response.json();
+    const htmlFiles = archivos.filter(f => f.name.endsWith('.html') && f.name !== 'plantilla.html');
+    const langs = ['es', 'en', 'fr', 'de', 'it', 'pt', 'ja', 'ko'];
+
+    const PromesasGuias = htmlFiles.map(async (file) => {
+      try {
+        const res = await fetch(file.download_url + '?t=' + new Date().getTime());
+        const htmlText = await res.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(htmlText, 'text/html');
+        
+        const tag = doc.querySelector('meta[name="guide-tag"]')?.content || 'INFO';
+        const date = doc.querySelector('meta[name="guide-date"]')?.content || '2024-01-01';
+        
+        let titles = {}, descs = {};
+        langs.forEach(l => {
+            titles[l] = doc.querySelector(`meta[name="guide-title-${l}"]`)?.content || doc.querySelector('meta[name="guide-title"]')?.content || file.name.replace('.html', '');
+            descs[l] = doc.querySelector(`meta[name="guide-desc-${l}"]`)?.content || doc.querySelector('meta[name="guide-desc"]')?.content || '';
+        });
+
+        return { tag, date, titles, descs, link: `guias/${file.name}` };
+      } catch (fileError) {
+        return null;
+      }
+    });
+
+    const resultados = await Promise.all(PromesasGuias);
+    const nuevasGuias = resultados.filter(g => g !== null);
+    nuevasGuias.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+    localStorage.setItem('guiasCacheTime_v2', Date.now());
+
+    const cambiosDetectados = JSON.stringify(nuevasGuias) !== JSON.stringify(todasLasGuias);
+
+    if (cambiosDetectados) {
+      console.log("✨ ¡Nuevos contenidos detectados! Actualizando la vista en vivo...");
+      todasLasGuias = nuevasGuias;
+      localStorage.setItem('guiasCache_v2', JSON.stringify(todasLasGuias));
+      
+      categoriasUnicas.clear();
+      todasLasGuias.forEach(n => {
+        if (n.tag) categoriasUnicas.add(n.tag.split('/')[0].trim().toUpperCase());
+      });
+
+      loader.style.display = 'none';
+      renderFilterButtons();
+      renderNoticias();
+    } else {
+      console.log("👍 Las guías mostradas ya eran la versión más reciente.");
+      loader.style.display = 'none';
+    }
+
+  } catch (error) {
+    console.error("Error en la comprobación en segundo plano:", error.message);
+    loader.style.display = 'none';
+    if (!todasLasGuias.length) {
+      updatesGrid.innerHTML = `<p style="text-align:center; grid-column:1/-1; color:var(--red);">No se pudieron cargar las guías. Revisa tu conexión o espera un momento.</p>`;
+    }
+  }
+}
+
+/* ================= LISTENERS Y ARRANQUE ================= */
+let timeoutBuscador = null;
+fileSearch.addEventListener('input', () => {
+  clearTimeout(timeoutBuscador);
+  timeoutBuscador = setTimeout(() => {
+    renderNoticias();
+  }, 250);
+});
+
+window.onscroll = function() {
+  mybutton.style.display = (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) ? "block" : "none";
+};
+
+window.onload = () => {
+  initThemeDots();
+  createLanguageSelector();
+  updateLanguage();
+  cargarDatosGuias();
+  verificarNotificacionesRadar();
+};
+</script>
+
+<script src="assets/asistente.js"></script>
+<script>
+(function(){
+  const panel = document.getElementById('guideAssistantPanel');
+  const content = document.getElementById('embeddedGuideAssistant');
+  const toggle = document.getElementById('guideAssistantToggle');
+  if(!panel || !content || !toggle) return;
+  const setOpen = (open, updateHash=true) => {
+    panel.classList.toggle('open', open);
+    content.hidden = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+    const lang = localStorage.getItem('preferredLanguage') || 'en';
+    const t = (window.LAPRESA_ASSISTANT && window.LAPRESA_ASSISTANT.syncExternalLanguage) ? window.LAPRESA_ASSISTANT.syncExternalLanguage : null;
+    // Re-render so button copy and assistant state remain synchronized.
+    if(t) t(lang);
+    if(open){
+      if(updateHash) history.replaceState(null,'','#asistente');
+      setTimeout(()=>document.getElementById('assistantSearch')?.focus({preventScroll:true}),60);
+    }
+  };
+  toggle.addEventListener('click',()=>setOpen(content.hidden));
+  if(location.hash === '#asistente') setOpen(true, false);
+  window.addEventListener('hashchange',()=>{ if(location.hash==='#asistente') setOpen(true,false); });
+})();
+</script>
+
+</body>
+</html>

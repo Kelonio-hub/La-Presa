@@ -1,0 +1,34 @@
+name: Actualizar Radar de Noticias 
+
+on:
+  schedule:
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-radar:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Instalar traductor de RSS/Atom
+        run: npm install rss-parser
+
+      - name: Ejecutar el Robot
+        run: node radar/update_radar.js
+
+      - name: Subir cambios a la web
+        run: |
+          git config --global user.name 'RadarBot'
+          git config --global user.email 'actions@github.com'
+          git add radar/ultimas_noticias.json
+          git commit -m "🤖 Radar actualizado con las últimas versiones" || echo "No hay noticias nuevas"
+          git push

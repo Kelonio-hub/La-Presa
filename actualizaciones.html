@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title id="pageTitle">Radar de Actualizaciones | La Presa</title>
+<link href="img/Lucario.gif" rel="icon" type="image/gif"/>
+<style>
+
+/* ================= VARIABLES Y TEMA AUTOMÁTICO/MANUAL ================= */
+:root, :root[data-theme="dark"] {
+  --red: #00aaff; /* Acento Azul por defecto */
+  --glow-rgb: 0, 170, 255; 
+  
+  /* Tema Oscuro (Por defecto) */
+  --bg: #141414;
+  --text-main: #ffffff;
+  --text-muted: #aaa;
+  --glass: rgba(20,20,20,.78);
+  --glass-border: rgba(255,255,255,.08);
+  --topbar-bg: rgba(0,0,0,.88);
+  --card-bg: rgba(255,255,255,0.02);
+  --input-bg: rgba(255,255,255,.08);
+  --btn-bg: rgba(255,255,255,.05);
+  --icon-color: #ffffff;
+  --loader-border: rgba(255,255,255,0.1);
+}
+
+/* Tema Claro Forzado Manualmente */
+:root[data-theme="light"] {
+  --bg: #f8f9fa;
+  --text-main: #141414;
+  --text-muted: #555555;
+  --glass: rgba(255,255,255,.9);
+  --glass-border: rgba(0,0,0,.15);
+  --topbar-bg: rgba(255,255,255,.95);
+  --card-bg: #ffffff;
+  --input-bg: rgba(0,0,0,.05);
+  --btn-bg: rgba(0,0,0,.05);
+  --icon-color: #333333;
+  --loader-border: rgba(0,0,0,0.1);
+}
+
+/* Tema Claro Automático (Si el usuario no ha tocado los botones) */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f8f9fa;
+    --text-main: #141414;
+    --text-muted: #555555;
+    --glass: rgba(255,255,255,.9);
+    --glass-border: rgba(0,0,0,.15);
+    --topbar-bg: rgba(255,255,255,.95);
+    --card-bg: #ffffff;
+    --input-bg: rgba(0,0,0,.05);
+    --btn-bg: rgba(0,0,0,.05);
+    --icon-color: #333333;
+    --loader-border: rgba(0,0,0,0.1);
+  }
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',sans-serif; background:var(--bg); color:var(--text-main); overflow-x:hidden; transition: background 0.3s, color 0.3s; }
+
+/* ================= TOPBAR ================= */
+.topbar { position:fixed; top:0; left:0; right:0; z-index:9999; background:var(--topbar-bg); backdrop-filter:blur(16px); display:flex; justify-content:space-between; align-items:center; padding:8px 3%; gap: 10px; transition: background 0.3s; }
+.topbar-left { display:flex; align-items:center; gap: 15px; flex-shrink: 0; }
+.logo { font-size:1.8rem; font-weight:900; color:var(--red); letter-spacing:-1.5px; transition: color 0.3s ease; text-decoration: none; cursor: pointer;}
+.social-group { display: flex; gap: 4px; border-left: 1px solid var(--glass-border); padding-left: 15px; transition: border-color 0.3s; }
+
+.social-icon-btn { background:transparent; border:none; cursor: pointer; color: var(--icon-color); opacity: 0.55; transition: 0.3s; display: flex; align-items: center; justify-content: center; padding: 4px; position: relative;}
+.social-icon-btn:hover { opacity: 1; transform: scale(1.15); color: var(--red); }
+.radar-badge { position:absolute; top:-2px; right:-2px; width:10px; height:10px; background:var(--red); border-radius:50%; box-shadow:0 0 8px var(--red); display: none; }
+
+.right-tools { display:flex; align-items:center; gap:12px; flex-shrink: 0; }
+.config-group { display:flex; flex-direction:column; align-items:center; gap:4px; }
+.theme-dots-container { display:flex; gap:5px; align-items: center;}
+.color-dot { width:12px; height:12px; border-radius:50%; cursor:pointer; border:1px solid rgba(0,0,0,0.4); transition:transform .2s, border-color .2s; }
+.color-dot:hover { transform:scale(1.3); }
+.color-dot.active-dot { border:2px solid var(--text-main); transform:scale(1.15); box-shadow: 0 0 8px rgba(128,128,128,0.6); }
+
+/* Corrección del panel de idiomas */
+#languageSelector { background:var(--input-bg); border:1px solid var(--glass-border); color:var(--text-main); padding:4px 8px; border-radius:6px; outline: none; cursor: pointer; font-size:11px; transition: 0.3s; }
+#languageSelector option { background: var(--bg); color: var(--text-main); }
+
+#fileSearch { background:var(--input-bg); border:1px solid transparent; color:var(--text-main); width:170px; padding:8px 14px; border-radius:50px; font-size:13px; outline:none; transition: width 0.3s ease, border-color 0.3s, background 0.3s; }
+#fileSearch:focus { width: 200px; border-color: var(--red); }
+#fileSearch::placeholder { color:var(--text-muted); }
+
+/* ================= CONSOLE BUTTONS ================= */
+.console-buttons { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 30px; padding: 5px 0; }
+.console-btn { background: var(--btn-bg); border: 1px solid var(--glass-border); border-radius: 10px; padding: 8px 14px; display: flex; align-items: center; gap: 6px; cursor: pointer; transition: .3s ease; color: var(--text-main); font-weight: 700; font-size: 12px; white-space: nowrap; }
+.console-btn:hover { transform: scale(1.05); border-color: var(--red); background: rgba(var(--glow-rgb),.15); }
+.console-btn.fav-active-btn { border-color: var(--red); background: rgba(var(--glow-rgb),.25); box-shadow: 0 0 10px rgba(var(--glow-rgb), 0.5); }
+.console-btn span { color: var(--text-main); letter-spacing: .5px; transition: color 0.3s; }
+.console-btn img { width: 18px; height: 18px; object-fit: contain; filter: drop-shadow(0 0 2px rgba(0,0,0,0.5)); }
+
+/* ================= HEADER HERO & ANIMACIÓN SATPULSE ================= */
+.header-section { padding: 130px 5% 40px; text-align: center; background: linear-gradient(to bottom, rgba(var(--glow-rgb),0.15) 0%, var(--bg) 100%); transition: background 0.3s; }
+.header-title-container { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 10px; }
+.header-section h1 { font-size: 3rem; font-weight: 800; display: flex; align-items: center; justify-content: center; gap: 16px; margin: 0 auto; }
+.hero-sat-icon { width: 3.2rem; height: 3.2rem; color: var(--red); filter: drop-shadow(0 0 14px rgba(var(--glow-rgb), 0.7)); transition: color 0.3s ease; animation: satPulse 3.5s infinite ease-in-out; flex-shrink: 0; }
+@keyframes satPulse { 0%, 100% { transform: scale(1) translateY(0px); filter: drop-shadow(0 0 12px rgba(var(--glow-rgb), 0.6)); } 50% { transform: scale(1.12) translateY(-4px); filter: drop-shadow(0 0 26px rgba(var(--glow-rgb), 1)); } }
+.header-section p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto; transition: color 0.3s; }
+.hero-warning { color: var(--red); font-size: 0.85rem !important; font-style: italic; margin-top: 15px !important; font-weight: 600; opacity: 0.9; }
+
+/* ================= GRID DE GUÍAS ================= */
+.updates-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; padding: 0 5% 60px; }
+.update-card { background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 22px; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s, background 0.3s; display: flex; flex-direction: column; height: 100%; }
+.update-card:hover { transform: translateY(-5px); border-color: var(--red); box-shadow: 0 0 20px rgba(var(--glow-rgb), 0.25), 0 10px 20px rgba(0,0,0,0.15); }
+.update-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+.update-tag { background: var(--btn-bg); border: 1px solid var(--glass-border); color: var(--text-main); padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: bold; text-transform: uppercase; transition: background 0.3s, color 0.3s; }
+.update-date { color: var(--text-muted); font-size: 12px; transition: color 0.3s; }
+.update-card h3 { font-size: 1.35rem; margin-bottom: 12px; line-height: 1.3; }
+.update-card h3 a { color: var(--text-main); text-decoration: none; transition: color 0.2s; }
+.update-card h3 a:hover { color: var(--red); }
+.update-body { color: var(--text-muted); font-size: 0.92rem; line-height: 1.5; margin-bottom: 25px; flex-grow: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; transition: color 0.3s; }
+.update-footer { margin-top: auto; }
+.download-link { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background: var(--red); color: white !important; text-decoration: none; padding: 12px; border-radius: 8px; font-weight: bold; transition: filter 0.3s, background 0.3s; }
+.download-link:hover { filter: brightness(1.2); }
+
+/* ================= LOADER ================= */
+.loader-container { text-align: center; padding: 50px; width: 100%; grid-column: 1 / -1; display: none; }
+.spinner { width: 50px; height: 50px; border: 5px solid var(--loader-border); border-top-color: var(--red); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 20px; transition: border-color 0.3s; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ================= BOTÓN SUBIR ================= */
+#backToTopBtn { display: none; position: fixed; bottom: 30px; right: 30px; z-index: 9998; background: var(--red); color: white; border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; font-size: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: opacity 0.3s, transform 0.3s; }
+#backToTopBtn:hover { transform: scale(1.1); }
+
+@media(max-width: 1150px) { 
+  .topbar { flex-wrap: wrap; padding: 10px 4%; justify-content: center; } 
+  .topbar-left { order: 1; } 
+  .right-tools { order: 2; margin-top: 5px; flex-wrap: wrap; justify-content: center; } 
+}
+@media(max-width: 650px) { 
+  .right-tools { width: 100%; gap: 15px; } 
+  #fileSearch { width: 100%; order: 3; margin-top: 10px; } 
+  #fileSearch:focus { width: 100%; } 
+  .config-group { flex-direction: row; order: 2; gap: 15px; justify-content: center; width: 100%; } 
+  .header-section { padding-top: 250px; } /* Aumentamos el espacio para acomodar las 4 filas */
+}
+
+</style>
+
+<!-- ==========================================================
+     CANONICAL & HREFLANG (8 IDIOMAS + INGLÉS POR DEFECTO)
+=========================================================== -->
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/radar.html" rel="canonical"/>
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/radar.html?lang=es" hreflang="es" rel="alternate"/>
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/radar.html?lang=en" hreflang="en" rel="alternate"/>
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/radar.html?lang=fr" hreflang="fr" rel="alternate"/>
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/radar.html?lang=de" hreflang="de" rel="alternate"/>
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/radar.html?lang=it" hreflang="it" rel="alternate"/>
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/radar.html?lang=pt" hreflang="pt" rel="alternate"/>
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/radar.html?lang=ja" hreflang="ja" rel="alternate"/>
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/radar.html?lang=ko" hreflang="ko" rel="alternate"/>
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/radar.html?lang=en" hreflang="x-default" rel="alternate"/>
+<!-- ==========================================================
+     OPEN GRAPH & TWITTER CARDS
+=========================================================== -->
+<meta content="website" property="og:type"/>
+<meta content="La Presa" property="og:site_name"/>
+<meta content="Radar de Actualizaciones" property="og:title"/>
+<meta content="Descubre Radar de Actualizaciones en el centro de recursos de La Presa." property="og:description"/>
+<meta content="https://kelonio-hub.github.io/Archivos-Kelonio/radar.html" property="og:url"/>
+<meta content="https://raw.githubusercontent.com/Kelonio-hub/Archivos-Kelonio/main/img/Logo%20Zip.png" property="og:image"/>
+<meta content="es_ES" property="og:locale"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Radar de Actualizaciones" name="twitter:title"/>
+<meta content="Descubre Radar de Actualizaciones en el centro de recursos de La Presa." name="twitter:description"/>
+<meta content="https://raw.githubusercontent.com/Kelonio-hub/Archivos-Kelonio/main/img/Logo%20Zip.png" name="twitter:image"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://kelonio-hub.github.io/Archivos-Kelonio/#organization",
+  "name": "La Presa",
+  "url": "https://kelonio-hub.github.io/Archivos-Kelonio/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "img/Lucario.gif"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://kelonio-hub.github.io/Archivos-Kelonio/radar.html#webpage",
+  "url": "https://kelonio-hub.github.io/Archivos-Kelonio/radar.html",
+  "name": "Radar de Actualizaciones | La Presa",
+  "description": "Descubre Radar de Actualizaciones en el centro de recursos de La Presa.",
+  "inLanguage": [
+    "es",
+    "en",
+    "fr",
+    "de",
+    "it",
+    "pt",
+    "ja",
+    "ko"
+  ],
+  "publisher": {
+    "@id": "https://kelonio-hub.github.io/Archivos-Kelonio/#organization"
+  },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://raw.githubusercontent.com/Kelonio-hub/Archivos-Kelonio/main/img/Logo%20Zip.png"
+  },
+  "mainEntity": {
+    "@id": "https://kelonio-hub.github.io/Archivos-Kelonio/radar.html#article"
+  },
+  "dateModified": "2026-07-19"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://kelonio-hub.github.io/Archivos-Kelonio/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Radar de Actualizaciones",
+      "item": "https://kelonio-hub.github.io/Archivos-Kelonio/radar.html"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "@id": "https://kelonio-hub.github.io/Archivos-Kelonio/radar.html#article",
+  "headline": "Radar de Actualizaciones",
+  "description": "Descubre Radar de Actualizaciones en el centro de recursos de La Presa.",
+  "image": "https://raw.githubusercontent.com/Kelonio-hub/Archivos-Kelonio/main/img/Logo%20Zip.png",
+  "datePublished": "2026-07-19",
+  "dateModified": "2026-07-19",
+  "author": {
+    "@id": "https://kelonio-hub.github.io/Archivos-Kelonio/#organization"
+  },
+  "publisher": {
+    "@id": "https://kelonio-hub.github.io/Archivos-Kelonio/#organization"
+  }
+}
+</script>
+<script>
+  /* ================= PRE-CARGA DE TEMA PARA EVITAR FLASH ================= */
+  (function() {
+    // 1. Aplicar Modo Oscuro/Claro
+    const savedMode = localStorage.getItem('selectedMode');
+    if (savedMode === 'dark' || savedMode === 'light') {
+      document.documentElement.setAttribute('data-theme', savedMode);
+    }
+
+    // 2. Aplicar Color de Acento
+    const savedTheme = localStorage.getItem('selectedThemeColor');
+    if (savedTheme) {
+      const paleta = {
+        rojo:     { hex: '#e50914', rgb: '229, 9, 20' },
+        naranja:  { hex: '#ff6600', rgb: '255, 102, 0' },
+        amarillo: { hex: '#ffcc00', rgb: '255, 204, 0' },
+        verde:    { hex: '#2ecc71', rgb: '46, 204, 113' },
+        azul:     { hex: '#00aaff', rgb: '0, 170, 255' },
+        violeta:  { hex: '#9b59b6', rgb: '155, 89, 182' },
+        rosa:     { hex: '#ff80ab', rgb: '255, 128, 171' }
+      };
+      
+      const theme = paleta[savedTheme];
+      if (theme) {
+        document.documentElement.style.setProperty('--red', theme.hex);
+        document.documentElement.style.setProperty('--glow-rgb', theme.rgb);
+      }
+    }
+  })();
+</script>
+
+<link href="assets/accessibility.css" rel="stylesheet"/>
+<meta content="Radar de actualizaciones y novedades de herramientas y proyectos." name="description"/>
+<meta content="#00aaff" name="theme-color"/>
+</head>
+<body>
+<div class="topbar">
+<div class="topbar-left">
+<div class="logo" onclick="window.location.href='index.html'">LA PRESA</div>
+<div class="social-group">
+<button class="social-icon-btn" id="discordBtn" onclick="window.open('https://discord.gg/8Fv8GDg', '_blank')" title="Discord" aria-label="Discord">
+<svg fill="currentColor" height="22" viewbox="0 0 24 24" width="22"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"></path></svg>
+</button>
+<button class="social-icon-btn" id="kofiBtn" onclick="window.open('https://ko-fi.com/lapresa', '_blank')" title="Ko-fi" aria-label="Ko-fi">
+<svg fill="currentColor" height="22" viewbox="0 0 24 24" width="22"><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.034-3.954-.709-.965-1.041-2.7-.091-3.71.951-1.01 3.005-1.086 4.363.407 0 0 1.565-1.782 3.468-.963 1.904.82 1.832 3.011.723 4.311zm6.173.478c-.928.116-1.682.028-1.682.028V7.284h1.77s1.971.551 1.971 2.638c0 1.913-.985 2.667-2.059 3.015z"></path></svg>
+</button>
+</div>
+</div>
+<div class="right-tools">
+<button class="social-icon-btn" id="guideBtn" onclick="window.open('https://kelonio-hub.github.io/Archivos-Kelonio/', '_self')" title="Guías" aria-label="Guías">
+<svg fill="currentColor" height="24" viewbox="0 0 24 24" width="24"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zM21 18.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"></path></svg>
+</button>
+<button class="social-icon-btn" id="productsBtn" onclick="window.open('https://kelonio-hub.github.io/Archivos-Kelonio/productos.html', '_self')" title="Productos" aria-label="Productos">
+<svg fill="currentColor" height="24" viewbox="0 0 24 24" width="24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1v2zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"></path></svg>
+</button>
+<!-- BOTÓN RADAR ESTILO SATÉLITE ORBITAL -->
+<button class="social-icon-btn" id="videosBtn" onclick="window.open('https://kelonio-hub.github.io/Archivos-Kelonio/videoteca.html', '_self')" title="Vídeos" aria-label="Vídeos">
+<svg fill="currentColor" height="24" viewbox="0 0 24 24" width="24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"></path></svg>
+</button>
+<button class="social-icon-btn" id="radarBtn" onclick="window.open('https://kelonio-hub.github.io/Archivos-Kelonio/actualizaciones.html', '_self')" title="Radar de Actualizaciones" aria-label="Radar de Actualizaciones">
+<svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24">
+<path d="M13 7 9 3 5 7l4 4" fill="rgba(255,255,255,0.08)"></path>
+<path d="m17 11 4 4-4 4-4-4" fill="rgba(255,255,255,0.08)"></path>
+<path d="m8 12 4 4 6-6-4-4Z" fill="currentColor"></path>
+<path d="m16 8 3-3"></path>
+<path d="M9 21a6 6 0 0 0-6-6"></path>
+<path d="M5 21a2 2 0 0 0-2-2"></path>
+</svg>
+<span class="radar-badge" id="radarBadge"></span>
+</button>
+<input id="fileSearch" placeholder="Buscar archivos..." type="text" aria-label="Buscar"/>
+<div class="config-group">
+<div class="theme-dots-container" id="themeDots"></div>
+<select id="languageSelector" aria-label="Idioma"></select>
+</div>
+</div>
+</div>
+<div class="header-section">
+<!-- TÍTULO CON NUEVO SATÉLITE ORBITAL SINCRONIZADO -->
+<div class="hero-title-wrapper">
+<svg class="hero-sat-icon" fill="none" height="48" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="48">
+<!-- Módulos Solares -->
+<path d="M13 7 9 3 5 7l4 4" fill="rgba(255,255,255,0.06)"></path>
+<path d="m17 11 4 4-4 4-4-4" fill="rgba(255,255,255,0.06)"></path>
+<!-- Módulo de Control Central -->
+<path d="m8 12 4 4 6-6-4-4Z" fill="currentColor"></path>
+<!-- Mástil y Antena Espacial -->
+<path d="m16 8 3-3"></path>
+<!-- Ondas Digitales Irradiando a Tierra -->
+<path d="M9 21a6 6 0 0 0-6-6"></path>
+<path d="M5 21a2 2 0 0 0-2-2"></path>
+</svg>
+<h1 id="heroTitle">Radar de Actualizaciones</h1>
+</div>
+<p id="heroDesc">Monitoreando en tiempo real las últimas versiones detectadas por el satélite.</p>
+<div class="console-buttons" id="consoleButtons"></div>
+</div>
+<div class="updates-container" id="updatesGrid">
+<div class="loader-container" id="mainLoader">
+<div class="spinner"></div>
+<p id="loaderText" style="color:#aaa;">Cargando base de datos del radar...</p>
+</div>
+</div>
+<button id="backToTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Volver arriba">↑</button>
+<script>
+/* ================= DICCIONARIO ================= */
+const translations = {
+  en:{
+    title:"Updates Radar | La Presa", heroTitle: "Updates Radar", heroDesc: "Real-time monitoring of the latest versions detected by our satellite.",
+    search:"Search files...", all: "Todas", download: "📥 Download", bodyText: "New version detected in the official repository. Check the patch notes and download the updated files.",
+    empty: "No updates found for this console or search.", waiting: "⚠️ The satellite hasn't collected data yet.", loading: "Loading radar database...",
+    products: "Products", videos: "Videos", radar: "Update Radar", guides: "Guides", discord: "Join Discord", kofi: "Support us on Ko-fi"
+  },
+  es:{
+    title:"Radar de Actualizaciones | La Presa", heroTitle: "Radar de Actualizaciones", heroDesc: "Monitoreando en tiempo real las últimas versiones detectadas por el satélite.",
+    search:"Buscar archivos...", all: "Todas", download: "📥 Descargar", bodyText: "Nueva versión detectada en el repositorio oficial. Revisa las notas del parche y descarga los archivos actualizados.",
+    empty: "No se encontraron actualizaciones para esta búsqueda.", waiting: "⚠️ El satélite aún no ha recopilado los datos.", loading: "Cargando base de datos del radar...",
+    products: "Productos", videos: "Vídeos", radar: "Radar de Actualizaciones", guides: "Guías", discord: "Únete a Discord", kofi: "Apóyanos en Ko-fi"
+  },
+  fr:{
+    title:"Radar de Mises à Jour | La Presa", heroTitle: "Radar de Mises à Jour", heroDesc: "Surveillance en temps réel des dernières versions détectées par le satellite.",
+    search:"Rechercher des fichiers...", all: "Toutes", download: "📥 Télécharger", bodyText: "Nouvelle version détectée. Consultez les notes de mise à jour et téléchargez les fichiers.",
+    empty: "Aucune mise à jour trouvée.", waiting: "⚠️ Le satellite n'a pas encore collecté de données.", loading: "Chargement de la base de données...",
+    products: "Produits", videos: "Vidéos", radar: "Radar des Mises à jour", guides: "Guides", discord: "Rejoindre Discord", kofi: "Soutenez-nous sur Ko-fi"
+  },
+  it:{
+    title:"Radar Aggiornamenti | La Presa", heroTitle: "Radar Aggiornamenti", heroDesc: "Monitoraggio in tempo reale delle ultime versioni rilevate dal satellite.",
+    search:"Cerca file...", all: "Tutte", download: "📥 Scarica", bodyText: "Nuova versione rilevata. Controlla le note di rilascio e scarica i file aggiornati.",
+    empty: "Nessun aggiornamento trovato.", waiting: "⚠️ Il satellite non ha ancora raccolto dati.", loading: "Caricamento database...",
+    products: "Prodotti", videos: "Video", radar: "Radar Aggiornamenti", guides: "Guide", discord: "Unisciti a Discord", kofi: "Supportaci su Ko-fi"
+  },
+  pt:{
+    title:"Radar de Atualizações | La Presa", heroTitle: "Radar de Atualizações", heroDesc: "Monitoramento em tempo real das últimas versões detectadas pelo satélite.",
+    search:"Buscar arquivos...", all: "Todas", download: "📥 Baixar", bodyText: "Nova versão detectada no repositório oficial. Verifique as notas e baixe os arquivos.",
+    empty: "Nenhuma atualização encontrada.", waiting: "⚠️ O satélite ainda não coletou dados.", loading: "Carregando banco de dados...",
+    products: "Produtos", videos: "Vídeos", radar: "Radar de Atualizações", guides: "Guias", discord: "Junte-se ao Discord", kofi: "Apoie-nos no Ko-fi"
+  },
+  de:{
+    title:"Update-Radar | La Presa", heroTitle: "Update-Radar", heroDesc: "Echtzeit-Überwachung der neuesten erfassten Versionen des Satelliten.",
+    search:"Dateien suchen...", all: "Alle", download: "📥 Download", bodyText: "Neue Version im offiziellen Repository erkannt. Überprüfe die Patch-Notes und lade die Dateien herunter.",
+    empty: "Keine Updates gefunden.", waiting: "⚠️ Der Satellit hat noch keine Daten gesammelt.", loading: "Lade Radar-Datenbank...",
+    products: "Produkte", videos: "Videos", radar: "Update-Radar", guides: "Anleitungen", discord: "Treten Sie Discord bei", kofi: "Unterstützen Sie uns auf Ko-fi"
+  },
+  ja:{
+    title:"更新レーダー | La Presa", heroTitle: "更新レーダー", heroDesc: "人工衛星が検知した最新バージョンをリアルタイムで監視しています。",
+    search:"ファイルを検索...", all: "すべて", download: "📥 ダウンロード", bodyText: "公式リポジトリで新しいバージョンが検出されました。パッチノートを確認し、ファイルをダウンロードしてください。",
+    empty: "見つかりませんでした。", waiting: "⚠️ データが 아직 굴집되지 않았습니다.", loading: "データベースを読み込み中...",
+    products: "製品", videos: "ビデオ", radar: "更新レーダー", guides: "ガイド", discord: "Discordに参加する", kofi: "Ko-fiでサポート"
+  },
+  ko:{
+    title:"업데이트 레이더 | La Presa", heroTitle: "업데이트 레이더", heroDesc: "위성이 감지한 최신 버전을 실시간으로 모니터링합니다.",
+    search:"파일 검색...", all: "모든", download: "📥 다운로드", bodyText: "공식 저장소에서 새 버전이 감지되었습니다. 패치 노트를 확인하고 업데이트된 파일을 다운로드하세요.",
+    empty: "업데이트를 찾을 수 없습니다.", waiting: "⚠️ 위성이 아직 데이터를 수집하지 않았습니다.", loading: "데이터베이스 로드 중...",
+    products: "제품", videos: "비디오", radar: "업데이트 레이더", guides: "가이드", discord: "Discord 가입하기", kofi: "Ko-fi에서 지원하기"
+  }
+};
+
+/* ================= VARIABLES GLOBALES ================= */
+let idiomaActual = 'es';
+let todasLasNoticias = [];
+let categoriasUnicas = new Set();
+let filtroActual = 'ALL'; 
+
+const fileSearch = document.getElementById('fileSearch');
+const updatesGrid = document.getElementById('updatesGrid');
+const consoleButtons = document.getElementById('consoleButtons');
+const themeDotsContainer = document.getElementById('themeDots');
+const mybutton = document.getElementById("backToTopBtn");
+
+/* ================= PALETA DE COLORES ================= */
+const paletaTemas = {
+  rojo:     { hex: '#e50914', rgb: '229, 9, 20' },
+  naranja:  { hex: '#ff6600', rgb: '255, 102, 0' },
+  amarillo: { hex: '#ffcc00', rgb: '255, 204, 0' },
+  verde:    { hex: '#2ecc71', rgb: '46, 204, 113' },
+  azul:     { hex: '#00aaff', rgb: '0, 170, 255' },
+  violeta:  { hex: '#9b59b6', rgb: '155, 89, 182' },
+  rosa:     { hex: '#ff80ab', rgb: '255, 128, 171' }
+};
+
+function initThemeDots() {
+  const savedTheme = localStorage.getItem('selectedThemeColor') || 'azul';
+  const savedMode = localStorage.getItem('selectedMode') || 'dark'; // <- Cambiado a 'dark'
+  
+  themeDotsContainer.innerHTML = '';
+  
+  // 1. Botones de colores de acento
+  Object.keys(paletaTemas).forEach(colorKey => {
+    const dot = document.createElement('div'); 
+    dot.className = 'color-dot theme-color-dot'; 
+    dot.style.backgroundColor = paletaTemas[colorKey].hex;
+    dot.setAttribute('aria-label', `Tema ${colorKey}`);
+    if (colorKey === savedTheme) dot.classList.add('active-dot');
+    dot.addEventListener('click', () => {
+      document.querySelectorAll('.theme-color-dot').forEach(d => d.classList.remove('active-dot'));
+      dot.classList.add('active-dot'); 
+      localStorage.setItem('selectedThemeColor', colorKey); 
+      applyTheme(colorKey);
+    });
+    themeDotsContainer.appendChild(dot);
+  });
+
+  // Separador visual
+  const separador = document.createElement('div');
+  separador.style.width = '2px';
+  separador.style.backgroundColor = 'var(--glass-border)';
+  separador.style.margin = '0 6px';
+  separador.style.borderRadius = '2px';
+  themeDotsContainer.appendChild(separador);
+
+  // 2. Botón MODO OSCURO (Negro)
+  const dotOscuro = document.createElement('div');
+  dotOscuro.className = 'color-dot mode-dot';
+  dotOscuro.style.backgroundColor = '#141414';
+  dotOscuro.style.border = '1px solid #555';
+  dotOscuro.setAttribute('title', 'Forzar Modo Oscuro');
+  
+  // 3. Botón MODO CLARO (Blanco)
+  const dotClaro = document.createElement('div');
+  dotClaro.className = 'color-dot mode-dot';
+  dotClaro.style.backgroundColor = '#f8f9fa';
+  dotClaro.style.border = '1px solid #ccc';
+  dotClaro.setAttribute('title', 'Forzar Modo Claro');
+
+  // Restaurar configuración al cargar
+  if (savedMode === 'dark') {
+    dotOscuro.classList.add('active-dot');
+    document.documentElement.setAttribute('data-theme', 'dark');
+  } else if (savedMode === 'light') {
+    dotClaro.classList.add('active-dot');
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+
+  // Eventos de click
+  dotOscuro.addEventListener('click', () => {
+    document.querySelectorAll('.mode-dot').forEach(d => d.classList.remove('active-dot'));
+    dotOscuro.classList.add('active-dot');
+    localStorage.setItem('selectedMode', 'dark');
+    document.documentElement.setAttribute('data-theme', 'dark');
+  });
+
+  dotClaro.addEventListener('click', () => {
+    document.querySelectorAll('.mode-dot').forEach(d => d.classList.remove('active-dot'));
+    dotClaro.classList.add('active-dot');
+    localStorage.setItem('selectedMode', 'light');
+    document.documentElement.setAttribute('data-theme', 'light');
+  });
+
+  themeDotsContainer.appendChild(dotOscuro);
+  themeDotsContainer.appendChild(dotClaro);
+
+  applyTheme(savedTheme);
+}
+
+function applyTheme(colorKey) {
+  const theme = paletaTemas[colorKey] || paletaTemas.rojo;
+  document.documentElement.style.setProperty('--red', theme.hex);
+  document.documentElement.style.setProperty('--glow-rgb', theme.rgb);
+}
+
+/* ================= SELECTOR DE IDIOMAS ================= */
+function createLanguageSelector(){
+  const selector = document.getElementById('languageSelector'); selector.innerHTML = '';
+  const langs = { es:'Español', en:'English', fr:'Français', de:'Deutsch', it:'Italiano', pt:'Português', ja:'日本語', ko:'한국어' };
+  
+  Object.keys(langs).forEach(code=>{
+    const opt = document.createElement('option'); opt.value = code; opt.textContent = langs[code]; selector.appendChild(opt);
+  });
+  
+  const savedLang = localStorage.getItem('preferredLanguage');
+  const browserLang = (navigator.language || navigator.userLanguage || 'en').split('-')[0].toLowerCase();
+  
+  if (savedLang && translations[savedLang]) { idiomaActual = savedLang; } 
+  else if (translations[browserLang]) { idiomaActual = browserLang; } 
+  else { idiomaActual = 'en'; }
+  
+  selector.value = idiomaActual;
+  
+  selector.addEventListener('change', e => {
+    idiomaActual = e.target.value; localStorage.setItem('preferredLanguage', idiomaActual);
+    updateLanguage(); renderFilterButtons(); renderNoticias();
+  });
+}
+
+function updateLanguage(){
+  const t = translations[idiomaActual];
+  document.title = t.title;
+  document.getElementById('heroTitle').textContent = t.heroTitle;
+  document.getElementById('heroDesc').textContent = t.heroDesc;
+  fileSearch.placeholder = t.search;
+  
+  const loaderText = document.getElementById('loaderText');
+  if(loaderText) loaderText.textContent = t.loading;
+  
+  if (document.getElementById('videosBtn')) {
+    const dictVideos = { es: 'Vídeos', en: 'Videos', fr: 'Vidéos', de: 'Videos', it: 'Video', pt: 'Vídeos', ja: 'ビデオ', ko: '비디오' };
+    document.getElementById('videosBtn').title = (t && t.videos) ? t.videos : (dictVideos[idiomaActual] || 'Vídeos');
+  }
+  if (document.getElementById('radarBtn')) document.getElementById('radarBtn').title = t.radar;
+  if (document.getElementById('productsBtn')) document.getElementById('productsBtn').title = t.products;
+  if (document.getElementById('guideBtn')) document.getElementById('guideBtn').title = t.guides;
+  if (document.getElementById('discordBtn')) document.getElementById('discordBtn').title = t.discord;
+  if (document.getElementById('kofiBtn')) document.getElementById('kofiBtn').title = t.kofi;
+}
+
+/* ================= BOTONES DINÁMICOS ================= */
+function renderFilterButtons() {
+  consoleButtons.innerHTML = '';
+  const t = translations[idiomaActual] || translations['en'];
+
+  const btnAll = document.createElement('button');
+  btnAll.className = 'console-btn' + (filtroActual === 'ALL' ? ' fav-active-btn' : '');
+  btnAll.innerHTML = `<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg><span>${t.all.toUpperCase()}</span>`;
+  btnAll.onclick = () => { filtroActual = 'ALL'; renderFilterButtons(); renderNoticias(); };
+  consoleButtons.appendChild(btnAll);
+
+  const iconMap = {
+    'SWITCH':'img/Logo Switch.png',
+    '3DS':'img/Logo 3DS.png',
+    'NDS':'img/Logo NDS.png',
+    'NDSI':'img/Logo NDS.png',
+    'WII':'img/Logo Wii.png',
+    'WII MINI':'img/Logo Mini.png',
+    'WII U':'img/Logo WiiU.png',
+    'VWII':'img/Logo vWii.png',
+    'SD':'img/Logo SD.png',
+    'SONY':'https://api.iconify.design/ri:playstation-line.svg?color=%23ffffff',
+    'XBOX':'https://api.iconify.design/ri:xbox-line.svg?color=%23ffffff'
+  };
+
+  /* ORDEN ESTRICTO SOLICITADO PARA LOS BOTONES */
+  const ordenDeseado = ['SWITCH', '3DS', 'NDS', 'NDSI', 'WII', 'WII MINI', 'WII U', 'VWII', 'SD'];
+
+  const categoriasOrdenadas = Array.from(categoriasUnicas).sort((a, b) => {
+    const indexA = ordenDeseado.indexOf(a);
+    const indexB = ordenDeseado.indexOf(b);
+    if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+    if (indexA !== -1) return -1;
+    if (indexB !== -1) return 1;
+    return a.localeCompare(b);
+  });
+
+  categoriasOrdenadas.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'console-btn' + (filtroActual === cat ? ' fav-active-btn' : '');
+    const iconSrc = iconMap[cat] ? `<img src="${iconMap[cat]}" alt="Logo ${cat}">` : `<span>📁</span>`;
+    btn.innerHTML = `${iconSrc}<span>${cat}</span>`;
+    btn.onclick = () => { filtroActual = cat; renderFilterButtons(); renderNoticias(); };
+    consoleButtons.appendChild(btn);
+  });
+}
+
+/* ================= PARRILLA DE NOVEDADES FILTRADA ================= */
+function renderNoticias() {
+  const t = translations[idiomaActual];
+  const query = fileSearch.value.toLowerCase().trim();
+  updatesGrid.innerHTML = '';
+
+  let filtradas = todasLasNoticias;
+
+  if (filtroActual !== 'ALL') {
+    filtradas = filtradas.filter(n => {
+      if (!n.tag) return false;
+      const catPrincipal = n.tag.split('/')[0].trim().toUpperCase();
+      return catPrincipal === filtroActual;
+    });
+  }
+
+  if (query) {
+    filtradas = filtradas.filter(n => 
+      n.title.toLowerCase().includes(query) || 
+      (n.tag && n.tag.toLowerCase().includes(query))
+    );
+  }
+
+  if (filtradas.length === 0) {
+    updatesGrid.innerHTML = `<p style="text-align:center; grid-column:1/-1; color:#aaa; font-size:1.1rem; margin-top:40px;">${t.empty}</p>`;
+    return;
+  }
+
+  let htmlResult = '';
+  filtradas.forEach(noticia => {
+    const dateStr = new Date(noticia.date).toLocaleDateString(idiomaActual, { year: 'numeric', month: 'short', day: 'numeric' });
+    
+    htmlResult += `
+      <div class="update-card">
+        <div class="update-header">
+          <span class="update-tag">${noticia.tag || 'INFO'}</span>
+          <span class="update-date">📅 ${dateStr}</span>
+        </div>
+        <h3><a href="${noticia.link}" target="_blank" rel="noopener">${noticia.title}</a></h3>
+        <div class="update-body">${t.bodyText}</div>
+        <div class="update-footer">
+          <a href="${noticia.link}" target="_blank" rel="noopener" class="download-link">
+            ${t.download}
+          </a>
+        </div>
+      </div>
+    `;
+  });
+
+  updatesGrid.innerHTML = htmlResult;
+}
+
+/* ================= CARGA DE DATOS DEL ROBOT ================= */
+async function cargarDatosRobot() {
+  const t = translations[idiomaActual];
+  try {
+    const response = await fetch('radar/ultimas_noticias.json?t=' + new Date().getTime(), { cache: "no-store" }); 
+    if(!response.ok) throw new Error();
+
+    todasLasNoticias = await response.json();
+
+    todasLasNoticias.forEach(n => {
+      if (n.tag) {
+        const catPrincipal = n.tag.split('/')[0].trim().toUpperCase();
+        categoriasUnicas.add(catPrincipal);
+      }
+    });
+
+    const loader = document.getElementById('mainLoader');
+    if(loader) loader.style.display = 'none';
+
+    renderFilterButtons();
+    renderNoticias();
+
+  } catch (error) {
+    document.getElementById('mainLoader').style.display = 'none';
+    updatesGrid.innerHTML = `
+      <p style="text-align:center; grid-column:1/-1; color:var(--red); font-size:1.1rem; padding: 20px;">
+        ${t.waiting}
+      </p>
+    `;
+    renderFilterButtons();
+  }
+}
+
+/* ================= LISTENERS ================= */
+let timeoutBuscador = null;
+fileSearch.addEventListener('input', () => {
+  clearTimeout(timeoutBuscador);
+  timeoutBuscador = setTimeout(() => {
+    renderNoticias();
+  }, 250);
+});
+
+window.onscroll = function() {
+  if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+};
+
+window.onload = () => {
+  initThemeDots();
+  createLanguageSelector();
+  updateLanguage();
+  cargarDatosRobot();
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+[
+  {
+    "tag": "Wii / Not64",
+    "url": "https://github.com/extremscorner/not64/releases.atom"
+  },
+  {
+    "tag": "Switch / CFW",
+    "url": "https://github.com/Atmosphere-NX/Atmosphere/releases.atom"
+  },
+  {
+    "tag": "3DS / LUMA",
+    "url": "https://github.com/LumaTeam/Luma3DS/releases.atom"
+  },
+  {
+    "tag": "3DS / LUMA PINK",
+    "url": "https://github.com/Kelonio-hub/Luma3DS_Pink/releases.atom"
+  },
+  {
+    "tag": "Wii / SysCheck ModMii",
+    "url": "https://github.com/modmii/SysCheck-ModMii-Edition/releases.atom"
+  },
+  {
+    "tag": "Wii / WiiFlow Lite",
+    "url": "https://github.com/Fledge68/WiiFlow_Lite/releases.atom"
+  },
+  {
+    "tag": "Wii / USB Loader GX",
+    "url": "https://github.com/wiidev/usbloadergx/releases.atom"
+  },
+  {
+    "tag": "Wii / mGBA",
+    "url": "https://github.com/mgba-emu/mgba/releases.atom"
+  },
+  {
+    "tag": "Wii / WiiLink24 Patcher",
+    "url": "https://github.com/WiiLink24/WiiLink24-Patcher/releases.atom"
+  },
+  {
+    "tag": "Wii / RiiConnect24 Patcher",
+    "url": "https://github.com/RiiConnect24/RiiConnect24-Patcher/releases.atom"
+  },
+  {
+    "tag": "Wii / Nintendont",
+    "url": "https://github.com/FIX94/Nintendont/releases.atom"
+  },
+  {
+    "tag": "Wii / YAWM ModMii Edition",
+    "url": "https://github.com/modmii/YAWM-ModMii-Edition/releases.atom"
+  },
+  {
+    "tag": "Wii / CfgUSBLoader",
+    "url": "https://github.com/nitraiolo/CfgUSBLoader/releases.atom"
+  },
+  {
+    "tag": "Wii / WiiSXRX 2022",
+    "url": "https://github.com/xjsxjs197/WiiSXRX_2022/releases.atom"
+  },
+  {
+    "tag": "Wii / WiiMC-SSLC",
+    "url": "https://github.com/SuperrSonic/WiiMC-SSLC/releases.atom"
+  },
+  {
+    "tag": "Wii / Priiloader",
+    "url": "https://github.com/DacoTaco/priiloader/releases.atom"
+  },
+  {
+    "tag": "Wii / TeconMoon's WiiVC Injector",
+    "url": "https://github.com/timefox/TeconMoon-s-WiiVC-Injector-Mod/releases.atom"
+  },
+  {
+    "tag": "Wii U / WUP Installer GX2",
+    "url": "https://github.com/Fangal-Airbag/wup-installer-gx2/releases.atom"
+  },
+  {
+    "tag": "Wii U / FTPiiU",
+    "url": "https://github.com/dimok789/ftpiiu/releases.atom"
+  },
+  {
+    "tag": "Wii / GetHackMii",
+    "url": "https://github.com/franzageek/GetHackMii/releases.atom"
+  },
+  {
+    "tag": "Wii U / Homebrew Launcher",
+    "url": "https://github.com/dimok789/homebrew_launcher/releases.atom"
+  },
+  {
+    "tag": "Wii / CleanRip",
+    "url": "https://github.com/emukidid/cleanrip/releases.atom"
+  },
+  {
+    "tag": "Wii / d2x cIOS",
+    "url": "https://github.com/wiidev/d2x-cios/releases.atom"
+  },
+  {
+    "tag": "3DS / Anemone3DS",
+    "url": "https://github.com/astronautlevel2/Anemone3DS/releases.atom"
+  },
+  {
+    "tag": "3DS / BootNTR",
+    "url": "https://github.com/Nanquitas/BootNTR/releases.atom"
+  },
+  {
+    "tag": "Switch / Checkpoint",
+    "url": "https://github.com/BernardoGiordano/Checkpoint/releases.atom"
+  },
+  {
+    "tag": "3DS / LimePlayer3DS",
+    "url": "https://github.com/oreo639/LimePlayer3DS/releases.atom"
+  },
+  {
+    "tag": "3DS / ThirdTube",
+    "url": "https://github.com/windows-server-2003/ThirdTube/releases.atom"
+  },
+  {
+    "tag": "3DS / FBI",
+    "url": "https://github.com/lifehackerhansol/FBI/releases.atom"
+  },
+  {
+    "tag": "3DS / TWiLight Menu++",
+    "url": "https://github.com/DS-Homebrew/TWiLightMenu/releases.atom"
+  },
+  {
+    "tag": "3DS / GodMode9",
+    "url": "https://github.com/d0k3/GodMode9/releases.atom"
+  },
+  {
+    "tag": "NDS / SafeNANDManager",
+    "url": "https://github.com/DS-Homebrew/SafeNANDManager/releases.atom"
+  },
+  {
+    "tag": "Switch / DBI",
+    "url": "https://github.com/rashevskyv/dbi/releases.atom"
+  },
+  {
+    "tag": "Switch / Rekado",
+    "url": "https://github.com/MenosGrante/Rekado/releases.atom"
+  },
+  {
+    "tag": "Switch / TegraRcmGUI",
+    "url": "https://github.com/eliboa/TegraRcmGUI/releases.atom"
+  },
+  {
+    "tag": "Switch / sys-tune",
+    "url": "https://github.com/HookedBehemoth/sys-tune/releases.atom"
+  },
+  {
+    "tag": "Switch / emuiibo",
+    "url": "https://github.com/XorTroll/emuiibo/releases.atom"
+  },
+  {
+    "tag": "Switch / EdiZon Overlay",
+    "url": "https://github.com/proferabg/EdiZon-Overlay/releases.atom"
+  },
+  {
+    "tag": "Switch / Tesla Menu",
+    "url": "https://github.com/WerWolv/Tesla-Menu/releases.atom"
+  },
+  {
+    "tag": "Switch / pplay",
+    "url": "https://github.com/Cpasjuste/pplay/releases.atom"
+  },
+  {
+    "tag": "Switch / Switch Theme Injector",
+    "url": "https://github.com/exelix11/SwitchThemeInjector/releases.atom"
+  },
+  {
+    "tag": "Switch / nxdumptool",
+    "url": "https://github.com/DarkMatterCore/nxdumptool/releases.atom"
+  },
+  {
+    "tag": "Switch / Mission Control",
+    "url": "https://github.com/ndeadly/MissionControl/releases.atom"
+  },
+  {
+    "tag": "Switch / JKSV",
+    "url": "https://github.com/J-D-K/JKSV/releases.atom"
+  },
+  {
+    "tag": "Switch / ftpd",
+    "url": "https://github.com/mtheall/ftpd/releases.atom"
+  },
+  {
+    "tag": "Switch / eBookReaderSwitch",
+    "url": "https://github.com/SeanOMik/eBookReaderSwitch/releases.atom"
+  },
+  {
+    "tag": "Switch / NxNandManager",
+    "url": "https://github.com/eliboa/NxNandManager/releases.atom"
+  },
+  {
+    "tag": "Switch / Hekate",
+    "url": "https://github.com/CTCaer/hekate/releases.atom"
+  },
+  {
+    "tag": "Switch / 90DNS Tester",
+    "url": "https://github.com/meganukebmp/Switch_90DNS_tester/releases.atom"
+  },
+  {
+    "tag": "Wii U / Nimbus",
+    "url": "https://github.com/PretendoNetwork/nimbus/releases.atom"
+  },
+    {
+    "tag": "3DS / Nimbus",
+    "url": "https://github.com/PretendoNetwork/nimbus/releases.atom"
+  },
+  {
+    "tag": "Wii U / Inkay",
+    "url": "https://github.com/PretendoNetwork/Inkay/releases.atom"
+  },
+  {
+    "tag": "Wii / WfcPatcher",
+    "url": "https://github.com/AdmiralCurtiss/WfcPatcher/releases.atom"
+  }
+]

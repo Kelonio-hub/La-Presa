@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Instalar cIOS en Wii Mini (Automático) | La Presa</title>
+<meta content="WII MINI" name="guide-tag"/>
+<meta content="2026-07-04" name="guide-date"/>
+<meta content="Wii Mini: Cios (Yawm)" name="guide-title-es"/>
+<meta content="Wii Mini: Cios (Yawm)" name="guide-title-en"/>
+<meta content="Wii Mini: Cios (Yawm)" name="guide-title-fr"/>
+<meta content="Wii Mini: Cios (Yawm)" name="guide-title-de"/>
+<meta content="Wii Mini: Cios (Yawm)" name="guide-title-it"/>
+<meta content="Wii Mini: Cios (Yawm)" name="guide-title-pt"/>
+<meta content="Wii Mini: Cios (Yawm)" name="guide-title-ja"/>
+<meta content="Wii Mini: Cios (Yawm)" name="guide-title-ko"/>
+<meta content="Guía para instalar cIOS en Wii Mini de forma automática sin riesgo de brick." name="guide-desc-es"/>
+<meta content="Guide to install cIOS on Wii Mini automatically without risk of bricking." name="guide-desc-en"/>
+<meta content="Guide pour installer cIOS sur Wii Mini de manière automatique sans risque de brick." name="guide-desc-fr"/>
+<meta content="Anleitung zum automatischen Installieren von cIOS auf der Wii Mini ohne Risiko eines Bricks." name="guide-desc-de"/>
+<meta content="Guida per installare cIOS sulla Wii Mini in modo automatico senza rischio di brick." name="guide-desc-it"/>
+<meta content="Guia para instalar cIOS no Wii Mini automaticamente sem risco de bricking." name="guide-desc-pt"/>
+<meta content="Wii MiniにcIOSを自動的にインストールするためのガイド、ブリックのリスクなし。" name="guide-desc-ja"/>
+<meta content="Wii Mini에 cIOS를 자동으로 설치하는 가이드, 브릭 위험 없음。" name="guide-desc-ko"/>
+<link href="https://raw.githubusercontent.com/Kelonio-hub/Archivos-Kelonio/main/img/Lucario.gif" rel="icon" type="image/gif"/>
+<style>
+
+/* ================= VARIABLES Y TEMA AUTOMÁTICO/MANUAL ================= */
+:root, :root[data-theme="dark"] {
+  --red: #007bff; /* Acento Azul por defecto */
+  --glow-rgb: 0, 123, 255; 
+  
+  --bg: #141414;
+  --text-main: #ffffff;
+  --text-muted: #cccccc;
+  --glass: rgba(20,20,20,0.5);
+  --glass-border: rgba(255,255,255,.08);
+  --topbar-bg: rgba(0,0,0,.88);
+  --card-bg: rgba(26, 29, 41, 0.4);
+  --input-bg: rgba(0,0,0,.8);
+  --btn-bg: rgba(255,255,255,0.05);
+  --btn-bg-hover: rgba(255,255,255,0.1);
+  --icon-color: #ffffff;
+}
+
+:root[data-theme="light"] {
+  --bg: #f5f5f7;
+  --text-main: #1d1d1f;
+  --text-muted: #515154;
+  --glass: rgba(255,255,255,0.7);
+  --glass-border: rgba(0,0,0,.15);
+  --topbar-bg: rgba(255,255,255,.95);
+  --card-bg: rgba(255, 255, 255, 0.6);
+  --input-bg: rgba(0,0,0,.05);
+  --btn-bg: rgba(0,0,0,.05);
+  --btn-bg-hover: rgba(0,0,0,.1);
+  --icon-color: #333333;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #f5f5f7;
+    --text-main: #1d1d1f;
+    --text-muted: #515154;
+    --glass: rgba(255,255,255,0.7);
+    --glass-border: rgba(0,0,0,.15);
+    --topbar-bg: rgba(255,255,255,.95);
+    --card-bg: rgba(255, 255, 255, 0.6);
+    --input-bg: rgba(0,0,0,.05);
+    --btn-bg: rgba(0,0,0,.05);
+    --btn-bg-hover: rgba(0,0,0,.1);
+    --icon-color: #333333;
+  }
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Segoe UI',sans-serif; background:var(--bg); color:var(--text-main); overflow-x:hidden; line-height: 1.6; transition: background 0.3s, color 0.3s; }
+
+/* ================= ACCESO DISNEY (Siempre oscuro) ================= */
+#accessWallOverlay { position: fixed; inset: 0; z-index: 99999999; background: #141414; display: flex; justify-content: center; align-items: center; font-family: 'Segoe UI', system-ui, sans-serif; color: #f9f9f9; transition: opacity 0.5s ease, visibility 0.5s ease; }
+.disney-access-card { width: 90%; max-width: 620px; background: rgba(26, 29, 41, 0.95); backdrop-filter: blur(14px); padding: 50px 40px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.15); text-align: center; box-shadow: 0 0 60px rgba(var(--glow-rgb), 0.25); }
+.disney-logo-title { font-size: 5.4rem; font-weight: 900; color: #ffffff; margin-bottom: 20px; letter-spacing: -3px; }
+.disney-subtitle { font-size: 1.3rem; margin-bottom: 35px; opacity: 0.9; }
+.disney-progress-bar { height: 14px; background: #222; border-radius: 10px; margin: 30px 0; overflow: hidden; }
+.disney-progress-fill { height: 100%; width: 0%; background: var(--red); transition: width 0.7s ease; }
+.disney-step-btn { width: 100%; padding: 18px; margin: 12px 0; border-radius: 14px; border: none; background: rgba(255,255,255,0.1); color: white; font-size: 1.15rem; font-weight: 600; cursor: pointer; transition: all 0.3s; }
+.disney-step-btn:hover { background: rgba(255,255,255,0.25); }
+.disney-step-done { background: var(--red) !important; color: #fff !important; cursor: default; }
+#disneyProductsContainer { display: none; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; margin: 25px 0; max-height: 280px; overflow-y: auto; }
+#disneyProductsContainer::-webkit-scrollbar { width: 6px; }
+#disneyProductsContainer::-webkit-scrollbar-thumb { background: var(--red); border-radius: 10px; }
+.disney-aw-product { background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 12px; cursor: pointer; transition: 0.3s; display: flex; flex-direction: column; align-items: center; justify-content: space-between; }
+.disney-aw-product:hover { transform: translateY(-6px); border-color: var(--red); }
+.disney-aw-product img { width: 70px; height: 70px; object-fit: contain; }
+.disney-choose-badge { margin-top: 8px; font-size: 11px; background: var(--red); color: #fff; padding: 4px 12px; border-radius: 30px; font-weight: 800; }
+
+/* ================= MAIN HUB & TOPBAR ================= */
+#mainHub { display: block; opacity: 1; transition: opacity 0.5s ease; }
+.topbar { position:fixed; top:0; left:0; right:0; z-index:9998; background:var(--topbar-bg); backdrop-filter:blur(16px); display:flex; justify-content:space-between; align-items:center; padding:8px 3%; gap: 10px; border-bottom: 1px solid var(--glass-border); transition: background 0.3s, border-color 0.3s; }
+.logo { font-size:1.8rem; font-weight:900; color:var(--red); letter-spacing:-1.5px; transition: color 0.3s ease; text-decoration: none; cursor:pointer;}
+
+.topbar-left { display:flex; align-items:center; gap: 15px; flex-shrink: 0; }
+.social-group { display: flex; gap: 4px; border-left: 1px solid var(--glass-border); padding-left: 15px; transition: border-color 0.3s; }
+.social-icon-btn { background:transparent; border:none; cursor: pointer; color: var(--icon-color); opacity: 0.55; transition: 0.3s; display: flex; align-items: center; justify-content: center; padding: 4px; position: relative;}
+.social-icon-btn:hover { opacity: 1; transform: scale(1.15); color: var(--red); }
+.radar-badge { position:absolute; top:-2px; right:-2px; width:10px; height:10px; background:var(--red); border-radius:50%; box-shadow:0 0 8px var(--red); display: none; }
+
+.right-tools { display:flex; align-items:center; gap:12px;}
+.back-btn { background:var(--btn-bg); border:1px solid var(--glass-border); border-radius:10px; padding:8px 15px; display:flex; align-items:center; gap:8px; cursor:pointer; transition: .3s ease; color:var(--text-main); font-weight:bold; font-size: 13px; text-decoration: none;}
+.back-btn:hover { background:var(--red); border-color:var(--red); transform:scale(1.05); color: white; }
+
+.config-group { display:flex; flex-direction:column; align-items:center; gap:4px; }
+.theme-dots-container { display:flex; gap:5px; align-items: center; }
+.color-dot { width:12px; height:12px; border-radius:50%; cursor:pointer; border:1px solid rgba(128,128,128,0.4); transition:transform .2s, border-color .2s; }
+.color-dot:hover { transform:scale(1.3); }
+.color-dot.active-dot { border:2px solid var(--text-main); transform:scale(1.15); box-shadow: 0 0 8px rgba(128,128,128,0.6); }
+
+#languageSelector { background:var(--input-bg); border:1px solid var(--glass-border); color:var(--text-main); padding:4px 8px; border-radius:6px; outline: none; cursor: pointer; font-size:11px; transition: 0.3s; }
+#languageSelector option { background: var(--bg); color: var(--text-main); }
+
+/* ================= LAYOUT PRINCIPAL (GUIAS) ================= */
+.main-layout { display: flex; max-width: 1250px; margin: 80px auto 0; padding: 20px; gap: 30px; align-items: flex-start; }
+.sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 90px; max-height: calc(100vh - 110px); overflow-y: auto; background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 18px 12px; backdrop-filter: blur(10px); transition: background 0.3s, border-color 0.3s; }
+.sidebar::-webkit-scrollbar { width: 5px; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--red); border-radius: 10px; }
+.sidebar-title { font-size: 1.05rem; color: var(--text-main); margin-bottom: 20px; font-weight: 800; text-align: center; text-transform: uppercase; letter-spacing: 1px; }
+.sidebar-group { margin-bottom: 20px; }
+.sidebar-category { display: flex; align-items: center; justify-content: space-between; background: var(--btn-bg); padding: 8px 12px; border-radius: 8px; font-weight: bold; color: var(--red); margin-bottom: 8px; cursor: pointer; user-select: none; transition: background 0.2s; }
+.sidebar-category:hover { background: var(--btn-bg-hover); }
+.sidebar-category .cat-left { display: flex; align-items: center; gap: 10px; }
+.sidebar-category img { width: 22px; height: 22px; object-fit: contain; }
+.toggle-icon { font-size: 12px; color: var(--text-main); transition: transform 0.3s ease; }
+.sidebar-group.collapsed .toggle-icon { transform: rotate(-90deg); }
+.sidebar-links-container { display: flex; flex-direction: column; overflow: hidden; }
+.sidebar-group.collapsed .sidebar-links-container { display: none; }
+.sidebar-link { display: block; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; padding: 8px 12px 8px 16px; border-left: 2px solid transparent; transition: 0.2s; margin-bottom: 2px; border-radius: 0 8px 8px 0; }
+.sidebar-link:hover { color: var(--text-main); border-left-color: var(--red); background: var(--btn-bg); transform: translateX(3px); }
+.sidebar-link.active { color: var(--text-main); border-left-color: var(--red); background: rgba(var(--glow-rgb), 0.15); font-weight: bold; }
+
+.guide-container { flex-grow: 1; min-width: 0; background: var(--glass); border-radius: 16px; padding: 40px; border: 1px solid var(--glass-border); transition: background 0.3s, border-color 0.3s; }
+.guide-header { text-align: center; margin-bottom: 40px; padding-bottom: 20px; border-bottom: 1px solid var(--glass-border); }
+.guide-header h1 { font-size: 2.8rem; font-weight: 800; margin-bottom: 10px; color: var(--text-main); }
+.guide-tag { display: inline-block; background: var(--red); color: white; padding: 4px 12px; border-radius: 6px; font-weight: bold; font-size: 12px; margin-bottom: 15px; }
+.guide-content h2 { color: var(--red); font-size: 1.8rem; margin: 35px 0 15px; }
+.guide-content p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 15px; }
+.guide-content ul, .guide-content ol { margin: 15px 0 20px 25px; color: var(--text-muted); font-size: 1.1rem; }
+.guide-content li { margin-bottom: 8px; }
+
+.alert-box { background: rgba(var(--glow-rgb), 0.1); border-left: 4px solid var(--red); padding: 15px 20px; margin: 20px 0; border-radius: 0 8px 8px 0; color: var(--text-main); }
+.dl-btn { display: inline-block; background: var(--red); color: white !important; text-decoration: none; padding: 10px 20px; border-radius: 8px; font-weight: bold; margin-top: 10px; transition: 0.3s; }
+.dl-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(var(--glow-rgb), 0.4); }
+
+.mini-btn { background: var(--red); color: white !important; padding: 3px 8px; border-radius: 6px; text-decoration: none; font-weight: bold; font-style: normal; margin: 0 4px; display: inline-block; transition: 0.3s; font-size: 0.9em; }
+.mini-btn:hover { transform: scale(1.05); filter: brightness(1.2); }
+
+.video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); border: 1px solid var(--glass-border); }
+.video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0; }
+
+#backToTopBtn { display: none; position: fixed; bottom: 30px; right: 30px; z-index: 9998; background: var(--red); color: white; border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; font-size: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: 0.3s; }
+#backToTopBtn:hover { transform: scale(1.1); }
+
+.guide-title-container h1 {
+  font-size: var(--title-size, 2.5rem) !important;
+  white-space: nowrap !important;
+  display: block !important;
+}
+
+#btn-back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  background: #0076f5;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  transition: opacity 0.3s, transform 0.2s;
+}
+#btn-back-to-top:active { transform: scale(0.9); }
+
+.mobile-sidebar-toggle {
+  display: none;
+  width: 100%;
+  padding: 14px;
+  background: #16161a;
+  color: #0076f5;
+  border: 2px solid #0076f5;
+  border-radius: 10px;
+  font-size: 1.05rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-sizing: border-box;
+}
+
+@media(max-width: 950px) {
+  .topbar { position: relative; flex-direction: column; padding: 15px 4%; gap: 14px; align-items: center; }
+  .topbar-left { width: 100%; justify-content: center; gap: 15px; }
+  .right-tools { width: 100%; justify-content: center; flex-wrap: wrap; gap: 14px; }
+  .main-layout { flex-direction: column; margin-top: 15px; padding: 10px; }
+  .sidebar { width: 100%; position: static; max-height: none; order: 2; margin-top: 20px; }
+  .guide-container { width: 100%; order: 1; padding: 20px !important; }
+}
+
+@media(max-width: 650px) {
+  .topbar-left { display: flex; justify-content: center; width: 100%; }
+  .right-tools { display: flex !important; flex-direction: row !important; flex-wrap: wrap !important; justify-content: center !important; gap: 16px !important; align-items: center; }
+  .social-group { border-left: none; padding-left: 0; gap: 12px; }
+  .social-icon-btn { display: inline-flex !important; width: auto !important; margin: 0; min-width: 44px; min-height: 44px; }
+  
+  .back-btn { 
+    width: auto !important; 
+    max-width: max-content;
+    margin: 8px auto !important; 
+    flex-basis: 100%;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .config-group { width: 100%; flex-direction: row; justify-content: center; gap: 18px; order: 4; margin-top: 4px; }
+  .guide-title-container { padding: 12px 15px; border-radius: 12px; }
+  
+  .guide-content h2 { font-size: 1.4rem; }
+  .guide-content p, .guide-content li { font-size: 1.05rem; word-break: break-word; }
+
+  .mobile-sidebar-toggle { display: flex; }
+  .sidebar { display: none !important; }
+  .sidebar.active { display: block !important; margin-top: 10px; }
+  
+  #btn-back-to-top { display: flex; opacity: 0; pointer-events: none; }
+  #btn-back-to-top.visible { opacity: 1; pointer-events: auto; }
+
+  table, pre {
+    max-width: 100% !important;
+    overflow-x: auto !important;
+    display: block !important;
+    white-space: nowrap;
+  }
+  code { word-break: break-all; }
+}
+
+
+/* ================= TARJETA DE PRODUCTO RECOMENDADO ================= */
+.product-card-widget {
+  background: var(--card-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 18px;
+  margin: 25px 0;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+.product-card-widget:hover {
+  border-color: var(--red);
+  transform: translateY(-2px);
+}
+.product-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background: rgba(var(--glow-rgb), 0.18);
+  color: var(--red);
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+.product-card-body {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+.product-card-img {
+  width: 95px;
+  height: 95px;
+  object-fit: contain;
+  background: rgba(255,255,255,0.06);
+  padding: 8px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  border: 1px solid var(--glass-border);
+}
+.product-card-info {
+  flex-grow: 1;
+}
+.product-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+.product-card-price {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--red);
+  margin-bottom: 6px;
+}
+.product-card-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.product-card-btn {
+  display: inline-block;
+  background: var(--red);
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 0.88rem;
+  padding: 8px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: filter 0.2s, transform 0.2s;
+}
+.product-card-btn:hover {
+  filter: brightness(1.2);
+  transform: scale(1.03);
+}
+@media(max-width: 550px) {
+  .product-card-body {
+    flex-direction: column;
+    text-align: center;
+  }
+  .product-card-img {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+</style>
+
+<!-- ==========================================================
+     CANONICAL & HREFLANG (8 IDIOMAS + INGLÉS POR DEFECTO)
+=========================================================== -->
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/guias/Wii%20Mini%20-%20cios%20autom%C3%A1tico.html" rel="canonical"/>
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/guias/Wii%20Mini%20-%20cios%20autom%C3%A1tico.html?lang=es" hreflang="es" rel="alternate"/>
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/guias/Wii%20Mini%20-%20cios%20autom%C3%A1tico.html?lang=en" hreflang="en" rel="alternate"/>
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/guias/Wii%20Mini%20-%20cios%20autom%C3%A1tico.html?lang=fr" hreflang="fr" rel="alternate"/>
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/guias/Wii%20Mini%20-%20cios%20autom%C3%A1tico.html?lang=de" hreflang="de" rel="alternate"/>
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/guias/Wii%20Mini%20-%20cios%20autom%C3%A1tico.html?lang=it" hreflang="it" rel="alternate"/>
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/guias/Wii%20Mini%20-%20cios%20autom%C3%A1tico.html?lang=pt" hreflang="pt" rel="alternate"/>
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/guias/Wii%20Mini%20-%20cios%20autom%C3%A1tico.html?lang=ja" hreflang="ja" rel="alternate"/>
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/guias/Wii%20Mini%20-%20cios%20autom%C3%A1tico.html?lang=ko" hreflang="ko" rel="alternate"/>
+<link href="https://kelonio-hub.github.io/Archivos-Kelonio/guias/Wii%20Mini%20-%20cios%20autom%C3%A1tico.html?lang=en" hreflang="x-default" rel="alternate"/>
+<!-- ==========================================================
+     OPEN GRAPH & TWITTER CARDS
+=========================================================== -->
+<meta content="website" property="og:type"/>
+<meta content="La Presa" property="og:site_name"/>
+<meta content="Instalar cIOS en Wii Mini (Automático)" property="og:title"/>
+<meta content="Guía para instalar cIOS en Wii Mini de forma automática sin riesgo de brick." property="og:description"/>
+<meta content="https://kelonio-hub.github.io/Archivos-Kelonio/guias/Wii%20Mini%20-%20cios%20autom%C3%A1tico.html" property="og:url"/>
+<meta content="https://img.youtube.com/vi/L5TgRr5Zre4/maxresdefault.jpg" property="og:image"/>
+<meta content="es_ES" property="og:locale"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Instalar cIOS en Wii Mini (Automático)" name="twitter:title"/>
+<meta content="Guía para instalar cIOS en Wii Mini de forma automática sin riesgo de brick." name="twitter:description"/>
+<meta content="https://img.youtube.com/vi/L5TgRr5Zre4/maxresdefault.jpg" name="twitter:image"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://kelonio-hub.github.io/Archivos-Kelonio/#organization",
+  "name": "La Presa",
+  "url": "https://kelonio-hub.github.io/Archivos-Kelonio/",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://raw.githubusercontent.com/Kelonio-hub/Archivos-Kelonio/main/img/Lucario.gif"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://kelonio-hub.github.io/Archivos-Kelonio/guias/Wii%20Mini%20-%20cios%20autom%C3%A1tico.html#webpage",
+  "url": "https://kelonio-hub.github.io/Archivos-Kelonio/guias/Wii%20Mini%20-%20cios%20autom%C3%A1tico.html",
+  "name": "Instalar cIOS en Wii Mini (Automático) | La Presa",
+  "description": "Guía para instalar cIOS en Wii Mini de forma automática sin riesgo de brick.",
+  "inLanguage": [
+    "es",
+    "en",
+    "fr",
+    "de",
+    "it",
+    "pt",
+    "ja",
+    "ko"
+  ],
+  "publisher": {
+    "@id": "https://kelonio-hub.github.io/Archivos-Kelonio/#organization"
+  },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://img.youtube.com/vi/L5TgRr5Zre4/maxresdefault.jpg"
+  },
+  "mainEntity": {
+    "@id": "https://kelonio-hub.github.io/Archivos-Kelonio/guias/Wii%20Mini%20-%20cios%20autom%C3%A1tico.html#howto"
+  },
+  "dateModified": "2026-07-04"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": "https://kelonio-hub.github.io/Archivos-Kelonio/index.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guías",
+      "item": "https://kelonio-hub.github.io/Archivos-Kelonio/guias.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "WII MINI",
+      "item": "https://kelonio-hub.github.io/Archivos-Kelonio/guias.html#wii mini"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Instalar cIOS en Wii Mini (Automático)",
+      "item": "https://kelonio-hub.github.io/Archivos-Kelonio/guias/Wii%20Mini%20-%20cios%20autom%C3%A1tico.html"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "@id": "https://kelonio-hub.github.io/Archivos-Kelonio/guias/Wii%20Mini%20-%20cios%20autom%C3%A1tico.html#howto",
+  "name": "Instalar cIOS en Wii Mini (Automático)",
+  "description": "Guía para instalar cIOS en Wii Mini de forma automática sin riesgo de brick.",
+  "image": "https://img.youtube.com/vi/L5TgRr5Zre4/maxresdefault.jpg",
+  "totalTime": "PT15M",
+  "estimatedCost": {
+    "@type": "MonetaryAmount",
+    "currency": "EUR",
+    "value": "0"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "La Presa"
+  },
+  "tool": [
+    {
+      "@type": "HowToTool",
+      "name": "Una Tarjeta SD (formato FAT32)"
+    },
+    {
+      "@type": "HowToTool",
+      "name": "Consola Wii Mini con Homebrew Channel instalado"
+    },
+    {
+      "@type": "HowToTool",
+      "name": "Archivos de instalación cIOS"
+    }
+  ],
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "PASO 1: Descargar archivos y preparar SD",
+      "text": "Descarga el Pack de Archivos cIOS usando el botón superior. Descomprime su contenido directamente en la raíz de la Tarjeta SD e introdúcela en la Consola.",
+      "url": "https://kelonio-hub.github.io/Archivos-Kelonio/guias/Wii%20Mini%20-%20cios%20autom%C3%A1tico.html#txt_h2_step1"
+    },
+    {
+      "@type": "HowToStep",
+      "name": "PASO 2: Instalar cIOS 57",
+      "text": "Acude al Homebrew Channel, carga el programa YAWM, selecciona el cIOS 57 que hemos ubicado en la raíz de la SD y procede con la instalación.",
+      "url": "https://kelonio-hub.github.io/Archivos-Kelonio/guias/Wii%20Mini%20-%20cios%20autom%C3%A1tico.html#txt_h2_step2"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "VideoObject",
+  "name": "Instalar cIOS en Wii Mini (Automático) - Tutorial",
+  "description": "Guía para instalar cIOS en Wii Mini de forma automática sin riesgo de brick.",
+  "thumbnailUrl": "https://img.youtube.com/vi/L5TgRr5Zre4/maxresdefault.jpg",
+  "uploadDate": "2026-07-04",
+  "embedUrl": "https://www.youtube.com/embed/L5TgRr5Zre4",
+  "publisher": {
+    "@id": "https://kelonio-hub.github.io/Archivos-Kelonio/#organization"
+  }
+}
+</script>
+</head>
+<body>
+<div id="mainHub">
+<div class="topbar">
+<div class="topbar-left">
+<div class="logo" onclick="window.location.href='../index.html'">LA PRESA</div>
+<div class="social-group">
+<button class="social-icon-btn" id="discordBtn" onclick="window.open('https://discord.com/invite/xHg7XaYJvK', '_blank')" title="Discord">
+<svg fill="currentColor" height="22" viewbox="0 0 24 24" width="22"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"></path></svg>
+</button>
+<button class="social-icon-btn" id="kofiBtn" onclick="window.open('https://ko-fi.com/wiide', '_blank')" title="Ko-fi">
+<svg fill="currentColor" height="22" viewbox="0 0 24 24" width="22"><path d="M23.881 8.948c-.773-4.085-4.859-4.593-4.859-4.593H.723c-.604 0-.679.798-.679.798s-.082 7.324-.022 11.822c.164 2.424 2.586 2.672 2.586 2.672s8.267-.023 11.966-.049c2.438-.426 2.683-2.566 2.658-3.734 4.352.24 7.422-2.831 6.649-6.916zm-11.062 3.511c-1.246 1.453-4.011 3.976-4.011 3.976s-.121.119-.31.023c-.076-.057-.108-.09-.108-.09-.443-.441-3.368-3.049-4.034-3.954-.709-.965-1.041-2.7-.091-3.71.951-1.01 3.005-1.086 4.363.407 0 0 1.565-1.782 3.468-.963 1.904.82 1.832 3.011.723 4.311zm6.173.478c-.928.116-1.682.028-1.682.028V7.284h1.77s1.971.551 1.971 2.638c0 1.913-.985 2.667-2.059 3.015z"></path></svg>
+</button>
+</div>
+</div>
+<div class="right-tools">
+<button class="social-icon-btn" id="guideBtn" onclick="window.open('https://kelonio-hub.github.io/Archivos-Kelonio/guias.html', '_self')" title="Guías">
+<svg fill="currentColor" height="24" viewbox="0 0 24 24" width="24"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zM21 18.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"></path></svg>
+</button>
+<button class="social-icon-btn" id="productsBtn" onclick="window.open('https://kelonio-hub.github.io/Archivos-Kelonio/productos.html', '_self')" title="Productos">
+<svg fill="currentColor" height="24" viewbox="0 0 24 24" width="24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49A1.003 1.003 0 0 0 20 4H5.21l-.94-2H1v2zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"></path></svg>
+</button>
+<!-- BOTÓN RADAR ESTILO SATÉLITE ORBITAL -->
+<button class="social-icon-btn" id="videosBtn" onclick="window.open('https://kelonio-hub.github.io/Archivos-Kelonio/videoteca.html', '_self')" title="Vídeos">
+<svg fill="currentColor" height="24" viewbox="0 0 24 24" width="24"><path d="M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4z"></path></svg>
+</button>
+<button class="social-icon-btn" id="radarBtn" onclick="window.open('https://kelonio-hub.github.io/Archivos-Kelonio/actualizaciones.html', '_self')" title="Radar de Actualizaciones">
+<svg fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="24">
+<path d="M13 7 9 3 5 7l4 4" fill="rgba(255,255,255,0.08)"></path>
+<path d="m17 11 4 4-4 4-4-4" fill="rgba(255,255,255,0.08)"></path>
+<path d="m8 12 4 4 6-6-4-4Z" fill="currentColor"></path>
+<path d="m16 8 3-3"></path>
+<path d="M9 21a6 6 0 0 0-6-6"></path>
+<path d="M5 21a2 2 0 0 0-2-2"></path>
+</svg>
+<span class="radar-badge" id="radarBadge"></span>
+</button>
+<a class="back-btn" href="../guias.html">
+<span id="txt_backBtnText">← Volver a las Guías</span>
+</a>
+<div class="config-group">
+<div class="theme-dots-container" id="themeDots"></div>
+<select id="languageSelector"></select>
+</div>
+</div>
+</div>
+<div class="main-layout">
+<aside class="sidebar" id="guideSidebar">
+<div style="text-align:center; color:#aaa; font-size:13px; padding: 20px;">Cargando menú...</div>
+</aside>
+<main class="guide-container">
+<div class="guide-header">
+  <div class="guide-title-container">
+    <h1 id="txt_title">Instalar cIOS en Wii Mini (Automático)</h1>
+  </div>
+</div>
+<div class="guide-content">
+<div class="video-container">
+<iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" src="https://www.youtube.com/embed/L5TgRr5Zre4" srcdoc="&lt;style&gt;*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto;object-fit:cover;height:100%}span{width:60px;height:40px;background-color:#e50914;border-radius:10px;text-align:center;line-height:40px;color:white;font-size:20px;left:50%;top:50%;transform:translate(-50%,-50%);transition:transform 0.2s}a:hover span{transform:translate(-50%,-50%) scale(1.1)}&lt;/style&gt;&lt;a href=https://www.youtube.com/embed/L5TgRr5Zre4?autoplay=1&gt;&lt;img src=https://img.youtube.com/vi/L5TgRr5Zre4/maxresdefault.jpg alt='Video'&gt;&lt;span&gt;▶&lt;/span&gt;&lt;/a&gt;">
+</iframe>
+</div>
+<div class="alert-box" id="txt_alert1">
+<strong>⚠️ Importante:</strong> Wii Mini, a diferencia de Wii y vWii, solo precisa de un cIOS (el 57). Instalar otros puede presentar incompatibilidad con algunos Homebrews o incluso causar el brickeo de la consola si se instalan los originales de Wii.
+        </div>
+<h2 id="txt_h2_req">Requisitos</h2>
+<ul>
+<li id="txt_req1">Una Tarjeta SD (formato FAT32)</li>
+<li id="txt_req2">Consola Wii Mini con Homebrew Channel instalado</li>
+<li><span id="txt_req3">Archivos de instalación cIOS</span> <br/>
+
+<!-- ================= INICIO WIDGET PAYPAL MULTI-IDIOMA ================= -->
+<div id="paypal-support-widget"
+     style="background: rgba(0,0,0,0.05); border: 1px solid #ddd; border-radius: 12px; padding: 18px; margin-top: 15px; width: 100%; max-width: 500px; font-family: sans-serif; text-align: left;">
+
+    <label id="pp-title"
+           style="font-size: 1.1rem; font-weight: bold; display:block; margin-bottom: 5px; color: var(--red);">
+    </label>
+
+    <div id="pp-subtitle"
+         style="font-size: 0.85rem; color: #666; margin-bottom: 15px;">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+
+        <select id="pp-amount"
+                style="padding: 10px; border-radius: 8px; border: 1px solid #ccc; width: 100%; font-size: 1rem; font-weight: bold; margin-bottom: 10px; cursor: pointer;">
+
+            <option value="0" id="pp-free"></option>
+
+            <option value="custom"
+                    id="pp-other-amount"
+                    selected>
+                Elegir valor...
+            </option>
+
+        </select>
+
+        <input type="number"
+               id="pp-custom-amount"
+               style="display: none; padding: 10px; border-radius: 8px; border: 1px solid #ccc; width: 100%; font-size: 1rem; box-sizing: border-box;"
+               min="0.50"
+               step="0.50">
+
+    </div>
+
+    <div id="paypal-button-container"
+         style="display: none; margin-top: 15px;">
+    </div>
+
+    <div id="pp-success-msg"
+         style="display: none; text-align: center; background: #e8f5e9; color: #2e7d32; padding: 15px; border-radius: 8px; margin-bottom: 15px; font-weight: bold;">
+    </div>
+
+    <a href="https://www.mediafire.com/folder/keng2csyz22hm/CIOS+WII+MINI"
+       id="pp-download-btn"
+       target="_blank"
+       rel="noopener noreferrer"
+       style="display: none; background: var(--red); color: white; text-align: center; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1rem; width: 100%; cursor: pointer; box-sizing: border-box;">
+    </a>
+
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const translations = {
+
+        es: {
+            title: "¡Ahora puedes aportar al proyecto! [ARCHIVOS]",
+            subtitle: "(La opción gratuita siempre estará disponible)",
+            free: "Gratis",
+            other: "Contribución",
+            placeholder: "Ej: 2.50",
+            download: "Descargar Archivos",
+            success: "Gracias por apoyar el proyecto. Tu pago se ha recibido correctamente."
+        },
+
+        en: {
+            title: "You can now support the project! [FILES]",
+            subtitle: "(The free option will always be available)",
+            free: "Free",
+            other: "Contribution",
+            placeholder: "Ex: 2.50",
+            download: "Download Files",
+            success: "Thank you for supporting the project. Your payment was successful."
+        },
+
+        fr: {
+            title: "Vous pouvez désormais soutenir le projet ! [FICHIERS]",
+            subtitle: "(L'option gratuite sera toujours disponible)",
+            free: "Gratuit",
+            other: "Contribution",
+            placeholder: "Ex : 2.50",
+            download: "Télécharger les fichiers",
+            success: "Merci de soutenir le projet. Votre paiement a bien été reçu."
+        },
+
+        it: {
+            title: "Ora puoi sostenere il progetto! [FILE]",
+            subtitle: "(L'opzione gratuita sarà sempre disponibile)",
+            free: "Gratis",
+            other: "Contribuzione",
+            placeholder: "Es: 2.50",
+            download: "Scarica i file",
+            success: "Grazie per aver sostenuto il progetto. Il tuo pagamento è stato ricevuto correttamente."
+        },
+
+        de: {
+            title: "Du kannst das Projekt jetzt unterstützen! [DATEIEN]",
+            subtitle: "(Die kostenlose Option wird immer verfügbar sein)",
+            free: "Kostenlos",
+            other: "Beitrag",
+            placeholder: "Bsp: 2.50",
+            download: "Dateien herunterladen",
+            success: "Danke, dass du das Projekt unterstützt. Deine Zahlung war erfolgreich."
+        },
+
+        pt: {
+            title: "Agora você pode apoiar o projeto! [ARQUIVOS]",
+            subtitle: "(A opção gratuita estará sempre disponível)",
+            free: "Grátis",
+            other: "Contribuição",
+            placeholder: "Ex: 2.50",
+            download: "Baixar Arquivos",
+            success: "Obrigado por apoiar o projeto. Seu pagamento foi recebido com sucesso."
+        },
+
+        ja: {
+            title: "プロジェクトを支援できるようになりました！ [ファイル]",
+            subtitle: "（無料オプションは常に利用可能です）",
+            free: "無料",
+            other: "貢献",
+            placeholder: "例: 2.50",
+            download: "ファイルをダウンロード",
+            success: "プロジェクトをご支援いただきありがとうございます。お支払いが正常に完了しました。"
+        },
+
+        ko: {
+            title: "이제 프로젝트를 후원할 수 있습니다! [파일]",
+            subtitle: "(무료 옵션은 항상 제공됩니다)",
+            free: "무료",
+            other: "기부금",
+            placeholder: "예: 2.50",
+            download: "파일 다운로드",
+            success: "프로젝트를 지원해 주셔서 감사합니다. 결제가 성공적으로 완료되었습니다."
+        }
+    };
+
+
+    const locales = {
+        es: "es_ES",
+        en: "en_US",
+        fr: "fr_FR",
+        it: "it_IT",
+        de: "de_DE",
+        pt: "pt_PT",
+        ja: "ja_JP",
+        ko: "ko_KR"
+    };
+
+
+    const amountSelect =
+        document.getElementById("pp-amount");
+
+    const customAmountInput =
+        document.getElementById("pp-custom-amount");
+
+    const paypalContainer =
+        document.getElementById("paypal-button-container");
+
+    const downloadBtn =
+        document.getElementById("pp-download-btn");
+
+    const successMsg =
+        document.getElementById("pp-success-msg");
+
+
+    function getLang() {
+
+        const lang = (
+            localStorage.getItem("preferredLanguage") ||
+            navigator.language ||
+            navigator.userLanguage ||
+            "en"
+        )
+        .substring(0, 2)
+        .toLowerCase();
+
+        return translations[lang] ? lang : "en";
+    }
+
+
+    function updateView() {
+
+        const value = amountSelect.value;
+
+        successMsg.style.display = "none";
+
+        if (value === "0") {
+
+            customAmountInput.style.display = "none";
+            paypalContainer.style.display = "none";
+            downloadBtn.style.display = "block";
+
+        } else {
+
+            customAmountInput.style.display =
+                value === "custom" ? "block" : "none";
+
+            paypalContainer.style.display = "block";
+            downloadBtn.style.display = "none";
+        }
+    }
+
+
+    function renderPayPal() {
+
+        if (!window.paypal) {
+            return;
+        }
+
+        paypalContainer.innerHTML = "";
+
+        paypal.Buttons({
+
+            createOrder: function(data, actions) {
+
+                let finalAmount =
+                    amountSelect.value === "custom"
+                        ? customAmountInput.value
+                        : amountSelect.value;
+
+                if (
+                    !finalAmount ||
+                    parseFloat(finalAmount) < 0.5
+                ) {
+                    finalAmount = "0.50";
+                }
+
+                return actions.order.create({
+
+                    purchase_units: [{
+                        amount: {
+                            value:
+                                parseFloat(finalAmount).toFixed(2)
+                        }
+                    }]
+
+                });
+            },
+
+
+            onApprove: function(data, actions) {
+
+                return actions.order
+                    .capture()
+                    .then(function(details) {
+
+                        amountSelect.style.display = "none";
+
+                        customAmountInput.style.display = "none";
+
+                        paypalContainer.style.display = "none";
+
+                        successMsg.style.display = "block";
+
+                        downloadBtn.style.display = "block";
+                    });
+            }
+
+        }).render("#paypal-button-container");
+    }
+
+
+    function loadPayPalSDK(lang, callback) {
+
+        const scriptId = "paypal-sdk-script";
+
+        const oldScript =
+            document.getElementById(scriptId);
+
+        if (oldScript) {
+
+            oldScript.remove();
+
+            if (window.paypal) {
+                delete window.paypal;
+            }
+        }
+
+
+        paypalContainer.innerHTML = "";
+
+
+        const locale =
+            locales[lang] || "en_US";
+
+
+        const script =
+            document.createElement("script");
+
+
+        script.id = scriptId;
+
+
+        script.src =
+            "https://www.paypal.com/sdk/js" +
+            "?client-id=" +
+            "BAAVNxy3Tb2YimilSFmYtRneRHtNa9WqZwfcVXSwpX88LHG9OCSn7hwPMTassgMIf5oyVHms5YdsmQpUZk" +
+            "&currency=EUR" +
+            "&locale=" +
+            locale;
+
+
+        script.onload = () => {
+
+            renderPayPal();
+
+            if (callback) {
+                callback();
+            }
+        };
+
+
+        document.body.appendChild(script);
+    }
+
+
+    function updatePayPalLanguage() {
+
+        const lang = getLang();
+
+        const t = translations[lang];
+
+
+        document.getElementById("pp-title").innerText =
+            t.title;
+
+        document.getElementById("pp-subtitle").innerText =
+            t.subtitle;
+
+        document.getElementById("pp-free").innerText =
+            t.free;
+
+        document.getElementById("pp-other-amount").innerText =
+            t.other;
+
+        customAmountInput.placeholder =
+            t.placeholder;
+
+        downloadBtn.innerText =
+            t.download;
+
+        successMsg.innerText =
+            t.success;
+
+
+        loadPayPalSDK(lang, () => {
+            updateView();
+        });
+    }
+
+
+    amountSelect.addEventListener(
+        "change",
+        updateView
+    );
+
+
+    const pageLangSelector =
+        document.getElementById("languageSelector");
+
+
+    if (pageLangSelector) {
+
+        pageLangSelector.addEventListener(
+            "change",
+            () => {
+
+                setTimeout(
+                    updatePayPalLanguage,
+                    100
+                );
+            }
+        );
+    }
+
+
+    updatePayPalLanguage();
+
+});
+</script>
+
+<!-- ================= FIN WIDGET PAYPAL MULTI-IDIOMA ================= -->
+
+</li>
+</ul>
+<p style="font-size: 14px; color: #888;"><em id="txt_reqNote">* Puedes visualizar nuestros <a class="mini-btn" href="../productos.html">productos</a></em></p>
+<h2 id="txt_h2_step1">PASO 1: Descargar archivos y preparar SD</h2>
+<ol>
+<li id="txt_s1_1">Descarga el Pack de Archivos cIOS usando el botón superior.</li>
+<li id="txt_s1_2">Descomprime su contenido directamente en la raíz de la Tarjeta SD e introdúcela en la Consola.</li>
+</ol>
+<h2 id="txt_h2_step2">PASO 2: Instalar cIOS 57</h2>
+<ol>
+<li id="txt_s2_1">Acude al Homebrew Channel, carga el programa YAWM, selecciona el cIOS 57 que hemos ubicado en la raíz de la SD y procede con la instalación.</li>
+</ol>
+<div class="alert-box" id="txt_alert2" style="border-left-color: var(--green); margin-top: 30px;">
+<strong>✅ ¡Enhorabuena!</strong> El proceso de instalación del cIOS es automático. Tu Wii Mini está lista.
+        </div>
+<p id="txt_footer">Si tienes dudas durante el proceso, te recomendamos revisar el vídeo adjunto arriba.</p>
+</div>
+</main>
+</div>
+</div>
+<button id="backToTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">↑</button>
+<script>
+  /* ================= 4. DICCIONARIO PARA LOS 8 IDIOMAS ================= */
+  const translations = {
+    es: {
+      txt_backBtnText: "← Volver a las Guías", txt_otherGuides: "Otras Guías",
+      txt_awSubtitle: "Completa los pasos para desbloquear el contenido.", txt_awYtBtn: "1. Suscribirse al canal", txt_awGiftBtn: "2. Participar en el sorteo",
+      txt_videos: "Vídeos", radar: "Radar de Actualizaciones", txt_products: "Productos", txt_guides: "Guías", txt_discord: "Únete a Discord", txt_kofi: "Apóyanos en Ko-fi",
+      
+      txt_tag: "WII MINI",
+      txt_title: "Instalar cIOS en Wii Mini (Automático)",
+      txt_alert1: "<strong>⚠️ Importante:</strong> Wii Mini, a diferencia de Wii y vWii, solo precisa de un cIOS (el 57). Instalar otros puede presentar incompatibilidad con algunos Homebrews o incluso causar el brickeo de la consola si se instalan los originales de Wii.",
+      txt_h2_req: "Requisitos", 
+      txt_req1: "Una Tarjeta SD (formato FAT32)", 
+      txt_req2: "Consola Wii Mini con Homebrew Channel instalado", 
+      txt_req3: "Archivos de instalación cIOS", 
+      txt_reqBtn: "Descargar Archivos", 
+      txt_reqNote: "* Puedes visualizar nuestros <a href='../productos.html' class='mini-btn'>productos</a>",
+      
+      txt_h2_step1: "PASO 1: Descargar archivos y preparar SD",
+      txt_s1_1: "Descarga el Pack de Archivos cIOS usando el botón superior.", 
+      txt_s1_2: "Descomprime su contenido directamente en la raíz de la Tarjeta SD e introdúcela en la Consola.",
+      
+      txt_h2_step2: "PASO 2: Instalar cIOS 57",
+      txt_s2_1: "Acude al Homebrew Channel, carga el programa YAWM, selecciona el cIOS 57 que hemos ubicado en la raíz de la SD y procede con la instalación.",
+
+      txt_alert2: "<strong>✅ ¡Enhorabuena!</strong> El proceso de instalación del cIOS es automático. Tu Wii Mini está lista.", 
+      txt_footer: "Si tienes dudas durante el proceso, te recomendamos revisar el vídeo adjunto arriba."
+    },
+    en: {
+      txt_backBtnText: "← Back to Guides", txt_otherGuides: "Other Guides",
+      txt_awSubtitle: "Complete the steps to unlock content.", txt_awYtBtn: "1. Subscribe to channel", txt_awGiftBtn: "2. Enter the giveaway",
+      txt_videos: "Videos", radar: "Updates Radar", txt_products: "Products", txt_guides: "Guides", txt_discord: "Join Discord", txt_kofi: "Support us on Ko-fi",
+      
+      txt_tag: "WII MINI",
+      txt_title: "Install cIOS on Wii Mini (Automatic)",
+      txt_alert1: "<strong>⚠️ Important:</strong> Unlike Wii and vWii, Wii Mini only needs one cIOS (57). Installing others can cause incompatibility with some Homebrews or even brick the console if original Wii files are installed.",
+      txt_h2_req: "Requirements", 
+      txt_req1: "An SD Card (FAT32 format)", 
+      txt_req2: "Wii Mini console with Homebrew Channel installed", 
+      txt_req3: "cIOS installation files", 
+      txt_reqBtn: "Download Files", 
+      txt_reqNote: "* You can check our <a href='../productos.html' class='mini-btn'>products</a>",
+      
+      txt_h2_step1: "STEP 1: Download files and prepare SD",
+      txt_s1_1: "Download the cIOS Files Pack using the button above.", 
+      txt_s1_2: "Extract its contents directly to the root of the SD Card and insert it into the Console.",
+      
+      txt_h2_step2: "STEP 2: Install cIOS 57",
+      txt_s2_1: "Go to the Homebrew Channel, load the YAWM program, select the cIOS 57 located on the root of the SD, and proceed with the installation.",
+
+      txt_alert2: "<strong>✅ Congratulations!</strong> The cIOS installation process is automatic. Your Wii Mini is ready.", 
+      txt_footer: "If you have any questions during the process, we recommend reviewing the video attached above."
+    },
+    fr: {
+      txt_backBtnText: "← Retour aux Guides", txt_otherGuides: "Autres Guides",
+      txt_awSubtitle: "Suivez les étapes pour débloquer le contenu.", txt_awYtBtn: "1. S'abonner à la chaîne", txt_awGiftBtn: "2. Participer au concours",
+      txt_videos: "Vidéos", radar: "Radar de Mises à jour", txt_products: "Produits", txt_guides: "Guides", txt_discord: "Rejoindre Discord", txt_kofi: "Soutenez-nous sur Ko-fi",
+      
+      txt_tag: "WII MINI",
+      txt_title: "Installer cIOS sur Wii Mini (Automatique)",
+      txt_alert1: "<strong>⚠️ Important :</strong> Contrairement à la Wii et vWii, la Wii Mini ne nécessite qu'un seul cIOS (le 57). L'installation d'autres fichiers peut causer des incompatibilités ou même bricker la console.",
+      txt_h2_req: "Prérequis", 
+      txt_req1: "Une carte SD (format FAT32)", 
+      txt_req2: "Console Wii Mini avec Homebrew Channel installé", 
+      txt_req3: "Fichiers d'installation cIOS", 
+      txt_reqBtn: "Télécharger les Fichiers", 
+      txt_reqNote: "* Vous pouvez consulter nos <a href='../productos.html' class='mini-btn'>produits</a>",
+      
+      txt_h2_step1: "ÉTAPE 1 : Télécharger les fichiers et préparer la SD",
+      txt_s1_1: "Téléchargez le pack de fichiers cIOS à l'aide du bouton ci-dessus.", 
+      txt_s1_2: "Extrayez son contenu directement à la racine de la carte SD et insérez-la dans la console.",
+      
+      txt_h2_step2: "ÉTAPE 2 : Installer cIOS 57",
+      txt_s2_1: "Allez sur la Homebrew Channel, chargez le programme YAWM, sélectionnez le cIOS 57 situé à la racine de la SD, et procédez à l'installation.",
+
+      txt_alert2: "<strong>✅ Félicitations !</strong> Le processus d'installation du cIOS est automatique. Votre Wii Mini est prête.", 
+      txt_footer: "Si vous avez des doutes pendant le processus, nous vous recommandons de revoir la vidéo ci-dessus."
+    },
+    de: {
+      txt_backBtnText: "← Zurück zu den Anleitungen", txt_otherGuides: "Andere Anleitungen",
+      txt_awSubtitle: "Befolge die Schritte, um den Inhalt freizuschalten.", txt_awYtBtn: "1. Kanal abonnieren", txt_awGiftBtn: "2. Am Gewinnspiel teilnehmen",
+      txt_videos: "Videos", radar: "Update-Radar", txt_products: "Produkte", txt_guides: "Anleitungen", txt_discord: "Discord beitreten", txt_kofi: "Unterstütze uns auf Ko-fi",
+      
+      txt_tag: "WII MINI",
+      txt_title: "cIOS auf Wii Mini installieren (Automatisch)",
+      txt_alert1: "<strong>⚠️ Wichtig:</strong> Im Gegensatz zu Wii und vWii benötigt die Wii Mini nur ein cIOS (57). Die Installation anderer kann zu Inkompatibilitäten führen oder die Konsole bricken.",
+      txt_h2_req: "Voraussetzungen", 
+      txt_req1: "Eine SD-Karte (FAT32-Format)", 
+      txt_req2: "Wii Mini-Konsole mit installiertem Homebrew Channel", 
+      txt_req3: "cIOS-Installationsdateien", 
+      txt_reqBtn: "Dateien herunterladen", 
+      txt_reqNote: "* Sie können unsere <a href='../productos.html' class='mini-btn'>Produkte</a> ansehen",
+      
+      txt_h2_step1: "SCHRITT 1: Dateien herunterladen und SD vorbereiten",
+      txt_s1_1: "Laden Sie das cIOS-Dateipaket über die Schaltfläche oben herunter.", 
+      txt_s1_2: "Entpacken Sie den Inhalt direkt in das Hauptverzeichnis der SD-Karte und legen Sie sie in die Konsole ein.",
+      
+      txt_h2_step2: "SCHRITT 2: cIOS 57 installieren",
+      txt_s2_1: "Gehen Sie in den Homebrew Channel, laden Sie das YAWM-Programm, wählen Sie das cIOS 57 aus dem Hauptverzeichnis der SD-Karte und fahren Sie mit der Installation fort.",
+
+      txt_alert2: "<strong>✅ Herzlichen Glückwunsch!</strong> Der cIOS-Installationsprozess verläuft automatisch. Ihre Wii Mini ist bereit.", 
+      txt_footer: "Wenn Sie während des Vorgangs Fragen haben, empfehlen wir Ihnen, das oben angehängte Video anzusehen."
+    },
+    it: {
+      txt_backBtnText: "← Torna alle Guide", txt_otherGuides: "Altre Guide",
+      txt_awSubtitle: "Completa i passaggi per sbloccare i contenuti.", txt_awYtBtn: "1. Iscriviti al canale", txt_awGiftBtn: "2. Partecipa al giveaway",
+      txt_videos: "Video", radar: "Radar Aggiornamenti", txt_products: "Prodotti", txt_guides: "Guide", txt_discord: "Unisciti a Discord", txt_kofi: "Supportaci su Ko-fi",
+      
+      txt_tag: "WII MINI",
+      txt_title: "Installare cIOS su Wii Mini (Automatico)",
+      txt_alert1: "<strong>⚠️ Importante:</strong> A differenza di Wii e vWii, Wii Mini richiede un solo cIOS (il 57). L'installazione di altri può causare incompatibilità o addirittura il brick della console.",
+      txt_h2_req: "Requisiti", 
+      txt_req1: "Una scheda SD (formato FAT32)", 
+      txt_req2: "Console Wii Mini con Homebrew Channel installato", 
+      txt_req3: "File di installazione cIOS", 
+      txt_reqBtn: "Scarica File", 
+      txt_reqNote: "* Puoi visualizzare i nostri <a href='../productos.html' class='mini-btn'>prodotti</a>",
+      
+      txt_h2_step1: "PASSO 1: Scaricare i file e preparare la SD",
+      txt_s1_1: "Scarica il pacchetto file cIOS tramite il pulsante in alto.", 
+      txt_s1_2: "Estrai il contenuto direttamente nella root della scheda SD e inseriscila nella console.",
+      
+      txt_h2_step2: "PASSO 2: Installare cIOS 57",
+      txt_s2_1: "Vai all'Homebrew Channel, avvia il programma YAWM, seleziona il cIOS 57 che hai copiato nella root della SD e procedi con l'installazione.",
+
+      txt_alert2: "<strong>✅ Congratulazioni!</strong> Il processo di installazione di cIOS è automatico. La tua Wii Mini è pronta.", 
+      txt_footer: "Se hai dubbi durante il processo, ti consigliamo di guardare il video in alto."
+    },
+    pt: {
+      txt_backBtnText: "← Voltar aos Guias", txt_otherGuides: "Outros Guias",
+      txt_awSubtitle: "Siga os passos para desbloquear o conteúdo.", txt_awYtBtn: "1. Inscrever-se no canal", txt_awGiftBtn: "2. Participar no sorteio",
+      txt_videos: "Vídeos", radar: "Radar de Atualizações", txt_products: "Produtos", txt_guides: "Guias", txt_discord: "Junte-se ao Discord", txt_kofi: "Apoie-nos no Ko-fi",
+      
+      txt_tag: "WII MINI",
+      txt_title: "Instalar cIOS no Wii Mini (Automático)",
+      txt_alert1: "<strong>⚠️ Importante:</strong> Diferente do Wii e vWii, o Wii Mini precisa apenas de um cIOS (o 57). Instalar outros pode causar incompatibilidades ou até mesmo brickar o console.",
+      txt_h2_req: "Requisitos", 
+      txt_req1: "Um Cartão SD (formato FAT32)", 
+      txt_req2: "Console Wii Mini com Homebrew Channel instalado", 
+      txt_req3: "Arquivos de instalação do cIOS", 
+      txt_reqBtn: "Baixar Arquivos", 
+      txt_reqNote: "* Pode ver os nossos <a href='../productos.html' class='mini-btn'>produtos</a>",
+      
+      txt_h2_step1: "PASSO 1: Baixar arquivos e preparar o SD",
+      txt_s1_1: "Baixe o Pacote de Arquivos cIOS usando o botão acima.", 
+      txt_s1_2: "Extraia o conteúdo diretamente na raiz do Cartão SD e insira-o no Console.",
+      
+      txt_h2_step2: "PASSO 2: Instalar cIOS 57",
+      txt_s2_1: "Vá para o Homebrew Channel, carregue o programa YAWM, selecione o cIOS 57 que está na raiz do SD e prossiga com a instalação.",
+
+      txt_alert2: "<strong>✅ Parabéns!</strong> O processo de instalação do cIOS é automático. Seu Wii Mini está pronto.", 
+      txt_footer: "Se tiver dúvidas durante o processo, recomendamos revisar o vídeo acima."
+    },
+    ja: {
+      txt_backBtnText: "← ガイドに戻る", txt_otherGuides: "その他のガイド",
+      txt_awSubtitle: "コンテンツのロックを解除する手順を完了してください。", txt_awYtBtn: "1. チャンネル登録", txt_awGiftBtn: "2. プレゼントに参加",
+      txt_videos: "ビデオ", radar: "アップデートレーダー", txt_products: "製品", txt_guides: "ガイド", txt_discord: "Discordに参加", txt_kofi: "Ko-fiでサポート",
+      
+      txt_tag: "WII MINI",
+      txt_title: "Wii MiniにcIOSをインストール (自動)",
+      txt_alert1: "<strong>⚠️ 重要:</strong> WiiやvWiiとは異なり、Wii Miniは1つのcIOS（57）しか必要としません。他のものをインストールすると、互換性の問題が発生したり、本体がブリックする可能性があります。",
+      txt_h2_req: "必要なもの", 
+      txt_req1: "SDカード (FAT32フォーマット)", 
+      txt_req2: "Homebrew ChannelがインストールされたWii Mini", 
+      txt_req3: "cIOSインストールファイル", 
+      txt_reqBtn: "ファイルをダウンロード", 
+      txt_reqNote: "* <a href='../productos.html' class='mini-btn'>製品</a>をチェックできます",
+      
+      txt_h2_step1: "ステップ 1: ファイルのダウンロードとSDの準備",
+      txt_s1_1: "上のボタンからcIOSファイルパックをダウンロードします。", 
+      txt_s1_2: "内容をSDカードのルート（一番上の階層）に解凍し、本体に挿入します。",
+      
+      txt_h2_step2: "ステップ 2: cIOS 57のインストール",
+      txt_s2_1: "Homebrew Channelに移動し、YAWMプログラムをロードし、SDのルートにあるcIOS 57を選択してインストールを進めます。",
+
+      txt_alert2: "<strong>✅ おめでとうございます！</strong> cIOSのインストールプロセスは自動です。Wii Miniの準備が整いました。", 
+      txt_footer: "不明な点がある場合は、上の動画を確認することをお勧めします。"
+    },
+    ko: {
+      txt_backBtnText: "← 가이드로 돌아가기", txt_otherGuides: "다른 가이드",
+      txt_awSubtitle: "콘텐츠 잠금을 해제하려면 단계를 완료하세요.", txt_awYtBtn: "1. 채널 구독", txt_awGiftBtn: "2. 경품 행사 참여",
+      txt_videos: "비디오", radar: "업데이트 레이더", txt_products: "제품", txt_guides: "가이드", txt_discord: "Discord 참여", txt_kofi: "Ko-fi에서 후원",
+      
+      txt_tag: "WII MINI",
+      txt_title: "Wii Mini에 cIOS 설치 (자동)",
+      txt_alert1: "<strong>⚠️ 중요:</strong> Wii 및 vWii와 달리 Wii Mini는 하나의 cIOS(57)만 필요합니다. 다른 것을 설치하면 호환성 문제가 발생하거나 콘솔이 벽돌이 될 수 있습니다.",
+      txt_h2_req: "요구 사항", 
+      txt_req1: "SD 카드(FAT32 포맷)", 
+      txt_req2: "Homebrew Channel이 설치된 Wii Mini 콘솔", 
+      txt_req3: "cIOS 설치 파일", 
+      txt_reqBtn: "파일 다운로드", 
+      txt_reqNote: "* <a href='../productos.html' class='mini-btn'>제품</a>을 확인할 수 있습니다",
+      
+      txt_h2_step1: "1단계: 파일 다운로드 및 SD 준비",
+      txt_s1_1: "위의 버튼을 사용하여 cIOS 파일 팩을 다운로드합니다.", 
+      txt_s1_2: "SD 카드의 최상위 경로(루트)에 압축을 풀고 콘솔에 삽입합니다.",
+      
+      txt_h2_step2: "2단계: cIOS 57 설치",
+      txt_s2_1: "Homebrew Channel로 이동하여 YAWM 프로그램을 불러오고 SD 루트에 있는 cIOS 57을 선택하여 설치를 진행합니다.",
+
+      txt_alert2: "<strong>✅ 축하합니다!</strong> cIOS 설치 과정은 자동으로 진행됩니다. Wii Mini가 준비되었습니다.", 
+      txt_footer: "진행 과정에 궁금한 점이 있으면 위에 첨부된 비디오를 검토하는 것이 좋습니다."
+    }
+  };
+
+  let idiomaActual = 'es'; 
+
+  function iniciarAppPrincipal() {
+      const mainHub = document.getElementById('mainHub');
+      if (mainHub) {
+          mainHub.style.display = 'block';
+          mainHub.style.opacity = '1';
+      }
+      cargarSidebar();
+  }
+
+  const paletaTemas = { 
+    rojo: { hex: '#e50914', rgb: '229, 9, 20' }, 
+    naranja: { hex: '#ff6600', rgb: '255, 102, 0' }, 
+    amarillo: { hex: '#ffcc00', rgb: '255, 204, 0' }, 
+    verde: { hex: '#2ecc71', rgb: '46, 204, 113' }, 
+    azul: { hex: '#00aaff', rgb: '0, 170, 255' }, 
+    violeta: { hex: '#9b59b6', rgb: '155, 89, 182' }, 
+    rosa: { hex: '#ff80ab', rgb: '255, 128, 171' } 
+  };
+
+  function initThemeDots() {
+    const savedTheme = localStorage.getItem('selectedThemeColor') || 'azul';
+    const savedMode = localStorage.getItem('selectedMode') || 'dark';
+    
+    const themeDotsContainer = document.getElementById('themeDots') || document.querySelector('.theme-dots-container');
+    if(!themeDotsContainer) return;
+    themeDotsContainer.innerHTML = '';
+    
+    Object.keys(paletaTemas).forEach(colorKey => {
+      const dot = document.createElement('div'); 
+      dot.className = 'color-dot theme-color-dot'; 
+      dot.style.backgroundColor = paletaTemas[colorKey].hex;
+      dot.setAttribute('title', `Tema ${colorKey}`);
+      if (colorKey === savedTheme) dot.classList.add('active-dot');
+      dot.addEventListener('click', () => {
+        document.querySelectorAll('.theme-color-dot').forEach(d => d.classList.remove('active-dot'));
+        dot.classList.add('active-dot'); 
+        localStorage.setItem('selectedThemeColor', colorKey); 
+        applyTheme(colorKey);
+      });
+      themeDotsContainer.appendChild(dot);
+    });
+
+    const separador = document.createElement('div');
+    separador.style.width = '2px';
+    separador.style.backgroundColor = 'var(--glass-border)';
+    separador.style.margin = '0 6px';
+    separador.style.borderRadius = '2px';
+    themeDotsContainer.appendChild(separador);
+
+    const dotOscuro = document.createElement('div');
+    dotOscuro.className = 'color-dot mode-dot';
+    dotOscuro.style.backgroundColor = '#141414';
+    dotOscuro.style.border = '1px solid #555';
+    dotOscuro.setAttribute('title', 'Forzar Modo Oscuro');
+    
+    const dotClaro = document.createElement('div');
+    dotClaro.className = 'color-dot mode-dot';
+    dotClaro.style.backgroundColor = '#f8f9fa';
+    dotClaro.style.border = '1px solid #ccc';
+    dotClaro.setAttribute('title', 'Forzar Modo Claro');
+
+    if (savedMode === 'dark') {
+      dotOscuro.classList.add('active-dot');
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else if (savedMode === 'light') {
+      dotClaro.classList.add('active-dot');
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+
+    dotOscuro.addEventListener('click', () => {
+      document.querySelectorAll('.mode-dot').forEach(d => d.classList.remove('active-dot'));
+      dotOscuro.classList.add('active-dot');
+      localStorage.setItem('selectedMode', 'dark');
+      document.documentElement.setAttribute('data-theme', 'dark');
+    });
+
+    dotClaro.addEventListener('click', () => {
+      document.querySelectorAll('.mode-dot').forEach(d => d.classList.remove('active-dot'));
+      dotClaro.classList.add('active-dot');
+      localStorage.setItem('selectedMode', 'light');
+      document.documentElement.setAttribute('data-theme', 'light');
+    });
+
+    themeDotsContainer.appendChild(dotOscuro);
+    themeDotsContainer.appendChild(dotClaro);
+
+    applyTheme(savedTheme);
+  }
+
+  function applyTheme(colorKey) { 
+    const theme = paletaTemas[colorKey] || paletaTemas.azul; 
+    document.documentElement.style.setProperty('--red', theme.hex); 
+    document.documentElement.style.setProperty('--glow-rgb', theme.rgb); 
+  }
+
+  function createLanguageSelector(){
+    const selector = document.getElementById('languageSelector'); 
+    if(!selector) return;
+    selector.innerHTML = '';
+    const langs = { es:'Español', en:'English', fr:'Français', de:'Deutsch', it:'Italiano', pt:'Português', ja:'日本語', ko:'한국어' };
+    Object.keys(langs).forEach(code => { 
+      const opt = document.createElement('option'); 
+      opt.value = code; 
+      opt.textContent = langs[code]; 
+      selector.appendChild(opt); 
+    });
+    
+    const savedLang = localStorage.getItem('preferredLanguage');
+    const browserLang = (navigator.language || navigator.userLanguage || 'es').split('-')[0].toLowerCase();
+    
+    if (savedLang && translations[savedLang]) { idiomaActual = savedLang; } 
+    else if (translations[browserLang]) { idiomaActual = browserLang; } 
+    else { idiomaActual = 'es'; }
+    
+    selector.value = idiomaActual;
+    
+    selector.addEventListener('change', e => {
+      idiomaActual = e.target.value; 
+      localStorage.setItem('preferredLanguage', idiomaActual); 
+      updateLanguage();
+      cargarSidebar(); 
+    });
+  }
+
+  function updateLanguage(){
+    const t = translations[idiomaActual] || translations['es'];
+    Object.keys(t).forEach(key => { 
+        const element = document.getElementById(key); 
+        if(element) {
+            element.innerHTML = t[key]; 
+        } 
+    });
+    
+    if (document.getElementById('videosBtn')) {
+      const dictVideos = { es: 'Vídeos', en: 'Videos', fr: 'Vidéos', de: 'Videos', it: 'Video', pt: 'Vídeos', ja: 'ビデオ', ko: '비디오' };
+      document.getElementById('videosBtn').title = (t && t.videos) ? t.videos : (dictVideos[idiomaActual] || 'Vídeos');
+    }
+    if (document.getElementById('radarBtn')) document.getElementById('radarBtn').title = t.txt_radar || "Radar";
+    if (document.getElementById('productsBtn')) document.getElementById('productsBtn').title = t.txt_products || "Products";
+    if (document.getElementById('guideBtn')) document.getElementById('guideBtn').title = t.txt_guides || "Guides";
+    if (document.getElementById('discordBtn')) document.getElementById('discordBtn').title = t.txt_discord || "Discord";
+    if (document.getElementById('kofiBtn')) document.getElementById('kofiBtn').title = t.txt_kofi || "Ko-fi";
+  }
+
+  async function cargarSidebar() {
+    const sidebar = document.getElementById('guideSidebar');
+    const cacheKey = '_lp_sidebar_cache';
+    
+    // --- PASO 1: CARGA INSTANTÁNEA DESDE CACHÉ (0ms) ---
+    const cacheGuardado = localStorage.getItem(cacheKey);
+    if (cacheGuardado) {
+      try {
+        const guiasCacheadas = JSON.parse(cacheGuardado);
+        renderSidebarMenu(guiasCacheadas);
+      } catch (e) {
+        console.warn("Error al leer caché del sidebar, limpiando...", e);
+        localStorage.removeItem(cacheKey);
+      }
+    } else {
+      sidebar.innerHTML = `<div style="text-align:center; color:#aaa; font-size:13px; padding: 20px;">Cargando menú...</div>`;
+    }
+
+    // --- PASO 2: FETCH EN SEGUNDO PLANO (SILENCIOSO) ---
+    try {
+      const repo = 'Kelonio-hub/Archivos-Kelonio'; 
+      const apiURL = `https://api.github.com/repos/${repo}/contents/guias?t=` + Date.now();
+      const response = await fetch(apiURL, { cache: "no-store" }); 
+      if (!response.ok) throw new Error("Error en la respuesta de GitHub");
+      
+      const archivos = await response.json(); 
+      const htmlFiles = archivos.filter(f => f.name.endsWith('.html') && f.name !== 'plantilla.html'); 
+      
+      // Peticiones en paralelo y blindadas contra fallos individuales
+      const guiasPromesas = htmlFiles.map(async (file) => {
+        try {
+          const res = await fetch(file.download_url + '?t=' + Date.now(), { cache: "no-store" }); 
+          if (!res.ok) return null;
+          const htmlText = await res.text();
+          const parser = new DOMParser(); 
+          const doc = parser.parseFromString(htmlText, 'text/html'); 
+          const tag = doc.querySelector('meta[name="guide-tag"]')?.content || 'INFO';  
+          let titles = {};
+          ['es', 'en', 'fr', 'de', 'it', 'pt', 'ja', 'ko'].forEach(lang => { 
+            titles[lang] = doc.querySelector(`meta[name="guide-title-${lang}"]`)?.content || file.name.replace('.html', ''); 
+          });
+          return { tag, titles, link: file.name };
+        } catch (err) {
+          return null; // Si una guía falla, no rompe el resto del menú
+        }
+      });
+
+      const resultados = await Promise.all(guiasPromesas);
+      const todasLasGuias = resultados.filter(guia => guia !== null);
+
+      // Orden determinista para evitar falsos positivos al comparar textos
+      todasLasGuias.sort((a, b) => a.link.localeCompare(b.link));
+
+      // --- PASO 3: COMPARACIÓN Y ACTUALIZACIÓN ---
+      const nuevaDataString = JSON.stringify(todasLasGuias);
+      
+      if (cacheGuardado !== nuevaDataString) {
+        localStorage.setItem(cacheKey, nuevaDataString);
+        
+        // Si es la primera vez que entra (sin caché), renderizamos directo
+        if (!cacheGuardado) {
+          renderSidebarMenu(todasLasGuias);
+        } else {
+          // Si ya estaba viendo el caché y hubo cambios, mostramos el aviso elegante
+          mostrarAvisoActualizacion(todasLasGuias);
+        }
+      }
+    } catch (error) { 
+      if (!cacheGuardado) {
+        sidebar.innerHTML = `<p style="color:#aaa; text-align:center; font-size:13px; margin-top:20px;">No se pudo cargar el menú dinámico.</p>`; 
+      }
+      console.warn("Sincronización en segundo plano interrumpida:", error);
+    }
+  }
+
+  // --- FUNCIÓN AUXILIAR 1: RENDERIZADO DEL HTML ---
+  function renderSidebarMenu(todasLasGuias) {
+    const sidebar = document.getElementById('guideSidebar');
+    const t = translations[idiomaActual] || translations['en']; 
+    let htmlContent = `<div class="sidebar-title" id="txt_otherGuides">${t.txt_otherGuides || 'Other Guides'}</div>`; 
+    
+    const ordenDeseado = ['SWITCH', '3DS', 'NDSI', 'WII', 'WII MINI', 'WII U', 'VWII', 'SONY','XBOX','SD'];
+    const iconMap = { 'SWITCH':'https://raw.githubusercontent.com/Kelonio-hub/Link-3DS/main/img/Logo%20Switch.png', '3DS':'https://raw.githubusercontent.com/Kelonio-hub/Link-3DS/main/img/Logo%203DS.png', 'NDSI':'https://raw.githubusercontent.com/Kelonio-hub/Link-3DS/main/img/Logo%20NDS.png', 'NDS':'https://raw.githubusercontent.com/Kelonio-hub/Link-3DS/main/img/Logo%20NDS.png', 'WII':'https://raw.githubusercontent.com/Kelonio-hub/Link-3DS/main/img/Logo%20Wii.png', 'WII MINI':'https://raw.githubusercontent.com/Kelonio-hub/Link-3DS/main/img/Logo%20Mini.png', 'WII U':'https://raw.githubusercontent.com/Kelonio-hub/Link-3DS/main/img/Logo%20WiiU.png', 'VWII':'https://raw.githubusercontent.com/Kelonio-hub/Link-3DS/main/img/Logo%20vWii.png', 'SONY':'https://api.iconify.design/ri:playstation-line.svg?color=%23ffffff', 'XBOX':'https://api.iconify.design/ri:xbox-line.svg?color=%23ffffff', 'SD':'https://raw.githubusercontent.com/Kelonio-hub/Link-3DS/main/img/Logo%20SD.png' }; 
+    
+    let grupos = {}; 
+    todasLasGuias.forEach(g => { 
+      let cat = g.tag.split('/')[0].trim().toUpperCase(); 
+      if(!grupos[cat]) grupos[cat] = []; 
+      grupos[cat].push(g); 
+    }); 
+    
+    let currentFile = window.location.pathname.split('/').pop() || ''; 
+
+    const renderGroup = (cat, guias) => { 
+      let iconSrc = iconMap[cat] || 'https://raw.githubusercontent.com/Kelonio-hub/Archivos-Kelonio/main/img/Logo%20Zip.png'; 
+      let hasActive = guias.some(g => g.link.replace('guias/', '') === currentFile); 
+      let groupClass = hasActive ? "sidebar-group" : "sidebar-group collapsed"; 
+
+      htmlContent += `<div class="${groupClass}">
+          <div class="sidebar-category" onclick="this.parentElement.classList.toggle('collapsed')">
+              <div class="cat-left"><img src="${iconSrc}"> ${cat}</div>
+              <span class="toggle-icon">▼</span>
+          </div>
+          <div class="sidebar-links-container">`; 
+
+      guias.forEach(g => {  
+        let linkName = g.link.replace('guias/', '');  
+        let isActive = (currentFile === linkName) ? 'active' : '';  
+        let displayTitle = g.titles ? (g.titles[idiomaActual] || g.titles['en'] || g.titles['es']) : (g.title || g.link); 
+        
+        // Obtenemos el mismo icono de la categoría para el enlace individual
+        let linkIconSrc = iconMap[cat] || 'https://raw.githubusercontent.com/Kelonio-hub/Archivos-Kelonio/main/img/Logo%20Zip.png';
+        
+        // Añadimos la imagen antes del texto del enlace con alineación flex
+        htmlContent += `<a href="${linkName}" class="sidebar-link ${isActive}" style="display: flex; align-items: center; gap: 8px;">
+            <img src="${linkIconSrc}" style="width: 16px; height: 16px; object-fit: contain; opacity: 0.8;">
+            <span>${displayTitle}</span>
+        </a>`;  
+      });
+      htmlContent += `</div></div>`; 
+    };
+
+    ordenDeseado.forEach(cat => { 
+      if(grupos[cat] && grupos[cat].length > 0) { 
+        renderGroup(cat, grupos[cat]); 
+        delete grupos[cat]; 
+      }
+    });
+
+    Object.keys(grupos).forEach(cat => { 
+      renderGroup(cat, grupos[cat]); 
+    });
+
+    sidebar.innerHTML = htmlContent; 
+  }
+
+  // --- FUNCIÓN AUXILIAR 2: NOTIFICACIÓN DE ACTUALIZACIÓN ---
+  function mostrarAvisoActualizacion(nuevasGuias) {
+    const sidebar = document.getElementById('guideSidebar');
+    if (!document.getElementById('updateBanner')) {
+      const aviso = document.createElement('div');
+      aviso.id = 'updateBanner';
+      aviso.style.cssText = "background: rgba(var(--glow-rgb), 0.25); border: 1px solid var(--red); color: #fff; padding: 10px; border-radius: 8px; font-size: 12px; text-align: center; margin-bottom: 15px; cursor: pointer; transition: all 0.3s ease; font-weight: bold; box-shadow: 0 4px 12px rgba(0,0,0,0.3);";
+      aviso.innerHTML = "✨ Hay nuevas guías disponibles<br><span style='font-size: 11px; text-decoration: underline; opacity: 0.9;'>Haz clic para actualizar el menú</span>";
+      
+      aviso.onmouseover = () => aviso.style.transform = "scale(1.02)";
+      aviso.onmouseout = () => aviso.style.transform = "scale(1)";
+      
+      aviso.onclick = () => {
+        renderSidebarMenu(nuevasGuias);
+        aviso.remove();
+      };
+      
+      // Inserta el aviso justo debajo del título "Otras Guías"
+      if (sidebar.firstChild) {
+        sidebar.insertBefore(aviso, sidebar.children[1] || sidebar.firstChild);
+      } else {
+        sidebar.appendChild(aviso);
+      }
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    cargarSidebar();
+  });
+
+  const mybutton = document.getElementById("backToTopBtn");
+  window.onscroll = function() { mybutton.style.display = (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) ? "block" : "none"; };
+  window.onload = () => { initThemeDots(); createLanguageSelector(); updateLanguage(); iniciarAppPrincipal(); };
+</script>
+<script id="mobile-enhancer">
+            function adaptarLetraTitulo() {
+              const el = document.getElementById('txt_title');
+              if (!el) return;
+              const contenedor = el.parentElement;
+              if (!contenedor || contenedor.clientWidth === 0) return;
+              
+              // Reseteamos al tamaño máximo teórico para medir de forma limpia
+              el.style.setProperty('--title-size', window.innerWidth <= 650 ? '1.5rem' : '2.5rem');
+              
+              let tamañoActual = parseFloat(window.getComputedStyle(el).fontSize);
+              let limiteSeguridad = 0;
+              
+              // Bucle de compresión milimétrica
+              while (el.scrollWidth > contenedor.clientWidth && tamañoActual > 8 && limiteSeguridad < 100) {
+                tamañoActual -= 0.5;
+                el.style.setProperty('--title-size', tamañoActual + 'px');
+                limiteSeguridad++;
+              }
+            }
+
+            function inicializarMejorasMoviles() {
+              adaptarLetraTitulo();
+              
+              if (document.getElementById('mejoras-moviles-ready')) return;
+
+              // Botón Volver Arriba
+              const btnTop = document.createElement('button');
+              btnTop.id = 'btn-back-to-top';
+              btnTop.innerHTML = '↑';
+              document.body.appendChild(btnTop);
+
+              window.addEventListener('scroll', () => {
+                if (window.innerWidth <= 650) {
+                  if (window.scrollY > 400) btnTop.classList.add('visible');
+                  else btnTop.classList.remove('visible');
+                }
+              });
+              btnTop.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              });
+
+              // Menú Desplegable
+              const sidebar = document.querySelector('.sidebar');
+              const mainLayout = document.querySelector('.main-layout');
+              if (sidebar && mainLayout) {
+                const btnMenu = document.createElement('button');
+                btnMenu.className = 'mobile-sidebar-toggle';
+                btnMenu.innerHTML = '☰ Ver Otras Guías';
+                mainLayout.insertBefore(btnMenu, mainLayout.firstChild);
+
+                btnMenu.addEventListener('click', () => {
+                  sidebar.classList.toggle('active');
+                  if (sidebar.classList.contains('active')) {
+                    btnMenu.innerHTML = '✕ Cerrar Otras Guías';
+                    sidebar.scrollIntoView({ behavior: 'smooth' });
+                  } else {
+                    btnMenu.innerHTML = '☰ Ver Otras Guías';
+                  }
+                });
+              }
+
+              const marca = document.createElement('div');
+              marca.id = 'mejoras-moviles-ready';
+              marca.style.display = 'none';
+              document.body.appendChild(marca);
+            }
+
+            // RED DE SEGURIDAD INTERNA (Multi-disparador anti-retardo)
+            window.addEventListener('resize', adaptarLetraTitulo);
+            document.addEventListener('DOMContentLoaded', inicializarMejorasMoviles);
+            window.addEventListener('load', adaptarLetraTitulo);
+            
+            // Si el navegador soporta la API de fuentes, recalcula al cargar la tipografía exacta
+            if (document.fonts) {
+              document.fonts.ready.then(adaptarLetraTitulo);
+            }
+            
+            // Ráfaga de seguridad por si la conexión o el dispositivo son lentos
+            setTimeout(adaptarLetraTitulo, 50);
+            setTimeout(adaptarLetraTitulo, 300);
+            setTimeout(adaptarLetraTitulo, 600);
+            </script>
+
+<script id="script-producto-recomendado">
+(function() {
+  let productoActualSeleccionado = null;
+
+  async function cargarProductoRecomendado() {
+    const box = document.getElementById('recommended-product-box');
+    if (!box) return;
+
+    const tagMeta = document.querySelector('meta[name="guide-tag"]');
+    const consoleTag = tagMeta ? tagMeta.content.split('/')[0].trim().toUpperCase() : 'ALL';
+
+    const endpoints = ['switch.json', 'ps5.json', 'sd_usb.json', '3ds.json'];
+    const baseUrl = 'https://raw.githubusercontent.com/Kelonio-hub/Link-3DS/main/productos/';
+
+    let todosLosProductos = [];
+    for (const file of endpoints) {
+      try {
+        const res = await fetch(baseUrl + file + '?t=' + Date.now());
+        if (res.ok) {
+          const data = await res.json();
+          const lista = Array.isArray(data) ? data : Object.values(data);
+          todosLosProductos = todosLosProductos.concat(lista);
+        }
+      } catch(e) {}
+    }
+
+    if (!todosLosProductos.length) return;
+
+    let coincidentes = todosLosProductos.filter(p => {
+      if (!p.console) return false;
+      const c = p.console.toUpperCase();
+      return c === consoleTag || (consoleTag.includes('WII') && c.includes('WII')) || (consoleTag.includes('3DS') && c.includes('3DS'));
+    });
+
+    if (!coincidentes.length) coincidentes = todosLosProductos;
+
+    productoActualSeleccionado = coincidentes[Math.floor(Math.random() * coincidentes.length)];
+    renderizarTarjetaProducto();
+  }
+
+  function renderizarTarjetaProducto() {
+    const box = document.getElementById('recommended-product-box');
+    if (!box || !productoActualSeleccionado) return;
+
+    const p = productoActualSeleccionado;
+    const lang = (typeof idiomaActual !== 'undefined') ? idiomaActual : 'es';
+
+    const label = (p.label && p.label[lang]) || (p.label && p.label['es']) || p.label || 'Accesorio Recomendado';
+    const desc = (p.desc && p.desc[lang]) || (p.desc && p.desc['es']) || p.desc || '';
+    const img = p.img || 'https://raw.githubusercontent.com/Kelonio-hub/Archivos-Kelonio/main/img/Logo%20Zip.png';
+    let url = p.url || '#';
+    if (url !== '#' && !url.includes('tag=')) {
+      url += (url.includes('?') ? '&' : '?') + 'tag=kelonio-21';
+    }
+
+    const dictBadge = {
+      es: 'Recomendado para tu consola', en: 'Recommended for your console',
+      fr: 'Recommandé pour votre console', de: 'Empfohlen für deine Konsole',
+      it: 'Consigliato per la tua console', pt: 'Recomendado para o seu console',
+      ja: 'あなたのゲーム機におすすめ', ko: '콘솔 추천 제품'
+    };
+
+    const dictBtn = {
+      es: 'Ver en Amazon', en: 'View on Amazon', fr: 'Voir sur Amazon',
+      de: 'Auf Amazon ansehen', it: 'Vedi su Amazon', pt: 'Ver na Amazon',
+      ja: 'Amazonで見る', ko: 'Amazonで見る'
+    };
+
+    box.innerHTML = `
+      <div class="product-card-widget">
+        <span class="product-badge">🛒 ${dictBadge[lang] || dictBadge['es']}</span>
+        <div class="product-card-body">
+          <img src="${img}" alt="${label}" class="product-card-img" />
+          <div class="product-card-info">
+            <h4 class="product-card-title">${label}</h4>
+            <div class="product-card-price">${p.price || ''}</div>
+            <p class="product-card-desc">${desc.replace(/\n/g, ' ')}</p>
+            <a href="${url}" target="_blank" rel="noopener noreferrer" class="product-card-btn">${dictBtn[lang] || dictBtn['es']} ↗</a>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(cargarProductoRecomendado, 300);
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,704 @@
+{
+  "SWITCH": [
+    {
+      "id": "1",
+      "label": { "en": "Switch: Check Mariko", "es": "Switch: Comprobar Mariko", "fr": "Switch : Vérifier Mariko", "it": "Switch: Verifica Mariko", "pt": "Switch: Verificar Mariko", "de": "Switch: Mariko prüfen", "ja": "Switch: Marikoを確認", "ko": "Switch: Mariko 확인" },
+      "desc": { "en": "Program to check Mariko model", "es": "Programa para comprobar modelo Mariko", "fr": "Programme pour vérifier le modèle Mariko", "it": "Programma per verificare il modello Mariko", "pt": "Programa para verificar modelo Mariko", "de": "Programm zur Überprüfung des Mariko-Modells", "ja": "Marikoモデルの確認プログラム", "ko": "Mariko 모델 확인 프로그램" },
+      "videoYoutubeIds": ["bos0jN2uPug"]
+    },
+    {
+      "id": "2",
+      "label": { "en": "Switch: Switch Files Pack", "es": "Switch: Pack archivos mágicos Switch", "fr": "Switch : Pack de fichiers Switch", "it": "Switch: Pack file Switch", "pt": "Switch: Pack de arquivos Switch", "de": "Switch: Switch-Dateipaket", "ja": "Switch: Switchファイルパック", "ko": "Switch: Switch 파일 팩" },
+      "desc": { "en": "Complete pack of essential files for Nintendo Switch", "es": "Paquete completo de archivos esenciales para Nintendo Switch", "fr": "Pack complet de fichiers essentiels pour Nintendo Switch", "it": "Pacchetto completo di file essenziali per Nintendo Switch", "pt": "Pacote completo de arquivos essenciais para Nintendo Switch", "de": "Komplettes Paket mit essenziellen Dateien für Nintendo Switch", "ja": "Nintendo Switch用必須ファイル完全パック", "ko": "Nintendo Switch 필수 파일 전체 팩" },
+      "videoYoutubeIds": ["-zf6ePHmJgc"]
+    },
+    {
+      "id": "3",
+      "label": { "en": "Switch: Hack Mariko / Lite", "es": "Switch: HacK Mariko - Lite", "fr": "Switch : Hack Mariko / Lite", "it": "Switch: Hack Mariko / Lite", "pt": "Switch: Hack Mariko / Lite", "de": "Switch: Hack Mariko / Lite", "ja": "Switch: Mariko Hack / Lite", "ko": "Switch: Mariko Hack / Lite" },
+      "desc": { "en": "Lite version of Mariko hack tools for Nintendo Switch", "es": "Versión Lite de herramientas de hack Mariko para Nintendo Switch", "fr": "Version Lite des outils de hack Mariko pour Nintendo Switch", "it": "Versione Lite degli strumenti hack Mariko per Nintendo Switch", "pt": "Versão Lite das ferramentas de hack Mariko para Nintendo Switch", "de": "Lite-Version der Mariko-Hack-Tools für Nintendo Switch", "ja": "Nintendo Switch用MarikoハックツールLite版", "ko": "Nintendo Switch Mariko 핵 도구 Lite 버전" },
+      "videoYoutubeIds": ["qIm1QCGVTVo"]
+    },
+    {
+      "id": "4",
+      "label": { "en": "Switch: Semibrick", "es": "Switch: Semibrick", "fr": "Switch : Semibrick", "it": "Switch: Semibrick", "pt": "Switch: Semibrick", "de": "Switch: Semibrick", "ja": "Switch: Semibrick", "ko": "Switch: Semibrick" },
+      "desc": { "en": "Tools to fix or handle semibrick on Nintendo Switch", "es": "Herramientas para reparar o manejar semibrick en Nintendo Switch", "fr": "Outils pour réparer ou gérer le semibrick sur Nintendo Switch", "it": "Strumenti per riparare o gestire semibrick su Nintendo Switch", "pt": "Ferramentas para corrigir ou gerenciar semibrick no Nintendo Switch", "de": "Tools zum Beheben oder Behandeln von Semibrick auf Nintendo Switch", "ja": "Nintendo Switch用Semibrick修復ツール", "ko": "Nintendo Switch Semibrick 복구 도구" },
+      "videoYoutubeIds": ["K98b_GEKIQI"]
+    },
+    {
+      "id": "5",
+      "label": { "en": "Switch: Change SD", "es": "Switch: Cambiar SD", "fr": "Switch : Changer SD", "it": "Switch: Cambia SD", "pt": "Switch: Trocar SD", "de": "Switch: SD wechseln", "ja": "Switch: SD交換", "ko": "Switch: SD 교체" },
+      "desc": { "en": "Guide and tools to change SD card on Nintendo Switch", "es": "Guía y herramientas para cambiar la tarjeta SD en Nintendo Switch", "fr": "Guide et outils pour changer la carte SD sur Nintendo Switch", "it": "Guida e strumenti per cambiare la SD su Nintendo Switch", "pt": "Guia e ferramentas para trocar o cartão SD no Nintendo Switch", "de": "Anleitung und Tools zum Wechseln der SD-Karte auf Nintendo Switch", "ja": "Nintendo Switch用SDカード交換ガイド＆ツール", "ko": "Nintendo Switch SD 카드 교체 가이드 및 도구" },
+      "videoYoutubeIds": ["4vDe7cflON0"]
+    },
+    {
+      "id": "6",
+      "label": { "en": "Switch: FTP", "es": "Switch: FTP", "fr": "Switch : FTP", "it": "Switch: FTP", "pt": "Switch: FTP", "de": "Switch: FTP", "ja": "Switch: FTP", "ko": "Switch: FTP" },
+      "desc": { "en": "FTP server for file transfer on Nintendo Switch", "es": "Servidor FTP para transferencia de archivos en Nintendo Switch", "fr": "Serveur FTP pour le transfert de fichiers sur Nintendo Switch", "it": "Server FTP per il trasferimento file su Nintendo Switch", "pt": "Servidor FTP para transferência de arquivos no Nintendo Switch", "de": "FTP-Server zum Dateitransfer auf Nintendo Switch", "ja": "Nintendo Switch用ファイル転送FTPサーバー", "ko": "Nintendo Switch 파일 전송 FTP 서버" },
+      "videoYoutubeIds": ["ke2JJ7Njre8"]
+    },
+    {
+      "id": "7",
+      "label": { "en": "Switch: Switch Incognito Mode", "es": "Switch: Modo Incógnito", "fr": "Switch : Mode Incognito", "it": "Switch: Modalità Incognito", "pt": "Switch: Modo Incognito", "de": "Switch: Inkognito-Modus", "ja": "Switch: Incognitoモード", "ko": "Switch: Incognito 모드" },
+      "desc": { "en": "Tools to enable incognito mode on Nintendo Switch", "es": "Herramientas para activar modo incógnito en Nintendo Switch", "fr": "Outils pour activer le mode incognito sur Nintendo Switch", "it": "Strumenti per abilitare la modalità incognito su Nintendo Switch", "pt": "Ferramentas para ativar modo incógnito no Nintendo Switch", "de": "Tools zum Aktivieren des Inkognito-Modus auf Nintendo Switch", "ja": "Nintendo Switch用Incognitoモード有効化ツール", "ko": "Nintendo Switch Incognito 모드 활성화 도구" },
+      "videoYoutubeIds": ["GhwB2ZV2mr0"]
+    },
+    {
+      "id": "8",
+      "label": { "en": "Switch: DBI", "es": "Switch: DBI", "fr": "Switch : DBI", "it": "Switch: DBI", "pt": "Switch: DBI", "de": "Switch: DBI", "ja": "Switch: DBI", "ko": "Switch: DBI" },
+      "desc": { "en": "Advanced file manager and installer for Nintendo Switch", "es": "Gestor de archivos e instalador avanzado para Nintendo Switch", "fr": "Gestionnaire de fichiers et installateur avancé pour Nintendo Switch", "it": "Gestore file e installer avanzato per Nintendo Switch", "pt": "Gerenciador de arquivos e instalador avançado para Nintendo Switch", "de": "Erweiterter Dateimanager und Installer für Nintendo Switch", "ja": "Nintendo Switch用高度ファイルマネージャー＆インストーラー", "ko": "Nintendo Switch 고급 파일 관리자 및 설치 프로그램" },
+      "videoYoutubeIds": ["yq7aF2f4O_0"]
+    },
+    {
+      "id": "9",
+      "label": { "en": "Switch: Awoo Installer", "es": "Switch: Awoo Installer", "fr": "Switch : Installateur Awoo", "it": "Switch: Installer Awoo", "pt": "Switch: Instalador Awoo", "de": "Switch: Awoo Installer", "ja": "Switch: Awooインストーラー", "ko": "Switch: Awoo 설치 프로그램" },
+      "desc": { "en": "Tool to install Awoo on Nintendo Switch", "es": "Herramienta para instalar Awoo en Nintendo Switch", "fr": "Outil pour installer Awoo sur Nintendo Switch", "it": "Strumento per installare Awoo su Nintendo Switch", "pt": "Ferramenta para instalar Awoo no Nintendo Switch", "de": "Tool zum Installieren von Awoo auf Nintendo Switch", "ja": "Nintendo Switch用Awooインストールツール", "ko": "Nintendo Switch용 Awoo 설치 도구" },
+      "tipo": "guia",
+      "guiaPath": "guias/switch/awoo",
+      "videoYoutubeIds": ["lv76djYZ-QU"]
+    },
+    {
+      "id": "10",
+      "label": { "en": "Switch: JKSV", "es": "Switch: Jksv", "fr": "Switch : JKSV", "it": "Switch: JKSV", "pt": "Switch: JKSV", "de": "Switch: JKSV", "ja": "Switch: JKSV", "ko": "Switch: JKSV" },
+      "desc": { "en": "Save manager JKSV for Nintendo Switch", "es": "Gestor de guardados JKSV para Nintendo Switch", "fr": "Gestionnaire de sauvegardes JKSV pour Nintendo Switch", "it": "Gestore salvataggi JKSV per Nintendo Switch", "pt": "Gerenciador de saves JKSV para Nintendo Switch", "de": "Speicherverwaltungs-Tool JKSV für Nintendo Switch", "ja": "Nintendo Switch用セーブマネージャーJKSV", "ko": "Nintendo Switch JKSV 세이브 관리자" },
+      "videoYoutubeIds": ["KWKlijswonQ"]
+    },
+    {
+      "id": "11",
+      "label": { "en": "Switch: Ebook Reader", "es": "Switch: Ebook Reader", "fr": "Switch : Lecteur Ebook", "it": "Switch: Ebook Reader", "pt": "Switch: Leitor de Ebook", "de": "Switch: Ebook Reader", "ja": "Switch: Ebook Reader", "ko": "Switch: Ebook Reader" },
+      "desc": { "en": "Ebook reader application for Nintendo Switch", "es": "Aplicación lectora de ebooks para Nintendo Switch", "fr": "Application de lecture d'ebooks pour Nintendo Switch", "it": "Applicazione per leggere ebook su Nintendo Switch", "pt": "Aplicativo leitor de ebooks para Nintendo Switch", "de": "Ebook-Reader-Anwendung für Nintendo Switch", "ja": "Nintendo Switch用電子書籍リーダー", "ko": "Nintendo Switch 전자책 리더 앱" },
+      "videoYoutubeIds": ["eJ8srB6NFzo"]
+    },
+    {
+      "id": "12",
+      "label": { "en": "Switch: Lan-Play", "es": "Switch: Lan-Play", "fr": "Switch : Lan-Play", "it": "Switch: Lan-Play", "pt": "Switch: Lan-Play", "de": "Switch: Lan-Play", "ja": "Switch: Lan-Play", "ko": "Switch: Lan-Play" },
+      "desc": { "en": "LAN play tool for Nintendo Switch", "es": "Herramienta Lan-Play para Nintendo Switch", "fr": "Outil Lan-Play pour Nintendo Switch", "it": "Strumento Lan-Play per Nintendo Switch", "pt": "Ferramenta Lan-Play para Nintendo Switch", "de": "LAN-Play-Tool für Nintendo Switch", "ja": "Nintendo Switch用LAN-Playツール", "ko": "Nintendo Switch Lan-Play 도구" },
+      "videoYoutubeIds": ["FTHCkUl0Taw"]
+    },
+    {
+      "id": "13",
+      "label": { "en": "Switch: Mission Control", "es": "Switch: Mission control", "fr": "Switch : Mission Control", "it": "Switch: Mission Control", "pt": "Switch: Mission Control", "de": "Switch: Mission Control", "ja": "Switch: Mission Control", "ko": "Switch: Mission Control" },
+      "desc": { "en": "Mission Control tool for Nintendo Switch", "es": "Herramienta Mission Control para Nintendo Switch", "fr": "Outil Mission Control pour Nintendo Switch", "it": "Strumento Mission Control per Nintendo Switch", "pt": "Ferramenta Mission Control para Nintendo Switch", "de": "Mission Control Tool für Nintendo Switch", "ja": "Nintendo Switch用Mission Controlツール", "ko": "Nintendo Switch Mission Control 도구" },
+      "videoYoutubeIds": ["0lyKNBJ52cs"]
+    },
+    {
+      "id": "14",
+      "label": { "en": "Switch: NXDumpTool", "es": "Switch: NXDumpTool", "fr": "Switch : NXDumpTool", "it": "Switch: NXDumpTool", "pt": "Switch: NXDumpTool", "de": "Switch: NXDumpTool", "ja": "Switch: NXDumpTool", "ko": "Switch: NXDumpTool" },
+      "desc": { "en": "Dump tool for Nintendo Switch games and files", "es": "Herramienta de volcado para juegos y archivos de Nintendo Switch", "fr": "Outil de dump pour jeux et fichiers Nintendo Switch", "it": "Strumento di dump per giochi e file Nintendo Switch", "pt": "Ferramenta de dump para jogos e arquivos do Nintendo Switch", "de": "Dump-Tool für Nintendo Switch Spiele und Dateien", "ja": "Nintendo Switch用ゲーム・ファイルダンプツール", "ko": "Nintendo Switch 게임 및 파일 덤프 도구" },
+      "videoYoutubeIds": ["i-nyOjZdhAY"]
+    },
+    {
+      "id": "15",
+      "label": { "en": "Switch: NXThemes Installer", "es": "Switch: NXThemes Installer", "fr": "Switch : NXThemes Installer", "it": "Switch: NXThemes Installer", "pt": "Switch: NXThemes Installer", "de": "Switch: NXThemes Installer", "ja": "Switch: NXThemes Installer", "ko": "Switch: NXThemes Installer" },
+      "desc": { "en": "Theme installer for Nintendo Switch", "es": "Instalador de temas para Nintendo Switch", "fr": "Installateur de thèmes pour Nintendo Switch", "it": "Installer di temi per Nintendo Switch", "pt": "Instalador de temas para Nintendo Switch", "de": "Theme-Installer für Nintendo Switch", "ja": "Nintendo Switch用テーマインストーラー", "ko": "Nintendo Switch 테마 설치 프로그램" },
+      "videoYoutubeIds": ["m7nsQfHtnV8"]
+    },
+    {
+      "id": "16",
+      "label": { "en": "Switch: Pplay", "es": "Switch: Pplay", "fr": "Switch : Pplay", "it": "Switch: Pplay", "pt": "Switch: Pplay", "de": "Switch: Pplay", "ja": "Switch: Pplay", "ko": "Switch: Pplay" },
+      "desc": { "en": "Pplay media player for Nintendo Switch", "es": "Reproductor multimedia Pplay para Nintendo Switch", "fr": "Lecteur multimédia Pplay pour Nintendo Switch", "it": "Lettore multimediale Pplay per Nintendo Switch", "pt": "Player de mídia Pplay para Nintendo Switch", "de": "Pplay Media Player für Nintendo Switch", "ja": "Nintendo Switch用Pplayメディアプレーヤー", "ko": "Nintendo Switch Pplay 미디어 플레이어" },
+      "videoYoutubeIds": ["64617Fpp58Y"]
+    },
+    {
+      "id": "17",
+      "label": { "en": "Switch: Rekado", "es": "Switch: Rekado", "fr": "Switch : Rekado", "it": "Switch: Rekado", "pt": "Switch: Rekado", "de": "Switch: Rekado", "ja": "Switch: Rekado", "ko": "Switch: Rekado" },
+      "desc": { "en": "RCM payload injector Rekado for Nintendo Switch", "es": "Inyector de payloads RCM Rekado para Nintendo Switch", "fr": "Injecteur de payload RCM Rekado pour Nintendo Switch", "it": "Injector payload RCM Rekado per Nintendo Switch", "pt": "Injetor de payloads RCM Rekado para Nintendo Switch", "de": "RCM-Payload-Injector Rekado für Nintendo Switch", "ja": "Nintendo Switch用RCMペイロードインジェクターRekado", "ko": "Nintendo Switch Rekado RCM 페이로드 인젝터" },
+      "videoYoutubeIds": ["I-CLJCVd5N0"]
+    },
+    {
+      "id": "18",
+      "label": { "en": "Switch: Tesla Overlay", "es": "Switch: Tesla", "fr": "Switch : Tesla Overlay", "it": "Switch: Tesla Overlay", "pt": "Switch: Tesla", "de": "Switch: Tesla Overlay", "ja": "Switch: Teslaオーバーレイ", "ko": "Switch: Tesla 오버레이" },
+      "desc": { "en": "Tesla overlay system for Nintendo Switch", "es": "Sistema de overlays Tesla para Nintendo Switch", "fr": "Système d'overlays Tesla pour Nintendo Switch", "it": "Sistema overlay Tesla per Nintendo Switch", "pt": "Sistema de overlays Tesla para Nintendo Switch", "de": "Tesla-Overlay-System für Nintendo Switch", "ja": "Nintendo Switch用Teslaオーバーレイシステム", "ko": "Nintendo Switch Tesla 오버레이 시스템" },
+      "videoYoutubeIds": ["QqVaOiGhWys"]
+    },
+    {
+      "id": "19",
+      "label": { "en": "Switch: Tesla - EdiZon", "es": "Switch: Tesla - Edizon", "fr": "Switch : Tesla - EdiZon", "it": "Switch: Tesla - EdiZon", "pt": "Switch: Tesla - Edizon", "de": "Switch: Tesla - EdiZon", "ja": "Switch: Tesla - EdiZon", "ko": "Switch: Tesla - Edizon" },
+      "desc": { "en": "EdiZon overlay for Tesla on Nintendo Switch", "es": "Overlay EdiZon para Tesla en Nintendo Switch", "fr": "Overlay EdiZon pour Tesla sur Nintendo Switch", "it": "Overlay EdiZon per Tesla su Nintendo Switch", "pt": "Overlay EdiZon para Tesla no Nintendo Switch", "de": "EdiZon-Overlay für Tesla auf Nintendo Switch", "ja": "Nintendo Switch用Tesla-EdiZonオーバーレイ", "ko": "Nintendo Switch Tesla EdiZon 오버레이" },
+      "videoYoutubeIds": ["IK8Y9p7SEwk"]
+    },
+    {
+      "id": "20",
+      "label": { "en": "Switch: Tesla - Emuiibo", "es": "Switch: Tesla - Emuibo", "fr": "Switch : Tesla - Emuiibo", "it": "Switch: Tesla - Emuiibo", "pt": "Switch: Tesla - Emuiibo", "de": "Switch: Tesla - Emuiibo", "ja": "Switch: Tesla - Emuiibo", "ko": "Switch: Tesla - Emuiibo" },
+      "desc": { "en": "Emuiibo overlay for Tesla on Nintendo Switch", "es": "Overlay Emuiibo para Tesla en Nintendo Switch", "fr": "Overlay Emuiibo pour Tesla sur Nintendo Switch", "it": "Overlay Emuiibo per Tesla su Nintendo Switch", "pt": "Overlay Emuiibo para Tesla no Nintendo Switch", "de": "Emuiibo-Overlay für Tesla auf Nintendo Switch", "ja": "Nintendo Switch用Tesla-Emuiiboオーバーレイ", "ko": "Nintendo Switch Tesla Emuiibo 오버레이" },
+      "videoYoutubeIds": ["TOnhj4RKlcI"]
+    },
+    {
+      "id": "21",
+      "label": { "en": "Switch: Tesla - SysTune", "es": "Switch: Tesla - Systune", "fr": "Switch : Tesla - SysTune", "it": "Switch: Tesla - SysTune", "pt": "Switch: Tesla - Systune", "de": "Switch: Tesla - SysTune", "ja": "Switch: Tesla - SysTune", "ko": "Switch: Tesla - Systune" },
+      "desc": { "en": "SysTune overlay for Tesla on Nintendo Switch", "es": "Overlay SysTune para Tesla en Nintendo Switch", "fr": "Overlay SysTune pour Tesla sur Nintendo Switch", "it": "Overlay SysTune per Tesla su Nintendo Switch", "pt": "Overlay SysTune para Tesla no Nintendo Switch", "de": "SysTune-Overlay für Tesla auf Nintendo Switch", "ja": "Nintendo Switch用Tesla-SysTuneオーバーレイ", "ko": "Nintendo Switch Tesla SysTune 오버레이" },
+      "videoYoutubeIds": ["7oQzpDx2mHc"]
+    }
+  ],
+  "3DS": [
+    {
+      "id": "1",
+      "label": { "en": "3DS: Hack - MSET9", "es": "3DS: Hack - MSET9", "fr": "3DS : Hack - MSET9", "it": "3DS: Hack - MSET9", "pt": "3DS: Hack - MSET9", "de": "3DS: Hack - MSET9", "ja": "3DS: Hack - MSET9", "ko": "3DS: Hack - MSET9" },
+      "desc": { "en": "MSET9 exploit for 3DS", "es": "Exploit MSET9 para 3DS", "fr": "Exploit MSET9 pour 3DS", "it": "Exploit MSET9 per 3DS", "pt": "Exploit MSET9 para 3DS", "de": "MSET9-Exploit für 3DS", "ja": "3DS用MSET9エクスプロイト", "ko": "3DS MSET9 익스플로잇" },
+      "videoYoutubeIds": ["V_zQJq7mF9A"]
+    },
+    {
+      "id": "2",
+      "label": { "en": "3DS: Hack  - SafeCertHax", "es": "3DS: Hack - SAFECERTHAX", "fr": "3DS : Hack - SafeCertHax", "it": "3DS: Hack - SafeCertHax", "pt": "3DS: Hack - SafeCertHax", "de": "3DS: Hack - SafeCertHax", "ja": "3DS: Hack - SafeCertHax", "ko": "3DS: Hack - SafeCertHax" },
+      "desc": { "en": "SafeCertHax exploit for 3DS", "es": "Exploit SafeCertHax para 3DS", "fr": "Exploit SafeCertHax pour 3DS", "it": "Exploit SafeCertHax per 3DS", "pt": "Exploit SafeCertHax para 3DS", "de": "SafeCertHax-Exploit für 3DS", "ja": "3DS用SafeCertHaxエクスプロイト", "ko": "3DS SafeCertHax 익스플로잇" },
+      "videoYoutubeIds": ["eumgxZdighA"]
+    },
+    {
+      "id": "3",
+      "label": { "en": "3DS: Hack - SuperSkaterHax", "es": "3DS: Hack - SUPERSKATER", "fr": "3DS : Hack - SuperSkaterHax", "it": "3DS: Hack - SuperSkaterHax", "pt": "3DS: Hack - SuperSkaterHax", "de": "3DS: Hack - SuperSkaterHax", "ja": "3DS: Hack - SuperSkaterHax", "ko": "3DS: Hack - SuperSkaterHax" },
+      "desc": { "en": "SuperSkaterHax exploit for 3DS", "es": "Exploit SuperSkaterHax para 3DS", "fr": "Exploit SuperSkaterHax pour 3DS", "it": "Exploit SuperSkaterHax per 3DS", "pt": "Exploit SuperSkaterHax para 3DS", "de": "SuperSkaterHax-Exploit für 3DS", "ja": "3DS用SuperSkaterHaxエクスプロイト", "ko": "3DS SuperSkaterHax 익스플로잇" },
+      "videoYoutubeIds": ["Zm9Uejl-3PE"]
+    },
+    {
+      "id": "4",
+      "label": { "en": "3DS: Hack - NTRBootHax (MagnetHax)", "es": "3DS: Hack - NTRBOOTHAX - Magnethax", "fr": "3DS : Hack - NTRBootHax (MagnetHax)", "it": "3DS: Hack - NTRBootHax (MagnetHax)", "pt": "3DS: Hack - NTRBootHax (MagnetHax)", "de": "3DS: Hack - NTRBootHax (MagnetHax)", "ja": "3DS: Hack - NTRBootHax (MagnetHax)", "ko": "3DS: Hack - NTRBootHax (MagnetHax)" },
+      "desc": { "en": "NTRBootHax / MagnetHax exploit for 3DS", "es": "Exploit NTRBootHax / MagnetHax para 3DS", "fr": "Exploit NTRBootHax / MagnetHax pour 3DS", "it": "Exploit NTRBootHax / MagnetHax per 3DS", "pt": "Exploit NTRBootHax / MagnetHax para 3DS", "de": "NTRBootHax / MagnetHax-Exploit für 3DS", "ja": "3DS用NTRBootHax / MagnetHaxエクスプロイト", "ko": "3DS NTRBootHax / MagnetHax 익스플로잇" },
+      "videoYoutubeIds": ["SYF7XLVhuOc"]
+    },
+    {
+      "id": "5",
+      "label": { "en": "3DS: Hack - Freakyhax", "es": "3DS: Hack - FREAKYHAX", "fr": "3DS : Hack - Freakyhax", "it": "3DS: Hack - Freakyhax", "pt": "3DS: Hack - Freakyhax", "de": "3DS: Hack - Freakyhax", "ja": "3DS: Hack - Freakyhax", "ko": "3DS: Hack - Freakyhax" },
+      "desc": { "en": "Freakyhax exploit for 3DS", "es": "Exploit Freakyhax para 3DS", "fr": "Exploit Freakyhax pour 3DS", "it": "Exploit Freakyhax per 3DS", "pt": "Exploit Freakyhax para 3DS", "de": "Freakyhax-Exploit für 3DS", "ja": "3DS用Freakyhaxエクスプロイト", "ko": "3DS Freakyhax 익스플로잇" },
+      "videoYoutubeIds": ["Hlav-1FYOF0"]
+    },
+    {
+      "id": "6",
+      "label": { "en": "3DS: Hack - KartDLPhax", "es": "3DS: Hack - KARTDLPHAX", "fr": "3DS : Hack - KartDLPhax", "it": "3DS: Hack - KartDLPhax", "pt": "3DS: Hack - KartDLPhax", "de": "3DS: Hack - KartDLPhax", "ja": "3DS: Hack - KartDLPhax", "ko": "3DS: Hack - KartDLPhax" },
+      "desc": { "en": "KartDLPhax exploit for 3DS", "es": "Exploit KartDLPhax para 3DS", "fr": "Exploit KartDLPhax pour 3DS", "it": "Exploit KartDLPhax per 3DS", "pt": "Exploit KartDLPhax para 3DS", "de": "KartDLPhax-Exploit für 3DS", "ja": "3DS用KartDLPhaxエクスプロイト", "ko": "3DS KartDLPhax 익스플로잇" },
+      "videoYoutubeIds": ["wXTFPhBj1qU"]
+    },
+    {
+      "id": "7",
+      "label": { "en": "3DS: Hack - KartMiner7", "es": "3DS: Hack - KARTMINER7", "fr": "3DS : Hack - KartMiner7", "it": "3DS: Hack - KartMiner7", "pt": "3DS: Hack - KartMiner7", "de": "3DS: Hack - KartMiner7", "ja": "3DS: Hack - KartMiner7", "ko": "3DS: Hack - KartMiner7" },
+      "desc": { "en": "KartMiner7 exploit for 3DS", "es": "Exploit KartMiner7 para 3DS", "fr": "Exploit KartMiner7 pour 3DS", "it": "Exploit KartMiner7 per 3DS", "pt": "Exploit KartMiner7 para 3DS", "de": "KartMiner7-Exploit für 3DS", "ja": "3DS用KartMiner7エクスプロイト", "ko": "3DS KartMiner7 익스플로잇" },
+      "videoYoutubeIds": ["CPC93AwZsbg"]
+    },
+    {
+      "id": "8",
+      "label": { "en": "3DS: Hack - Ninjhax", "es": "3DS: Hack - NINJHAX", "fr": "3DS : Hack - Ninjhax", "it": "3DS: Hack - Ninjhax", "pt": "3DS: Hack - Ninjhax", "de": "3DS: Hack - Ninjhax", "ja": "3DS: Hack - Ninjhax", "ko": "3DS: Hack - Ninjhax" },
+      "desc": { "en": "Ninjhax exploit for 3DS", "es": "Exploit Ninjhax para 3DS", "fr": "Exploit Ninjhax pour 3DS", "it": "Exploit Ninjhax per 3DS", "pt": "Exploit Ninjhax para 3DS", "de": "Ninjhax-Exploit für 3DS", "ja": "3DS用Ninjhaxエクスプロイト", "ko": "3DS Ninjhax 익스플로잇" },
+      "videoYoutubeIds": ["YG-rWbuoTvg"]
+    },
+    {
+      "id": "9",
+      "label": { "en": "3DS: NAND-REX", "es": "3DS: NAND-REX", "fr": "3DS : NAND-REX", "it": "3DS: NAND-REX", "pt": "3DS: NAND-REX", "de": "3DS: NAND-REX", "ja": "3DS: NAND-REX", "ko": "3DS: NAND-REX" },
+      "desc": { "en": "NAND-REX tool for 3DS", "es": "Herramienta NAND-REX para 3DS", "fr": "Outil NAND-REX pour 3DS", "it": "Strumento NAND-REX per 3DS", "pt": "Ferramenta NAND-REX para 3DS", "de": "NAND-REX-Tool für 3DS", "ja": "3DS用NAND-REXツール", "ko": "3DS NAND-REX 도구" },
+      "videoYoutubeIds": ["3kaKZRm0nAw"]
+    },
+    {
+      "id": "10",
+      "label": { "en": "3DS: Script Remove 3DS Hack", "es": "3DS: Script ELIMINAR HACK", "fr": "3DS : Script Supprimer le hack 3DS", "it": "3DS: Script Rimuovi Hack 3DS", "pt": "3DS: Script Remover Hack 3DS", "de": "3DS: Script Hack entfernen", "ja": "3DS: Script ハック削除", "ko": "3DS: Script 핵 제거" },
+      "desc": { "en": "Script to remove 3DS hacks safely", "es": "Script para eliminar hacks de 3DS de forma segura", "fr": "Script pour supprimer les hacks 3DS en toute sécurité", "it": "Script per rimuovere gli hack 3DS in sicurezza", "pt": "Script para remover hacks do 3DS com segurança", "de": "Script zum sicheren Entfernen von 3DS-Hacks", "ja": "3DS用ハック安全削除スクリプト", "ko": "3DS 핵 안전 제거 스크립트" },
+      "videoYoutubeIds": ["F9593kcLHQE"]
+    },
+    {
+      "id": "11",
+      "label": { "en": "3DS: Luma - ACT3DS", "es": "3DS: Luma - ACT3DS", "fr": "3DS: Luma - ACT3DS", "it": "3DS: Luma - ACT3DS", "pt": "3DS: Luma - ACT3DS", "de": "3DS: Luma - ACT3DS", "ja": "3DS: Luma - ACT3DS", "ko": "3DS: Luma - ACT3DS" },
+      "desc": { "en": "Luma files for ACT3DS 13.3.2 on 3DS", "es": "Archivos Luma para 3DS", "fr": "Fichiers Luma pour 3DS", "it": "File Luma per 3DS", "pt": "Arquivos Luma para 3DS", "de": "Luma für 3DS", "ja": "3DS用Luma", "ko": "Luma - ACT3DS" },
+      "videoYoutubeIds": ["bxgEtnDPr8s"]
+    },
+    {
+      "id": "12",
+      "label": { "en": "3DS: GodMode9", "es": "3DS: Godmode9", "fr": "3DS : GodMode9", "it": "3DS: GodMode9", "pt": "3DS: GodMode9", "de": "3DS: GodMode9", "ja": "3DS: GodMode9", "ko": "3DS: GodMode9" },
+      "desc": { "en": "GodMode9 for 3DS", "es": "GodMode9 para 3DS", "fr": "GodMode9 pour 3DS", "it": "GodMode9 per 3DS", "pt": "GodMode9 para 3DS", "de": "GodMode9 für 3DS", "ja": "3DS用GodMode9", "ko": "3DS GodMode9" },
+      "videoYoutubeIds": ["PVAJ0PNkZOY"]
+    },
+    {
+      "id": "13",
+      "label": { "en": "3DS: Splash", "es": "3DS: Splash", "fr": "3DS:Splash", "it": "3DS: Splash", "pt": "3DS: Splash", "de": "3DS: Splash", "ja": "3DS: Splash", "ko": "3DS: Splash" },
+      "desc": { "en": "Splash files for ACT3DS 13.3.2 on 3DS", "es": "Archivos splash para 3DS", "fr": "Fichiers splash pour 3DS", "it": "File splash per 3DS", "pt": "Arquivos splash para 3DS", "de": "Splash für  3DS", "ja": " Splash & Bax - ACT3DS 13.3.2", "ko": "3DS Splash " },
+      "videoYoutubeIds": ["NEcBp5BhuJE"]
+    },
+    {
+      "id": "4",
+      "label": { "en": "3DS: BAX", "es": "3DS: BAX", "fr": "3DS : BAX", "it": "3DS: BAX", "pt": "3DS: BAX", "de": "3DS: BAX", "ja": "3DS: BAX", "ko": "3DS: BAX" },
+      "desc": { "en": "BAX tool for 3DS", "es": "Herramienta BAX para 3DS", "fr": "Outil BAX pour 3DS", "it": "Strumento BAX per 3DS", "pt": "Ferramenta BAX para 3DS", "de": "BAX-Tool für 3DS", "ja": "3DS用BAXツール", "ko": "3DS BAX 도구" },
+      "videoYoutubeIds": ["fqxY11qyr-E"]
+    },
+    {
+      "id": "15",
+      "label": { "en": "3DS: Semibrick", "es": "3DS: Semibrick", "fr": "3DS: Semibrick", "it": "3DS: Semibrick", "pt": "3DS: Semibrick", "de": "3DS: Semibrick", "ja": "3DS: Semibrick", "ko": "3DS: Semibrick" },
+      "desc": { "en": "3DS: Semibrick", "es": "3DS: Semibrick", "fr": "3DS: Semibrick", "it": "3DS: Semibrick", "pt": "3DS: Semibrick", "de": "3DS: Semibrick", "ja": "3DS: Semibrick", "ko": "3DS: Semibrick" },
+      "videoYoutubeIds": ["oJ8rqr-qrtA"]
+    },
+    {
+      "id": "16",
+      "label": { "en": "3DS: Script Blue Lazarus", "es": "3DS: Script BLUE LAZARUS", "fr": "3DS : Script Blue Lazarus", "it": "3DS: Script Blue Lazarus", "pt": "3DS: Script Blue Lazarus", "de": "3DS: Script Blue Lazarus", "ja": "3DS: Script Blue Lazarus", "ko": "3DS: Script Blue Lazarus" },
+      "desc": { "en": "Blue Lazarus script for 3DS", "es": "Script Blue Lazarus para 3DS", "fr": "Script Blue Lazarus pour 3DS", "it": "Script Blue Lazarus per 3DS", "pt": "Script Blue Lazarus para 3DS", "de": "Blue Lazarus Script für 3DS", "ja": "3DS用Blue Lazarusスクリプト", "ko": "3DS Blue Lazarus 스크립트" },
+      "videoYoutubeIds": ["x64mBqRQ7Ss"]
+    },
+    {
+      "id": "17",
+      "label": { "en": "3DS: Script Black Lazarus v25.1", "es": "3DS: Script BLACK LAZARUS v25.1", "fr": "3DS : Script Black Lazarus v25.1", "it": "3DS: Script Black Lazarus v25.1", "pt": "3DS: Script Black Lazarus v25.1", "de": "3DS: Script Black Lazarus v25.1", "ja": "3DS: Script Black Lazarus v25.1", "ko": "3DS: Script Black Lazarus v25.1" },
+      "desc": { "en": "Black Lazarus script v25.1 for 3DS", "es": "Script Black Lazarus v25.1 para 3DS", "fr": "Script Black Lazarus v25.1 pour 3DS", "it": "Script Black Lazarus v25.1 per 3DS", "pt": "Script Black Lazarus v25.1 para 3DS", "de": "Black Lazarus Script v25.1 für 3DS", "ja": "3DS用Black Lazarusスクリプト v25.1", "ko": "3DS Black Lazarus 스크립트 v25.1" },
+      "videoYoutubeIds": ["OA74PsM7tNI"]
+    },
+    {
+      "id": "18",
+      "label": { "en": "3DS: Script CTRNAND v25.1", "es": "3DS: Script CTRNAND v25.1", "fr": "3DS : Script CTRNAND v25.1", "it": "3DS: Script CTRNAND v25.1", "pt": "3DS: Script CTRNAND v25.1", "de": "3DS: Script CTRNAND v25.1", "ja": "3DS: Script CTRNAND v25.1", "ko": "3DS: Script CTRNAND v25.1" },
+      "desc": { "en": "CTRNAND script v25.1 for 3DS", "es": "Script CTRNAND v25.1 para 3DS", "fr": "Script CTRNAND v25.1 pour 3DS", "it": "Script CTRNAND v25.1 per 3DS", "pt": "Script CTRNAND v25.1 para 3DS", "de": "CTRNAND Script v25.1 für 3DS", "ja": "3DS用CTRNANDスクリプト v25.1", "ko": "3DS CTRNAND 스크립트 v25.1" },
+      "videoYoutubeIds": ["fuD5KKXFkmY"]
+    },
+    {
+      "id": "19",
+      "label": { "en": "3DS: Script CTRNAND-2", "es": "3DS: Script CTRNAND-2", "fr": "3DS : Script CTRNAND-2", "it": "3DS: Script CTRNAND-2", "pt": "3DS: Script CTRNAND-2", "de": "3DS: Script CTRNAND-2", "ja": "3DS: Script CTRNAND-2", "ko": "3DS: Script CTRNAND-2" },
+      "desc": { "en": "Alternative CTRNAND script for 3DS", "es": "Script CTRNAND alternativo para 3DS", "fr": "Script CTRNAND alternatif pour 3DS", "it": "Script CTRNAND alternativo per 3DS", "pt": "Script CTRNAND alternativo para 3DS", "de": "Alternatives CTRNAND Script für 3DS", "ja": "3DS用代替CTRNANDスクリプト", "ko": "3DS 대체 CTRNAND 스크립트" },
+      "videoYoutubeIds": ["n6EP9rLCKD0"]
+    },
+    {
+      "id": "20",
+      "label": { "en": "3DS: Anemone", "es": "3DS: Anemone", "fr": "3DS : Anemone", "it": "3DS: Anemone", "pt": "3DS: Anemone", "de": "3DS: Anemone", "ja": "3DS: Anemone", "ko": "3DS: Anemone" },
+      "desc": { "en": "Theme manager Anemone for 3DS", "es": "Gestor de temas Anemone para 3DS", "fr": "Gestionnaire de thèmes Anemone pour 3DS", "it": "Gestore temi Anemone per 3DS", "pt": "Gerenciador de temas Anemone para 3DS", "de": "Theme-Manager Anemone für 3DS", "ja": "3DS用テーママネージャーAnemone", "ko": "3DS Anemone 테마 관리자" },
+      "videoYoutubeIds": ["zK_sM9L7Kl0"]
+    },
+    {
+      "id": "21",
+      "label": { "en": "3DS: Fix Cartridges", "es": "3DS: Arreglar Cartuchos", "fr": "3DS : Réparer Cartouches", "it": "3DS: Ripara Cartucce", "pt": "3DS: Corrigir Cartuchos", "de": "3DS: Cartridges reparieren", "ja": "3DS: カートリッジ修復", "ko": "3DS: 카트리지 수리" },
+      "desc": { "en": "Tools to fix problematic game cartridges on 3DS", "es": "Herramientas para arreglar cartuchos de juegos problemáticos en 3DS", "fr": "Outils pour réparer les cartouches de jeux problématiques sur 3DS", "it": "Strumenti per riparare cartucce di giochi problematiche su 3DS", "pt": "Ferramentas para corrigir cartuchos de jogos problemáticos no 3DS", "de": "Tools zum Reparieren defekter Game-Cartridges beim 3DS", "ja": "3DS用問題カートリッジ修復ツール", "ko": "3DS 문제 카트리지 수리 도구" },
+      "videoYoutubeIds": ["IJBgGKUT8pk"]
+    },
+    {
+      "id": "22",
+      "label": { "en": "3DS: BeeShop", "es": "3DS: Beeshop", "fr": "3DS : BeeShop", "it": "3DS: BeeShop", "pt": "3DS: BeeShop", "de": "3DS: BeeShop", "ja": "3DS: BeeShop", "ko": "3DS: BeeShop" },
+      "desc": { "en": "BeeShop homebrew shop for 3DS", "es": "Tienda homebrew BeeShop para 3DS", "fr": "Boutique homebrew BeeShop pour 3DS", "it": "Negozio homebrew BeeShop per 3DS", "pt": "Loja homebrew BeeShop para 3DS", "de": "BeeShop Homebrew-Shop für 3DS", "ja": "3DS用BeeShopホームブリューショップ", "ko": "3DS BeeShop 홈브류 샵" },
+      "videoYoutubeIds": ["XwE9WRYJXK0"]
+    },
+    {
+      "id": "23",
+      "label": { "en": "3DS: Checkpoint", "es": "3DS: Checkpoint", "fr": "3DS : Checkpoint", "it": "3DS: Checkpoint", "pt": "3DS: Checkpoint", "de": "3DS: Checkpoint", "ja": "3DS: Checkpoint", "ko": "3DS: Checkpoint" },
+      "desc": { "en": "Save manager Checkpoint for 3DS", "es": "Gestor de guardados Checkpoint para 3DS", "fr": "Gestionnaire de sauvegardes Checkpoint pour 3DS", "it": "Gestore salvataggi Checkpoint per 3DS", "pt": "Gerenciador de saves Checkpoint para 3DS", "de": "Speicherverwaltungs-Tool Checkpoint für 3DS", "ja": "3DS用セーブマネージャーCheckpoint", "ko": "3DS Checkpoint 세이브 관리자" },
+      "videoYoutubeIds": ["lo3Nyzb5vpk"]
+    },
+    {
+      "id": "24",
+      "label": { "en": "3DS: Check Buttons - 3DSIdent", "es": "3DS: Comprobar botones 3dsident", "fr": "3DS : Vérifier boutons - 3DSIdent", "it": "3DS: Controlla pulsanti 3DSIdent", "pt": "3DS: Verificar botões 3DSIdent", "de": "3DS: Tasten prüfen - 3DSIdent", "ja": "3DS: ボタンチェック - 3DSIdent", "ko": "3DS: 버튼 확인 - 3DSIdent" },
+      "desc": { "en": "Tool to test buttons using 3DSIdent on 3DS", "es": "Herramienta para probar botones con 3DSIdent en 3DS", "fr": "Outil pour tester les boutons avec 3DSIdent sur 3DS", "it": "Strumento per testare i pulsanti con 3DSIdent su 3DS", "pt": "Ferramenta para testar botões usando 3DSIdent no 3DS", "de": "Tool zum Testen der Tasten mit 3DSIdent beim 3DS", "ja": "3DS用3DSIdentボタンテストツール", "ko": "3DS 3DSIdent 버튼 테스트 도구" },
+      "videoYoutubeIds": ["SwJl0UnLCSs"]
+    },
+    {
+      "id": "25",
+      "label": { "en": "3DS: Convert 3DS to CIA", "es": "3DS: Convertir 3DS A CIA", "fr": "3DS : Convertir 3DS en CIA", "it": "3DS: Converti 3DS in CIA", "pt": "3DS: Converter 3DS para CIA", "de": "3DS: 3DS in CIA konvertieren", "ja": "3DS: 3DSをCIAに変換", "ko": "3DS: 3DS를 CIA로 변환" },
+      "desc": { "en": "Tool to convert 3DS files to CIA format", "es": "Herramienta para convertir archivos 3DS a formato CIA", "fr": "Outil pour convertir les fichiers 3DS au format CIA", "it": "Strumento per convertire file 3DS in formato CIA", "pt": "Ferramenta para converter arquivos 3DS para formato CIA", "de": "Tool zum Konvertieren von 3DS-Dateien ins CIA-Format", "ja": "3DS用3DS→CIA変換ツール", "ko": "3DS 3DS → CIA 변환 도구" },
+      "videoYoutubeIds": ["XODbdvhM6cw"]
+    },
+    {
+      "id": "26",
+      "label": { "en": "3DS: Convert CIA to 3DS", "es": "3DS: Convertir CIA A 3DS", "fr": "3DS : Convertir CIA en 3DS", "it": "3DS: Converti CIA in 3DS", "pt": "3DS: Converter CIA para 3DS", "de": "3DS: CIA in 3DS konvertieren", "ja": "3DS: CIAを3DSに変換", "ko": "3DS: CIA를 3DS로 변환" },
+      "desc": { "en": "Tool to convert CIA files to 3DS format", "es": "Herramienta para convertir archivos CIA a formato 3DS", "fr": "Outil pour convertir les fichiers CIA au format 3DS", "it": "Strumento per convertire file CIA in formato 3DS", "pt": "Ferramenta para converter arquivos CIA para formato 3DS", "de": "Tool zum Konvertieren von CIA-Dateien ins 3DS-Format", "ja": "3DS用CIA→3DS変換ツール", "ko": "3DS CIA → 3DS 변환 도구" },
+      "videoYoutubeIds": ["eh4vGEfh3SM"]
+    },
+    {
+      "id": "27",
+      "label": { "en": "3DS: Convert Retro to CIA", "es": "3DS: Convertir RETRO A CIA", "fr": "3DS : Convertir Retro en CIA", "it": "3DS: Converti Retro in CIA", "pt": "3DS: Converter Retro para CIA", "de": "3DS: Retro in CIA konvertieren", "ja": "3DS: RetroをCIAに変換", "ko": "3DS: Retro를 CIA로 변환" },
+      "desc": { "en": "Tool to convert retro files to CIA format on 3DS", "es": "Herramienta para convertir archivos retro a formato CIA en 3DS", "fr": "Outil pour convertir les fichiers rétro au format CIA sur 3DS", "it": "Strumento per convertire file retro in formato CIA su 3DS", "pt": "Ferramenta para converter arquivos retro para formato CIA no 3DS", "de": "Tool zum Konvertieren von Retro-Dateien ins CIA-Format beim 3DS", "ja": "3DS用Retro→CIA変換ツール", "ko": "3DS Retro → CIA 변환 도구" },
+      "videoYoutubeIds": ["6igPel7dh3k"]
+    },
+    {
+      "id": "28",
+      "label": { "en": "3DS: Convert 3DSX to CIA", "es": "3DS: Convertir 3DSX A CIA", "fr": "3DS : Convertir 3DSX en CIA", "it": "3DS: Converti 3DSX in CIA", "pt": "3DS: Converter 3DSX para CIA", "de": "3DS: 3DSX in CIA konvertieren", "ja": "3DS: 3DSXをCIAに変換", "ko": "3DS: 3DSX를 CIA로 변환" },
+      "desc": { "en": "Tool to convert 3DSX files to CIA format", "es": "Herramienta para convertir archivos 3DSX a formato CIA", "fr": "Outil pour convertir les fichiers 3DSX au format CIA", "it": "Strumento per convertire file 3DSX in formato CIA", "pt": "Ferramenta para converter arquivos 3DSX para formato CIA", "de": "Tool zum Konvertieren von 3DSX-Dateien ins CIA-Format", "ja": "3DS用3DSX→CIA変換ツール", "ko": "3DS 3DSX → CIA 변환 도구" },
+      "videoYoutubeIds": ["kEG_Z8p-FhQ"]
+    },
+    {
+      "id": "29",
+      "label": { "en": "3DS: Crash Network", "es": "3DS: Crash Network", "fr": "3DS : Crash Network", "it": "3DS: Crash Network", "pt": "3DS: Crash Network", "de": "3DS: Crash Network", "ja": "3DS: Crash Network", "ko": "3DS: Crash Network" },
+      "desc": { "en": "Tool to crash network services on 3DS", "es": "Herramienta para hacer crash a servicios de red en 3DS", "fr": "Outil pour faire crasher les services réseau sur 3DS", "it": "Strumento per far crashare i servizi di rete su 3DS", "pt": "Ferramenta para crashar serviços de rede no 3DS", "de": "Tool zum Abstürzen lassen der Netzwerkdienste beim 3DS", "ja": "3DS用ネットワーククラッシュツール", "ko": "3DS 네트워크 크래시 도구" },
+      "videoYoutubeIds": ["_ccxJLFLbKU"]
+    },
+    {
+      "id": "30",
+      "label": { "en": "3DS: DSP1 Dump", "es": "3DS: DSP1", "fr": "3DS : Dump DSP1", "it": "3DS: Dump DSP1", "pt": "3DS: Dump DSP1", "de": "3DS: DSP1 Dump", "ja": "3DS: DSP1ダンプ", "ko": "3DS: DSP1 덤프" },
+      "desc": { "en": "DSP1 dump files and tool for 3DS", "es": "Archivos y herramienta de volcado DSP1 para 3DS", "fr": "Fichiers et outil de dump DSP1 pour 3DS", "it": "File e strumento di dump DSP1 per 3DS", "pt": "Arquivos e ferramenta de dump DSP1 para 3DS", "de": "DSP1-Dump-Dateien und Tool für 3DS", "ja": "3DS用DSP1ダンプファイル＆ツール", "ko": "3DS DSP1 덤프 파일 및 도구" },
+      "videoYoutubeIds": ["RIs5DifGYmc"]
+    },
+    {
+      "id": "31",
+      "label": { "en": "3DS: Faketik", "es": "3DS: Faketik", "fr": "3DS : Faketik", "it": "3DS: Faketik", "pt": "3DS: Faketik", "de": "3DS: Faketik", "ja": "3DS: Faketik", "ko": "3DS: Faketik" },
+      "desc": { "en": "Faketik ticket generator for 3DS", "es": "Generador de tickets Faketik para 3DS", "fr": "Générateur de tickets Faketik pour 3DS", "it": "Generatore di ticket Faketik per 3DS", "pt": "Gerador de tickets Faketik para 3DS", "de": "Faketik-Ticket-Generator für 3DS", "ja": "3DS用Faketikチケット生成ツール", "ko": "3DS Faketik 티켓 생성기" },
+      "videoYoutubeIds": ["nuq6URbX4Vk"]
+    },
+    {
+      "id": "32",
+      "label": { "en": "3DS: FTP", "es": "3DS: FTP", "fr": "3DS : FTP", "it": "3DS: FTP", "pt": "3DS: FTP", "de": "3DS: FTP", "ja": "3DS: FTP", "ko": "3DS: FTP" },
+      "desc": { "en": "FTP server for file transfer on 3DS", "es": "Servidor FTP para transferencia de archivos en 3DS", "fr": "Serveur FTP pour le transfert de fichiers sur 3DS", "it": "Server FTP per il trasferimento file su 3DS", "pt": "Servidor FTP para transferência de arquivos no 3DS", "de": "FTP-Server zum Dateitransfer auf 3DS", "ja": "3DS用ファイル転送FTPサーバー", "ko": "3DS 파일 전송 FTP 서버" },
+      "videoYoutubeIds": ["aqeLygkAWg8"]
+    },
+    {
+      "id": "33",
+      "label": { "en": "3DS: JKSM", "es": "3DS: JKSM", "fr": "3DS : JKSM", "it": "3DS: JKSM", "pt": "3DS: JKSM", "de": "3DS: JKSM", "ja": "3DS: JKSM", "ko": "3DS: JKSM" },
+      "desc": { "en": "Save manager JKSM for 3DS", "es": "Gestor de guardados JKSM para 3DS", "fr": "Gestionnaire de sauvegardes JKSM pour 3DS", "it": "Gestore salvataggi JKSM per 3DS", "pt": "Gerenciador de saves JKSM para 3DS", "de": "Speicherverwaltungs-Tool JKSM für 3DS", "ja": "3DS用セーブマネージャーJKSM", "ko": "3DS JKSM 세이브 관리자" },
+      "videoYoutubeIds": ["cmsAvvazgUk"]
+    },
+    {
+      "id": "34",
+      "label": { "en": "3DS: LimePlayer3DS", "es": "3DS: LimePlayer3DS", "fr": "3DS : LimePlayer3DS", "it": "3DS: LimePlayer3DS", "pt": "3DS: LimePlayer3DS", "de": "3DS: LimePlayer3DS", "ja": "3DS: LimePlayer3DS", "ko": "3DS: LimePlayer3DS" },
+      "desc": { "en": "LimePlayer3DS media player for 3DS", "es": "Reproductor multimedia LimePlayer3DS para 3DS", "fr": "Lecteur multimédia LimePlayer3DS pour 3DS", "it": "Lettore multimediale LimePlayer3DS per 3DS", "pt": "Player de mídia LimePlayer3DS para 3DS", "de": "LimePlayer3DS Media Player für 3DS", "ja": "3DS用LimePlayer3DSメディアプレーヤー", "ko": "3DS LimePlayer3DS 미디어 플레이어" },
+      "videoYoutubeIds": ["cXpDB15EICQ"]
+    },
+    {
+      "id": "35",
+      "label": { "en": "3DS: LOS3D", "es": "3DS: LOS3D", "fr": "3DS : LOS3D", "it": "3DS: LOS3D", "pt": "3DS: LOS3D", "de": "3DS: LOS3D", "ja": "3DS: LOS3D", "ko": "3DS: LOS3D" },
+      "desc": { "en": "LOS3D tool for 3DS", "es": "Herramienta LOS3D para 3DS", "fr": "Outil LOS3D pour 3DS", "it": "Strumento LOS3D per 3DS", "pt": "Ferramenta LOS3D para 3DS", "de": "LOS3D-Tool für 3DS", "ja": "3DS用LOS3Dツール", "ko": "3DS LOS3D 도구" },
+      "videoYoutubeIds": ["EjZKftGw8RU"]
+    },
+    {
+      "id": "36",
+      "label": { "en": "3DS: PS3/PS4 Controllers", "es": "3DS: Mandos PS3-4", "fr": "3DS : Manettes PS3/PS4", "it": "3DS: Controller PS3/PS4", "pt": "3DS: Controles PS3/PS4", "de": "3DS: PS3/PS4 Controller", "ja": "3DS: PS3/PS4コントローラー", "ko": "3DS: PS3/PS4 컨트롤러" },
+      "desc": { "en": "Support files for PS3/PS4 controllers on 3DS", "es": "Archivos de soporte para mandos PS3/PS4 en 3DS", "fr": "Fichiers de support pour manettes PS3/PS4 sur 3DS", "it": "File di supporto per controller PS3/PS4 su 3DS", "pt": "Arquivos de suporte para controles PS3/PS4 no 3DS", "de": "Support-Dateien für PS3/PS4-Controller beim 3DS", "ja": "3DS用PS3/PS4コントローラー対応ファイル", "ko": "3DS PS3/PS4 컨트롤러 지원 파일" },
+      "videoYoutubeIds": ["a97sMylxr-8"]
+    },
+    {
+      "id": "37",
+      "label": { "en": "3DS: Menuhax67", "es": "3DS: Menuhax67", "fr": "3DS : Menuhax67", "it": "3DS: Menuhax67", "pt": "3DS: Menuhax67", "de": "3DS: Menuhax67", "ja": "3DS: Menuhax67", "ko": "3DS: Menuhax67" },
+      "desc": { "en": "Menuhax67 exploit for 3DS", "es": "Exploit Menuhax67 para 3DS", "fr": "Exploit Menuhax67 pour 3DS", "it": "Exploit Menuhax67 per 3DS", "pt": "Exploit Menuhax67 para 3DS", "de": "Menuhax67-Exploit für 3DS", "ja": "3DS用Menuhax67エクスプロイト", "ko": "3DS Menuhax67 익스플로잇" },
+      "videoYoutubeIds": ["KtYmcO91Zzk"]
+    },
+    {
+      "id": "38",
+      "label": { "en": "3DS: Movable Format", "es": "3DS: Movable Format", "fr": "3DS : Movable Format", "it": "3DS: Movable Format", "pt": "3DS: Movable Format", "de": "3DS: Movable Format", "ja": "3DS: Movable Format", "ko": "3DS: Movable Format" },
+      "desc": { "en": "Movable.sed format files for 3DS", "es": "Archivos de formato movable.sed para 3DS", "fr": "Fichiers au format movable.sed pour 3DS", "it": "File formato movable.sed per 3DS", "pt": "Arquivos de formato movable.sed para 3DS", "de": "Movable.sed-Formatdateien für 3DS", "ja": "3DS用Movable.sedフォーマットファイル", "ko": "3DS Movable.sed 형식 파일" },
+      "videoYoutubeIds": ["Xe6qoIRUJao"]
+    },
+    {
+      "id": "39",
+      "label": { "en": "3DS: Pokebank - Pokémon World", "es": "3DS: Pokebank - Mundo Pokémon", "fr": "3DS : Pokebank - Monde Pokémon", "it": "3DS: Pokebank - Mondo Pokémon", "pt": "3DS: Pokebank - Mundo Pokémon", "de": "3DS: Pokebank - Pokémon Welt", "ja": "3DS: Pokebank - Pokémon World", "ko": "3DS: Pokebank - Pokémon World" },
+      "desc": { "en": "Pokémon Bank and world tools for 3DS", "es": "Pokébank y herramientas Mundo Pokémon para 3DS", "fr": "Outils Pokébank et Monde Pokémon pour 3DS", "it": "Strumenti Pokebank e Mondo Pokémon per 3DS", "pt": "Pokébank e ferramentas Mundo Pokémon para 3DS", "de": "Pokébank- und Pokémon-Welt-Tools für 3DS", "ja": "3DS用Pokébank & Pokémon Worldツール", "ko": "3DS Pokébank & Pokémon World 도구" },
+      "videoYoutubeIds": ["6GROvOTf_B4"]
+    },
+    {
+      "id": "40",
+      "label": { "en": "3DS: NTRBootSelector", "es": "3DS: NTRBootSelector", "fr": "3DS : NTRBootSelector", "it": "3DS: NTRBootSelector", "pt": "3DS: NTRBootSelector", "de": "3DS: NTRBootSelector", "ja": "3DS: NTRBootSelector", "ko": "3DS: NTRBootSelector" },
+      "desc": { "en": "NTRBootSelector for 3DS", "es": "NTRBootSelector para 3DS", "fr": "NTRBootSelector pour 3DS", "it": "NTRBootSelector per 3DS", "pt": "NTRBootSelector para 3DS", "de": "NTRBootSelector für 3DS", "ja": "3DS用NTRBootSelector", "ko": "3DS NTRBootSelector" },
+      "videoYoutubeIds": ["HWvqvpeHW0Y"]
+    },
+    {
+      "id": "41",
+      "label": { "en": "3DS: PCP", "es": "3DS: PCP", "fr": "3DS : PCP", "it": "3DS: PCP", "pt": "3DS: PCP", "de": "3DS: PCP", "ja": "3DS: PCP", "ko": "3DS: PCP" },
+      "desc": { "en": "PCP tool for 3DS", "es": "Herramienta PCP para 3DS", "fr": "Outil PCP pour 3DS", "it": "Strumento PCP per 3DS", "pt": "Ferramenta PCP para 3DS", "de": "PCP-Tool für 3DS", "ja": "3DS用PCPツール", "ko": "3DS PCP 도구" },
+      "videoYoutubeIds": ["bSiJeI_3Q_8"]
+    },
+    {
+      "id": "42",
+      "label": { "en": "3DS: Custom-Install Installer", "es": "3DS: instalador Custom-Install", "fr": "3DS : Installateur Custom-Install", "it": "3DS: Installer Custom-Install", "pt": "3DS: Instalador Custom-Install", "de": "3DS: Custom-Install Installer", "ja": "3DS: Custom-Installインストーラー", "ko": "3DS: Custom-Install 설치 프로그램" },
+      "desc": { "en": "Custom-Install installer for 3DS", "es": "Instalador Custom-Install para 3DS", "fr": "Installateur Custom-Install pour 3DS", "it": "Installer Custom-Install per 3DS", "pt": "Instalador Custom-Install para 3DS", "de": "Custom-Install Installer für 3DS", "ja": "3DS用Custom-Installインストーラー", "ko": "3DS Custom-Install 설치 프로그램" },
+      "videoYoutubeIds": ["DQYGKD9zpxM"]
+    },
+    {
+      "id": "43",
+      "label": { "en": "3DS: FBI-Inject Installer", "es": "3DS: instalador FBI-Inject", "fr": "3DS : Installateur FBI-Inject", "it": "3DS: Installer FBI-Inject", "pt": "3DS: Instalador FBI-Inject", "de": "3DS: FBI-Inject Installer", "ja": "3DS: FBI-Injectインストーラー", "ko": "3DS: FBI-Inject 설치 프로그램" },
+      "desc": { "en": "FBI-Inject installer for 3DS", "es": "Instalador FBI-Inject para 3DS", "fr": "Installateur FBI-Inject pour 3DS", "it": "Installer FBI-Inject per 3DS", "pt": "Instalador FBI-Inject para 3DS", "de": "FBI-Inject Installer für 3DS", "ja": "3DS用FBI-Injectインストーラー", "ko": "3DS FBI-Inject 설치 프로그램" },
+      "videoYoutubeIds": ["FkPQfdWwGls"]
+    },
+    {
+      "id": "44",
+      "label": { "en": "3DS: SDLoader-GX Installer", "es": "3DS: instalador SDLoader-GX", "fr": "3DS : Installateur SDLoader-GX", "it": "3DS: Installer SDLoader-GX", "pt": "3DS: Instalador SDLoader-GX", "de": "3DS: SDLoader-GX Installer", "ja": "3DS: SDLoader-GXインストーラー", "ko": "3DS: SDLoader-GX 설치 프로그램" },
+      "desc": { "en": "SDLoader-GX installer for 3DS", "es": "Instalador SDLoader-GX para 3DS", "fr": "Installateur SDLoader-GX pour 3DS", "it": "Installer SDLoader-GX per 3DS", "pt": "Instalador SDLoader-GX para 3DS", "de": "SDLoader-GX Installer für 3DS", "ja": "3DS用SDLoader-GXインストーラー", "ko": "3DS SDLoader-GX 설치 프로그램" },
+      "videoYoutubeIds": ["GhKYWo8In6Y"]
+    },
+    {
+      "id": "45",
+      "label": { "en": "3DS: SlotTool", "es": "3DS: SlotTool", "fr": "3DS : SlotTool", "it": "3DS: SlotTool", "pt": "3DS: SlotTool", "de": "3DS: SlotTool", "ja": "3DS: SlotTool", "ko": "3DS: SlotTool" },
+      "desc": { "en": "SlotTool for 3DS", "es": "Herramienta SlotTool para 3DS", "fr": "Outil SlotTool pour 3DS", "it": "Strumento SlotTool per 3DS", "pt": "Ferramenta SlotTool para 3DS", "de": "SlotTool für 3DS", "ja": "3DS用SlotTool", "ko": "3DS SlotTool" },
+      "videoYoutubeIds": ["rXoBnjthPjo"]
+    },
+    {
+      "id": "46",
+      "label": { "en": "3DS: SysUpdater", "es": "3DS: SysUpdater", "fr": "3DS : SysUpdater", "it": "3DS: SysUpdater", "pt": "3DS: SysUpdater", "de": "3DS: SysUpdater", "ja": "3DS: SysUpdater", "ko": "3DS: SysUpdater" },
+      "desc": { "en": "System updater SysUpdater for 3DS", "es": "Actualizador de sistema SysUpdater para 3DS", "fr": "Mise à jour système SysUpdater pour 3DS", "it": "Updater di sistema SysUpdater per 3DS", "pt": "Atualizador de sistema SysUpdater para 3DS", "de": "System-Updater SysUpdater für 3DS", "ja": "3DS用システムアップデーターSysUpdater", "ko": "3DS SysUpdater 시스템 업데이터" },
+      "videoYoutubeIds": ["_bWT-Mv4n1k"]
+    },
+    {
+      "id": "47",
+      "label": { "en": "3DS: Themely", "es": "3DS: Themely", "fr": "3DS : Themely", "it": "3DS: Themely", "pt": "3DS: Themely", "de": "3DS: Themely", "ja": "3DS: Themely", "ko": "3DS: Themely" },
+      "desc": { "en": "Theme manager Themely for 3DS", "es": "Gestor de temas Themely para 3DS", "fr": "Gestionnaire de thèmes Themely pour 3DS", "it": "Gestore temi Themely per 3DS", "pt": "Gerenciador de temas Themely para 3DS", "de": "Theme-Manager Themely für 3DS", "ja": "3DS用テーママネージャーThemely", "ko": "3DS Themely 테마 관리자" },
+      "videoYoutubeIds": ["x7aZN-KMaf4"]
+    },
+    {
+      "id": "48",
+      "label": { "en": "3DS: ThirdTube - YouTube", "es": "3DS: thirdtube - Youtube", "fr": "3DS : ThirdTube - YouTube", "it": "3DS: ThirdTube - YouTube", "pt": "3DS: ThirdTube - YouTube", "de": "3DS: ThirdTube - YouTube", "ja": "3DS: ThirdTube - YouTube", "ko": "3DS: ThirdTube - YouTube" },
+      "desc": { "en": "ThirdTube YouTube client for 3DS", "es": "Cliente de YouTube ThirdTube para 3DS", "fr": "Client YouTube ThirdTube pour 3DS", "it": "Client YouTube ThirdTube per 3DS", "pt": "Cliente YouTube ThirdTube para 3DS", "de": "ThirdTube YouTube-Client für 3DS", "ja": "3DS用ThirdTube YouTubeクライアント", "ko": "3DS ThirdTube YouTube 클라이언트" },
+      "videoYoutubeIds": ["spedB6-Xfg4"]
+    },
+    {
+      "id": "49",
+      "label": { "en": "3DS: TikSweep", "es": "3DS: TikSweep", "fr": "3DS : TikSweep", "it": "3DS: TikSweep", "pt": "3DS: TikSweep", "de": "3DS: TikSweep", "ja": "3DS: TikSweep", "ko": "3DS: TikSweep" },
+      "desc": { "en": "TikSweep tool for 3DS", "es": "Herramienta TikSweep para 3DS", "fr": "Outil TikSweep pour 3DS", "it": "Strumento TikSweep per 3DS", "pt": "Ferramenta TikSweep para 3DS", "de": "TikSweep-Tool für 3DS", "ja": "3DS用TikSweepツール", "ko": "3DS TikSweep 도구" },
+      "videoYoutubeIds": ["o7vLmTusGo4"]
+    },
+    {
+      "id": "50",
+      "label": { "en": "3DS: TinyFormat", "es": "3DS: TinyFormat", "fr": "3DS : TinyFormat", "it": "3DS: TinyFormat", "pt": "3DS: TinyFormat", "de": "3DS: TinyFormat", "ja": "3DS: TinyFormat", "ko": "3DS: TinyFormat" },
+      "desc": { "en": "TinyFormat tool for 3DS", "es": "Herramienta TinyFormat para 3DS", "fr": "Outil TinyFormat pour 3DS", "it": "Strumento TinyFormat per 3DS", "pt": "Ferramenta TinyFormat para 3DS", "de": "TinyFormat-Tool für 3DS", "ja": "3DS用TinyFormatツール", "ko": "3DS TinyFormat" },
+      "videoYoutubeIds": ["3oa7W946xg8"]
+    },
+    {
+      "id": "51",
+      "label": { "en": "3DS: TitleRex", "es": "3DS: Titlerex", "fr": "3DS : TitleRex", "it": "3DS: TitleRex", "pt": "3DS: TitleRex", "de": "3DS: TitleRex", "ja": "3DS: TitleRex", "ko": "3DS: TitleRex" },
+      "desc": { "en": "TitleRex title manager for 3DS", "es": "Gestor de títulos TitleRex para 3DS", "fr": "Gestionnaire de titres TitleRex pour 3DS", "it": "Gestore titoli TitleRex per 3DS", "pt": "Gerenciador de títulos TitleRex para 3DS", "de": "TitleRex Titel-Manager für 3DS", "ja": "3DS用TitleRexタイトルマネージャー", "ko": "3DS TitleRex 타이틀 관리자" },
+      "videoYoutubeIds": ["LtvNS3uoP_8"]
+    },
+    {
+      "id": "52",
+      "label": { "en": "3DS: Trim Games - TokiTrim", "es": "3DS: Trimear Juegos - Tokyotrim", "fr": "3DS : Trim Jeux - TokiTrim", "it": "3DS: Trim Giochi - TokiTrim", "pt": "3DS: Trim Jogos - TokiTrim", "de": "3DS: Spiele trimmen - TokiTrim", "ja": "3DS: ゲームトリム - TokiTrim", "ko": "3DS: 게임 트림 - TokiTrim" },
+      "desc": { "en": "TokiTrim tool to trim 3DS games", "es": "Herramienta TokiTrim para trimear juegos de 3DS", "fr": "Outil TokiTrim pour trimmer les jeux 3DS", "it": "Strumento TokiTrim per trimare i giochi 3DS", "pt": "Ferramenta TokiTrim para trimar jogos 3DS", "de": "TokiTrim Tool zum Trimmen von 3DS-Spielen", "ja": "3DS用ゲームトリムツールTokiTrim", "ko": "3DS TokiTrim 게임 트림 도구" },
+      "videoYoutubeIds": ["4YJ-EB5i0x8"]
+    },
+    {
+      "id": "53",
+      "label": { "en": "3DS: TunaVids", "es": "3DS: Tunavids", "fr": "3DS : TunaVids", "it": "3DS: TunaVids", "pt": "3DS: TunaVids", "de": "3DS: TunaVids", "ja": "3DS: TunaVids", "ko": "3DS: TunaVids" },
+      "desc": { "en": "TunaVids video player for 3DS", "es": "Reproductor de vídeos TunaVids para 3DS", "fr": "Lecteur vidéo TunaVids pour 3DS", "it": "Lettore video TunaVids per 3DS", "pt": "Player de vídeos TunaVids para 3DS", "de": "TunaVids Video Player für 3DS", "ja": "3DS用TunaVidsビデオプレーヤー", "ko": "3DS TunaVids 비디오 플레이어" },
+      "videoYoutubeIds": ["IaogHEIHAK8"]
+    },
+    {
+      "id": "54",
+      "label": { "en": "3DS: TWLMenú", "es": "3DS: TWLmenu", "fr": "3DS : TWLMenú", "it": "3DS: TWLMenú", "pt": "3DS: TWLMenú", "de": "3DS: TWLMenu", "ja": "3DS: TWLMenu", "ko": "3DS: TWLMenu" },
+      "desc": { "en": "TWLMenu forwarder for 3DS", "es": "Forwarder TWLMenu para 3DS", "fr": "Forwarder TWLMenu pour 3DS", "it": "Forwarder TWLMenu per 3DS", "pt": "Forwarder TWLMenu para 3DS", "de": "TWLMenu Forwarder für 3DS", "ja": "3DS用TWLMenuフォワーダー", "ko": "3DS TWLMenu 포워더" },
+      "videoYoutubeIds": ["14mJ61oHZdI"]
+    },
+    {
+      "id": "55",
+      "label": { "en": "3DS: TWLFix", "es": "3DS: TWLFix", "fr": "3DS : TWLFix", "it": "3DS: TWLFix", "pt": "3DS: TWLFix", "de": "3DS: TWLFix", "ja": "3DS: TWLFix", "ko": "3DS: TWLFix" },
+      "desc": { "en": "TWLFix repair tool for 3DS", "es": "Herramienta de reparación TWLFix para 3DS", "fr": "Outil de réparation TWLFix pour 3DS", "it": "Strumento di riparazione TWLFix per 3DS", "pt": "Ferramenta de reparo TWLFix para 3DS", "de": "TWLFix Reparatur-Tool für 3DS", "ja": "3DS用TWLFix修復ツール", "ko": "3DS TWLFix 수리 도구" },
+      "videoYoutubeIds": ["j_9V3mls1PI"]
+    },
+    {
+      "id": "56",
+      "label": { "en": "3DS: Universal Updater", "es": "3DS: Universal Updater", "fr": "3DS : Universal Updater", "it": "3DS: Universal Updater", "pt": "3DS: Universal Updater", "de": "3DS: Universal Updater", "ja": "3DS: Universal Updater", "ko": "3DS: Universal Updater" },
+      "desc": { "en": "Universal Updater for 3DS homebrew", "es": "Universal Updater para homebrew en 3DS", "fr": "Universal Updater pour homebrew 3DS", "it": "Universal Updater per homebrew 3DS", "pt": "Universal Updater para homebrew no 3DS", "de": "Universal Updater für 3DS Homebrew", "ja": "3DS用Universal Updaterホームブリュー", "ko": "3DS Universal Updater 홈브류" },
+      "videoYoutubeIds": ["TYymdrfkPt4"]
+    },
+    {
+      "id": "57",
+      "label": { "en": "3DS: Speculum", "es": "3DS: Speculum", "fr": "3DS : Speculum", "it": "3DS: Speculum", "pt": "3DS: Speculum", "de": "3DS: Speculum", "ja": "3DS: Speculum", "ko": "3DS: Speculum" },
+      "desc": { "en": "Speculum tool for 3DS", "es": "Herramienta Speculum para 3DS", "fr": "Outil Speculum pour 3DS", "it": "Strumento Speculum per 3DS", "pt": "Ferramenta Speculum para 3DS", "de": "Speculum-Tool für 3DS", "ja": "3DS用Speculumツール", "ko": "3DS Speculum 도구" },
+      "videoYoutubeIds": ["KJEZynKTlqw"]
+    }
+  ],
+  "NDS": [
+    {
+      "id": "1",
+      "label": { "en": "NDS: Hack NDSi - MemoryPit", "es": "NDS: Hack NDSi - MemoryPit", "fr": "NDS : Hack NDSi - MemoryPit", "it": "NDS: Hack NDSi - MemoryPit", "pt": "NDS: Hack NDSi - MemoryPit", "de": "NDS: Hack NDSi - MemoryPit", "ja": "NDS: Hack NDSi - MemoryPit", "ko": "NDS: Hack NDSi - MemoryPit" },
+      "desc": { "en": "MemoryPit exploit for NDSi", "es": "Exploit MemoryPit para NDSi", "fr": "Exploit MemoryPit pour NDSi", "it": "Exploit MemoryPit per NDSi", "pt": "Exploit MemoryPit para NDSi", "de": "MemoryPit-Exploit für NDSi", "ja": "NDSi用MemoryPitエクスプロイト", "ko": "NDSi MemoryPit 익스플로잇" },
+      "videoYoutubeIds": ["9W0aODZAQXI"]
+    },
+    {
+      "id": "2",
+      "label": { "en": "NDS: Hack NDSi - Stylehax", "es": "NDS: Hack NDSi - Stylehax", "fr": "NDS : Hack NDSi - Stylehax", "it": "NDS: Hack NDSi - Stylehax", "pt": "NDS: Hack NDSi - Stylehax", "de": "NDS: Hack NDSi - Stylehax", "ja": "NDS: Hack NDSi - Stylehax", "ko": "NDS: Hack NDSi - Stylehax" },
+      "desc": { "en": "Stylehax exploit for NDSi", "es": "Exploit Stylehax para NDSi", "fr": "Exploit Stylehax pour NDSi", "it": "Exploit Stylehax per NDSi", "pt": "Exploit Stylehax para NDSi", "de": "Stylehax-Exploit für NDSi", "ja": "NDSi用Stylehaxエクスプロイト", "ko": "NDSi Stylehax 익스플로잇" },
+      "videoYoutubeIds": ["d0dhk_sTm8g"]
+    },
+    {
+      "id": "3",
+      "label": { "en": "NDS: NAND", "es": "NDS: NAND", "fr": "NDS : NAND", "it": "NDS: NAND", "pt": "NDS: NAND", "de": "NDS: NAND", "ja": "NDS: NAND", "ko": "NDS: NAND" },
+      "desc": { "en": "NAND backup and restore tools for NDS", "es": "Herramientas de respaldo y restauración NAND para NDS", "fr": "Outils de backup et restauration NAND pour NDS", "it": "Strumenti backup e restore NAND per NDS", "pt": "Ferramentas de backup e restore NAND para NDS", "de": "NAND-Backup- und Restore-Tools für NDS", "ja": "NDS用NANDバックアップ＆レストアツール", "ko": "NDS NAND 백업 및 복원 도구" },
+      "videoYoutubeIds": ["7EuuLsNVuW0"]
+    },
+    {
+      "id": "4",
+      "label": { "en": "NDS: Remove NDSi Hack", "es": "NDS: Eliminar Hack Ndsi", "fr": "NDS : Supprimer le hack NDSi", "it": "NDS: Rimuovi Hack NDSi", "pt": "NDS: Remover Hack NDSi", "de": "NDS: NDSi-Hack entfernen", "ja": "NDS: NDSiハック削除", "ko": "NDS: NDSi 핵 제거" },
+      "desc": { "en": "Tool to safely remove NDSi hack", "es": "Herramienta para eliminar de forma segura el hack de NDSi", "fr": "Outil pour supprimer en toute sécurité le hack NDSi", "it": "Strumento per rimuovere in sicurezza l'hack NDSi", "pt": "Ferramenta para remover com segurança o hack NDSi", "de": "Tool zum sicheren Entfernen des NDSi-Hacks", "ja": "NDS用NDSiハック安全削除ツール", "ko": "NDS NDSi 핵 안전 제거 도구" },
+      "videoYoutubeIds": ["BaB_n_6PB48"]
+    }
+  ],
+  "WII": [
+    {
+      "id": "1",
+      "label": { "en": "Wii: Hack Wii - WiiBrand", "es": "Wii: Hack wii - Wiibrand", "fr": "Wii : Hack Wii - WiiBrand", "it": "Wii: Hack Wii - WiiBrand", "pt": "Wii: Hack Wii - WiiBrand", "de": "Wii: Hack Wii - WiiBrand", "ja": "Wii: Hack Wii - WiiBrand", "ko": "Wii: Hack Wii - WiiBrand" },
+      "desc": { "en": "WiiBrand hack for Wii", "es": "Hack WiiBrand para Wii", "fr": "Hack WiiBrand pour Wii", "it": "Hack WiiBrand per Wii", "pt": "Hack WiiBrand para Wii", "de": "WiiBrand-Hack für Wii", "ja": "Wii用WiiBrandハック", "ko": "Wii WiiBrand 핵" },
+      "videoYoutubeIds": ["MQ6GjU_vtuA"]
+    },
+    {
+      "id": "2",
+      "label": { "en": "Wii: Hack Wii - Str2hax", "es": "Wii: Hack wii - Str2hax", "fr": "Wii : Hack Wii - Str2hax", "it": "Wii: Hack Wii - Str2hax", "pt": "Wii: Hack Wii - Str2hax", "de": "Wii: Hack Wii - Str2hax", "ja": "Wii: Hack Wii - Str2hax", "ko": "Wii: Hack Wii - Str2hax" },
+      "desc": { "en": "Str2hax hack for Wii", "es": "Hack Str2hax para Wii", "fr": "Hack Str2hax pour Wii", "it": "Hack Str2hax per Wii", "pt": "Hack Str2hax para Wii", "de": "Str2hax-Hack für Wii", "ja": "Wii用Str2haxハック", "ko": "Wii Str2hax 핵" },
+      "videoYoutubeIds": ["k7SZs4wH0Gk"]
+    },
+    {
+      "id": "3",
+      "label": { "en": "Wii: Hack Wii - Letterbomb", "es": "Wii: Hack wii - Letterbomb", "fr": "Wii : Hack Wii - Letterbomb", "it": "Wii: Hack Wii - Letterbomb", "pt": "Wii: Hack Wii - Letterbomb", "de": "Wii: Hack Wii - Letterbomb", "ja": "Wii: Hack Wii - Letterbomb", "ko": "Wii: Hack Wii - Letterbomb" },
+      "desc": { "en": "Letterbomb hack for Wii", "es": "Hack Letterbomb para Wii", "fr": "Hack Letterbomb pour Wii", "it": "Hack Letterbomb per Wii", "pt": "Hack Letterbomb para Wii", "de": "Letterbomb-Hack für Wii", "ja": "Wii用Letterbombハック", "ko": "Wii Letterbomb 핵" },
+      "videoYoutubeIds": ["yzeXL5DC5No"]
+    },
+    {
+      "id": "4",
+      "label": { "en": "Wii: Install cIOS", "es": "Wii: Instalar CIOS", "fr": "Wii: Installer cIOS", "it": "Wii: Installa cIOS", "pt": "Wii: Instalar cIOS", "de": "Wii: cIOS installieren", "ja": "Wii: cIOSインストール", "ko": "Wii: cIOS 설치" },
+      "desc": { "en": "cIOS installation tool for Wii", "es": "Herramienta de instalación cIOS para Wii", "fr": "Outil d'installation cIOS pour Wii", "it": "Strumento di installazione cIOS per Wii", "pt": "Ferramenta de instalação cIOS para Wii", "de": "cIOS-Installations-Tool für Wii", "ja": "Wii用cIOSインストールツール", "ko": "Wii cIOS 설치 도구" },
+      "videoYoutubeIds": ["Y9Q33T1ZQCA"]
+    },
+    {
+      "id": "5",
+      "label": { "en": "Wii: Priiloader", "es": "Wii: Priiloader", "fr": "Wii : Priiloader", "it": "Wii: Priiloader", "pt": "Wii: Priiloader", "de": "Wii: Priiloader", "ja": "Wii: Priiloader", "ko": "Wii: Priiloader" },
+      "desc": { "en": "Priiloader for Wii", "es": "Priiloader para Wii", "fr": "Priiloader pour Wii", "it": "Priiloader per Wii", "pt": "Priiloader para Wii", "de": "Priiloader für Wii", "ja": "Wii用Priiloader", "ko": "Wii Priiloader" },
+      "videoYoutubeIds": ["4OlP0CLJdGY"]
+    },
+    {
+      "id": "6",
+      "label": { "en": "Wii: USBLoader GX", "es": "Wii: USBLoader-GX", "fr": "Wii: USBLoader GX", "it": "Wii: USBLoader GX", "pt": "Wii: USBLoader GX", "de": "Wii: USBLoader GX", "ja": "Wii: USBLoader GX", "ko": "Wii: USBLoader GX" },
+      "desc": { "en": "USBLoader GX for Wii", "es": "USBLoader GX para Wii", "fr": "USBLoader GX pour Wii", "it": "USBLoader GX per Wii", "pt": "USBLoader GX para Wii", "de": "USBLoader GX für Wii", "ja": "Wii用USBLoader GX", "ko": "Wii USBLoader GX" },
+      "videoYoutubeIds": ["dmis0r0zfgo"]
+    },
+    {
+      "id": "7",
+      "label": { "en": "Wii: WiiFlow", "es": "Wii: WiiFlow", "fr": "Wii : WiiFlow", "it": "Wii: WiiFlow", "pt": "Wii: WiiFlow", "de": "Wii: WiiFlow", "ja": "Wii: WiiFlow", "ko": "Wii: WiiFlow" },
+      "desc": { "en": "WiiFlow loader for Wii", "es": "Cargador WiiFlow para Wii", "fr": "Chargeur WiiFlow pour Wii", "it": "Loader WiiFlow per Wii", "pt": "Loader WiiFlow para Wii", "de": "WiiFlow Loader für Wii", "ja": "Wii用WiiFlowローダー", "ko": "Wii WiiFlow 로더" },
+      "videoYoutubeIds": ["B1lPa89JLnc"]
+    },
+    {
+      "id": "8",
+      "label": { "en": "Wii: CFG USB Loader", "es": "Wii: emulador CFG-Loader", "fr": "Wii : CFG USB Loader", "it": "Wii: CFG USB Loader", "pt": "Wii: CFG USB Loader", "de": "Wii: CFG USB Loader", "ja": "Wii: CFG USB Loader", "ko": "Wii: CFG USB Loader" },
+      "desc": { "en": "CFG USB Loader emulator for Wii", "es": "Emulador CFG USB Loader para Wii", "fr": "Émulateur CFG USB Loader pour Wii", "it": "Emulatore CFG USB Loader per Wii", "pt": "Emulador CFG USB Loader para Wii", "de": "CFG USB Loader Emulator für Wii", "ja": "Wii用CFG USB Loaderエミュレーター", "ko": "Wii CFG USB Loader 에뮬레이터" },
+      "videoYoutubeIds": ["agG4IJkg9uk"]
+    },
+    {
+      "id": "9",
+      "label": { "en": "Wii: Nintendont", "es": "Wii: Nintendont", "fr": "Wii: Nintendont", "it": "Wii: Nintendont", "pt": "Wii: Nintendont", "de": "Wii: Nintendont", "ja": "Wii: Nintendont", "ko": "Wii: Nintendont" },
+      "desc": { "en": "Nintendont GameCube loader for Wii", "es": "Cargador Nintendont GameCube para Wii", "fr": "Chargeur GameCube Nintendont pour Wii", "it": "Loader GameCube Nintendont per Wii", "pt": "Loader GameCube Nintendont para Wii", "de": "Nintendont GameCube Loader für Wii", "ja": "Wii用Nintendont GameCubeローダー", "ko": "Wii Nintendont GameCube 로더" },
+      "videoYoutubeIds": ["8Z0v_bcwWZ4"]
+    },
+    {
+      "id": "10",
+      "label": { "en": "Wii: Not64", "es": "Wii: Not64", "fr": "Wii : Not64", "it": "Wii: Not64", "pt": "Wii: Not64", "de": "Wii: Not64", "ja": "Wii: Not64", "ko": "Wii: Not64" },
+      "desc": { "en": "Not64 Nintendo 64 emulator for Wii", "es": "Emulador Not64 Nintendo 64 para Wii", "fr": "Émulateur Not64 Nintendo 64 pour Wii", "it": "Emulatore Not64 Nintendo 64 per Wii", "pt": "Emulador Not64 Nintendo 64 para Wii", "de": "Not64 Nintendo 64 Emulator für Wii", "ja": "Wii用Not64 Nintendo 64エミュレーター", "ko": "Wii Not64 Nintendo 64 에뮬레이터" },
+      "videoYoutubeIds": ["KcECUBXV0dk"]
+    },
+    {
+      "id": "11",
+      "label": { "en": "Wii: mGBA Emulator", "es": "Wii: mGBA", "fr": "Wii: Émulateur mGBA", "it": "Wii: Emulatore mGBA", "pt": "Wii: Emulador mGBA", "de": "Wii: mGBA Emulator", "ja": "Wii: mGBAエミュレーター", "ko": "Wii: mGBA 에뮬레이터" },
+      "desc": { "en": "mGBA Game Boy Advance emulator for Wii", "es": "Emulador mGBA Game Boy Advance para Wii", "fr": "Émulateur mGBA Game Boy Advance pour Wii", "it": "Emulatore mGBA Game Boy Advance per Wii", "pt": "Emulador mGBA Game Boy Advance para Wii", "de": "mGBA Game Boy Advance Emulator für Wii", "ja": "Wii用mGBA Game Boy Advanceエミュレーター", "ko": "Wii mGBA Game Boy Advance 에뮬레이터" },
+      "videoYoutubeIds": ["nxtm5D2W5uY"]
+    },
+    {
+      "id": "12",
+      "label": { "en": "Wii: DeSmuME Wii", "es": "Wii: DeSmuME Wii", "fr": "Wii : DeSmuME Wii", "it": "Wii: DeSmuME Wii", "pt": "Wii: DeSmuME Wii", "de": "Wii: DeSmuME Wii", "ja": "Wii: DeSmuME Wii", "ko": "Wii: DeSmuME Wii" },
+      "desc": { "en": "DeSmuME DS emulator for Wii", "es": "Emulador DeSmuME DS para Wii", "fr": "Émulateur DeSmuME DS pour Wii", "it": "Emulatore DeSmuME DS per Wii", "pt": "Emulador DeSmuME DS para Wii", "de": "DeSmuME DS-Emulator für Wii", "ja": "Wii用DeSmuME DSエミュレーター", "ko": "Wii DeSmuME DS 에뮬레이터" },
+      "videoYoutubeIds": ["6U-Mc-nPitU"]
+    },
+    {
+      "id": "13",
+      "label": { "en": "Wii: WiiStation (PS1 Emulator)", "es": "Wii: WiiStation (PS1 Emulator)", "fr": "Wii : WiiStation (Émulateur PS1)", "it": "Wii: WiiStation (Emulatore PS1)", "pt": "Wii: WiiStation (Emulador PS1)", "de": "Wii: WiiStation (PS1 Emulator)", "ja": "Wii: WiiStation (PS1エミュレーター)", "ko": "Wii: WiiStation (PS1 에뮬레이터)" },
+      "desc": { "en": "WiiStation PS1 emulator for Wii", "es": "Emulador PS1 WiiStation para Wii", "fr": "Émulateur PS1 WiiStation pour Wii", "it": "Emulatore PS1 WiiStation per Wii", "pt": "Emulador PS1 WiiStation para Wii", "de": "WiiStation PS1 Emulator für Wii", "ja": "Wii用WiiStation PS1エミュレーター", "ko": "Wii WiiStation PS1 에뮬레이터" },
+      "videoYoutubeIds": ["jr3mB0U_eAs"]
+    }
+  ],
+  "WII MINI": [
+    {
+      "id": "1",
+      "label": { "en": "WiiMini: Hack Wii Mini - BlueBomb", "es": "WiiMini: Hack Wii Mini - BlueBomb", "fr": "WiiMini : Hack Wii Mini - BlueBomb", "it": "WiiMini: Hack Wii Mini - BlueBomb", "pt": "WiiMini: Hack Wii Mini - BlueBomb", "de": "WiiMini: Hack Wii Mini - BlueBomb", "ja": "WiiMini: Hack Wii Mini - BlueBomb", "ko": "WiiMini: Hack Wii Mini - BlueBomb" },
+      "desc": { "en": "BlueBomb hack for Wii Mini", "es": "Hack BlueBomb para Wii Mini", "fr": "Hack BlueBomb pour Wii Mini", "it": "Hack BlueBomb per Wii Mini", "pt": "Hack BlueBomb para Wii Mini", "de": "BlueBomb-Hack für Wii Mini", "ja": "Wii Mini用BlueBombハック", "ko": "Wii Mini BlueBomb 핵" },
+      "videoYoutubeIds": ["1clOkDVWhoQ"]
+    },
+    {
+      "id": "2",
+      "label": { "en": "WiiMini: Install cIOS - Yawm", "es": "WiiMini: Instalar CIOS - Yawm", "fr": "WiiMini: Installer cIOS - Yawm", "it": "WiiMini: Installa cIOS - Yawm", "pt": "WiiMini: Instalar cIOS - Yawm", "de": "WiiMini: cIOS installieren - Yawm", "ja": "WiiMini: cIOSインストール - Yawm", "ko": "WiiMini: cIOS 설치 - Yawm" },
+      "desc": { "en": "cIOS installation tool for WiiMini", "es": "Herramienta de instalación cIOS para WiiMini", "fr": "Outil d'installation cIOS pour WiiMini", "it": "Strumento di installazione cIOS per WiiMini", "pt": "Ferramenta de instalação cIOS para WiiMini", "de": "cIOS-Installations-Tool für WiiMini", "ja": "WiiMini用cIOSインストールツール", "ko": "WiiMini cIOS 설치 도구" },
+      "videoYoutubeIds": ["L5TgRr5Zre4"]
+    },
+    {
+      "id": "3",
+      "label": { "en": "WiiMini: Install cIOS - D2x", "es": "WiiMini: Instalar CIOS - D2x", "fr": "WiiMini: Installer cIOS - D2x", "it": "WiiMini: Installa cIOS - D2x", "pt": "WiiMini: Instalar cIOS - D2x", "de": "WiiMini: cIOS installieren - D2x", "ja": "WiiMini: cIOSインストール - D2x", "ko": "WiiMini: cIOS 설치 - D2x" },
+      "desc": { "en": "cIOS installation tool for WiiMini", "es": "Herramienta de instalación cIOS para WiiMini", "fr": "Outil d'installation cIOS pour WiiMini", "it": "Strumento di installazione cIOS per WiiMini", "pt": "Ferramenta de instalação cIOS para WiiMini", "de": "cIOS-Installations-Tool für WiiMini", "ja": "WiiMini用cIOSインストールツール", "ko": "WiiMini cIOS 설치 도구" },
+      "videoYoutubeIds": ["Hr3MHaMypnI"]
+    },
+    {
+      "id": "4",
+      "label": { "en": "WiiMini: Priiloader", "es": "WiiMini: Priiloader", "fr": "WiiMini: Priiloader", "it": "WiiMini: Priiloader", "pt": "WiiMini: Priiloader", "de": "WiiMini: Priiloader", "ja": "WiiMini: Priiloader", "ko": "WiiMini: Priiloader" },
+      "desc": { "en": "Priiloader for WiiMini", "es": "Priiloader para WiiMini", "fr": "Priiloader pour WiiMini", "it": "Priiloader per WiiMini", "pt": "Priiloader para WiiMini", "de": "Priiloader für WiiMini", "ja": "WiiMini用Priiloader", "ko": "WiiMini: Priiloader" },
+      "videoYoutubeIds": ["bMnYoYa9flQ"]
+    },
+    {
+      "id": "5",
+      "label": { "en": "WiiMini: USBLoader GX", "es": "WiiMini: USBLoader-GX", "fr": "WiiMini: USBLoader GX", "it": "WiiMini: USBLoader GX", "pt": "WiiMini: USBLoader GX", "de": "WiiMini: USBLoader GX", "ja": "WiiMini: USBLoader GX", "ko": "WiiMini: USBLoader GX" },
+      "desc": { "en": "USBLoader GX for WiiMini", "es": "USBLoader GX para WiiMini", "fr": "USBLoader GX pour WiiMini", "it": "USBLoader GX per WiiMini", "pt": "USBLoader GX para WiiMini", "de": "USBLoader GX für WiiMini", "ja": "WiiMini用USBLoader GX", "ko": "WiiMini USBLoader GX" },
+      "videoYoutubeIds": ["PO8R79_khyY"]
+    },
+    {
+      "id": "6",
+      "label": { "en": "WiiMini: Nintendont", "es": "WiiMini: Nintendont", "fr": "WiiMini: Nintendont", "it": "WiiMini: Nintendont", "pt": "WiiMini: Nintendont", "de": "WiiMini: Nintendont", "ja": "WiiMini: Nintendont", "ko": "Wii: Nintendont" },
+      "desc": { "en": "Nintendont GameCube loader for WiiMini", "es": "Cargador Nintendont GameCube para WiiMini", "fr": "Chargeur GameCube Nintendont pour WiiMini", "it": "Loader GameCube Nintendont per WiiMini", "pt": "Loader GameCube Nintendont para WiiMini", "de": "Nintendont GameCube Loader für WiiMini", "ja": "WiiMini用Nintendont GameCubeローダー", "ko": "WiiMini Nintendont GameCube 로더" },
+      "videoYoutubeIds": ["ihOaZigO3Dc"]
+    }
+  ],
+  "WII U": [
+    {
+      "id": "1",
+      "label": { "en": "WiiU: Hack WiiU - CFW Dual", "es": "WiiU: Hack WIIU CFW-DUAL", "fr": "WiiU : Hack WiiU - CFW Dual", "it": "WiiU: Hack WiiU - CFW Dual", "pt": "WiiU: Hack WiiU - CFW Dual", "de": "WiiU: Hack WiiU - CFW Dual", "ja": "WiiU: Hack WiiU - CFW Dual", "ko": "WiiU: Hack WiiU - CFW Dual" },
+      "desc": { "en": "CFW Dual hack for Wii U", "es": "Hack CFW Dual para Wii U", "fr": "Hack CFW Dual pour Wii U", "it": "Hack CFW Dual per Wii U", "pt": "Hack CFW Dual para Wii U", "de": "CFW Dual-Hack für Wii U", "ja": "Wii U用CFW Dualハック", "ko": "Wii U CFW Dual 핵" },
+      "videoYoutubeIds": ["ZnkHeuM5Pd0"]
+    },
+    {
+      "id": "2",
+      "label": { "en": "vWii: Hack vWii - Compat", "es": "vWii: Hack vWii - Compat", "fr": "vWii : Hack vWii - Compat", "it": "vWii: Hack vWii - Compat", "pt": "vWii: Hack vWii - Compat", "de": "vWii: Hack vWii - Compat", "ja": "vWii: Hack vWii - Compat", "ko": "vWii: Hack vWii - Compat" },
+      "desc": { "en": "vWii compatibility hack for vWii", "es": "Hack de compatibilidad vWii para vWii", "fr": "Hack de compatibilité vWii pour vWii", "it": "Hack di compatibilità vWii per vWii", "pt": "Hack de compatibilidade vWii para vWii", "de": "vWii-Kompatibilitäts-Hack für vWii", "ja": "vWii用vWii互換性ハック", "ko": "vWii vWii 호환성 핵" },
+      "videoYoutubeIds": ["EdRX5HB0-xs"]
+    },    
+    {
+      "id": "3",
+      "label": { "en": "vWii: Install cIOS  - Yawm", "es": "vWii: Instalar CIOS  - Yawm", "fr": "vWii : Installer cIOS  - Yawm", "it": "vWii: Installa cIOS - Yawm", "pt": "vWii: Instalar cIOS - Yawm", "de": "vWii: cIOS installieren - Yawm", "ja": "vWii: cIOSインストール - Yawm", "ko": "vWii: cIOS 설치 - Yawm" },
+      "desc": { "en": "cIOS installation tool for vWii", "es": "Herramienta de instalación cIOS vWii", "fr": "Outil d'installation cIOS pour vWii", "it": "Strumento di installazione cIOS per vWii", "pt": "Ferramenta de instalação cIOS para vWii", "de": "cIOS-Installations-Tool für vWii", "ja": "vWii用cIOSインストールツール", "ko": "vWii cIOS 설치 도구" },
+      "videoYoutubeIds": ["ANKIGJCZDFg"]
+    },
+    {
+      "id": "4",
+      "label": { "en": "vWii: Install cIOS  - D2x", "es": "vWii: Instalar CIOS  - D2x", "fr": "vWii : Installer cIOS  - D2x", "it": "vWii: Installa cIOS - D2x", "pt": "vWii: Instalar cIOS - D2x", "de": "vWii: cIOS installieren - D2x", "ja": "vWii: cIOSインストール - D2x", "ko": "vWii: cIOS 설치 - D2x" },
+      "desc": { "en": "cIOS installation tool for vWii", "es": "Herramienta de instalación cIOS vWii", "fr": "Outil d'installation cIOS pour vWii", "it": "Strumento di installazione cIOS per vWii ", "pt": "Ferramenta de instalação cIOS para vWii", "de": "cIOS-Installations-Tool für vWii", "ja": "vWii用cIOSインストールツール", "ko": "vWii cIOS 설치 도구" },
+      "videoYoutubeIds": ["sm5q-wke_ZA"]
+    },
+    {
+      "id": "5",
+      "label": { "en": "vWii: Priiloader", "es": "vWii: Priiloader", "fr": "vWii: Priiloader", "it": "vWii: Priiloader", "pt": "vWii: Priiloader", "de": "vWii: Priiloader", "ja": "vWii: Priiloader", "ko": "vWii: Priiloader" },
+      "desc": { "en": "Priiloader for vWii", "es": "Priiloader para vWii", "fr": "Priiloader pour vWii", "it": "Priiloader per vWii", "pt": "Priiloader para vWii", "de": "Priiloader für vWii", "ja": "vWii用Priiloader", "ko": "vWii Priiloader" },
+      "videoYoutubeIds": ["t7pVbWWkJpo"]
+    },
+    {
+      "id": "6",
+      "label": { "en": "vWii: USBLoader GX", "es": "vWii: USBLoader-GX", "fr": "vWii: USBLoader GX", "it": "vWii: USBLoader GX", "pt": "vWii: USBLoader GX", "de": "vWii: USBLoader GX", "ja": "vWii: USBLoader GX", "ko": "vWii: USBLoader GX" },
+      "desc": { "en": "USBLoader GX for vWii", "es": "USBLoader GX para vWii", "fr": "USBLoader GX pour vWii", "it": "USBLoader GX per vWii", "pt": "USBLoader GX para vWii", "de": "USBLoader GX für vWii", "ja": "vWii用USBLoader GX", "ko": "vWii USBLoader GX" },
+      "videoYoutubeIds": ["98gTZQCvxmA"]
+    },
+    {
+      "id": "7",
+      "label": { "en": "WiiU: Nintendont", "es": "WiiU: Nintendont", "fr": "WiiU: Nintendont", "it": "WiiU: Nintendont", "pt": "WiiU: Nintendont", "de": "WiiU: Nintendont", "ja": "WiiU: Nintendont", "ko": "WiiU: Nintendont" },
+      "desc": { "en": "Nintendont GameCube loader for WiiU", "es": "Cargador Nintendont GameCube para WiiU", "fr": "Chargeur GameCube Nintendont pour WiiU", "it": "Loader GameCube Nintendont per WiiU", "pt": "Loader GameCube Nintendont para WiiU", "de": "Nintendont GameCube Loader für WiiU", "ja": "WiiU用Nintendont GameCubeローダー", "ko": "WiiU Nintendont GameCube 로더" },
+      "videoYoutubeIds": ["rSJGpBZtGfA"]
+    },
+    {
+      "id": "8",
+      "label": { "en": "WiiU: Wii on WiiU - TeconMoon", "es": "WiiU: Wii en WiiU - Tecomoon", "fr": "WiiU : Wii sur WiiU - TeconMoon", "it": "WiiU: Wii su WiiU - TeconMoon", "pt": "WiiU: Wii no WiiU - TeconMoon", "de": "WiiU: Wii auf WiiU - TeconMoon", "ja": "WiiU: Wii on WiiU - TeconMoon", "ko": "WiiU: Wii on WiiU - TeconMoon" },
+      "desc": { "en": "TeconMoon tool to run Wii on WiiU", "es": "Herramienta TeconMoon para ejecutar Wii en WiiU", "fr": "Outil TeconMoon pour exécuter Wii sur WiiU", "it": "Strumento TeconMoon per eseguire Wii su WiiU", "pt": "Ferramenta TeconMoon para rodar Wii no WiiU", "de": "TeconMoon-Tool zum Ausführen von Wii auf WiiU", "ja": "WiiU用Wii実行ツールTeconMoon", "ko": "WiiU Wii 실행 TeconMoon 도구" },
+      "videoYoutubeIds": ["do7l_YJPSjw"] 
+    }
+  ],
+  "SD": [
+    {
+      "id": "1",
+      "label": { "en": "SD: GUIFormat (FAT32)", "es": "SD: GUIFormat", "fr": "SD : GUIFormat (FAT32)", "it": "SD: GUIFormat", "pt": "SD: GUIFormat", "de": "SD: GUIFormat", "ja": "SD: GUIFormat", "ko": "SD: GUIFormat" },
+      "desc": { "en": "Guide to format SD card with GUIFormat (FAT32)", "es": "Guía para formatear tarjeta SD con GUIFormat (FAT32)", "fr": "Guide pour formater la carte SD avec GUIFormat (FAT32)", "it": "Guida per formattare SD con GUIFormat (FAT32)", "pt": "Guia para formatar cartão SD com GUIFormat (FAT32)", "de": "Anleitung zum Formatieren der SD-Karte mit GUIFormat (FAT32)", "ja": "SDカードFAT32フォーマットGUIFormatガイド", "ko": "SD 카드 FAT32 GUIFormat 포맷 가이드" },
+      "videoYoutubeIds": ["CqrJ3fdQaP8"]
+    },
+    {
+      "id": "2",
+      "label": { "en": "SD: HDDLLF", "es": "SD: HDDLLF", "fr": "SD : HDDLLF", "it": "SD: HDDLLF", "pt": "SD: HDDLLF", "de": "SD: HDDLLF", "ja": "SD: HDDLLF", "ko": "SD: HDDLLF" },
+      "desc": { "en": "Guide to low-level format with HDDLLF", "es": "Guía para formateo de bajo nivel con HDDLLF", "fr": "Guide pour le formatage bas niveau avec HDDLLF", "it": "Guida per la formattazione low-level con HDDLLF", "pt": "Guia para formatação low-level com HDDLLF", "de": "Anleitung zum Low-Level-Formatieren mit HDDLLF", "ja": "HDDLLF低レベルフォーマットガイド", "ko": "HDDLLF 저수준 포맷 가이드" },
+      "videoYoutubeIds": ["EKVQyQ8PGfc"]
+    },
+    {
+      "id": "3",
+      "label": { "en": "SD: H2testw (Test SD)", "es": "SD: H2testw", "fr": "SD : H2testw (Tester SD)", "it": "SD: H2testw", "pt": "SD: H2testw", "de": "SD: H2testw", "ja": "SD: H2testw", "ko": "SD: H2testw" },
+      "desc": { "en": "Guide to test SD card integrity with H2testw", "es": "Guía para probar integridad de tarjeta SD con H2testw", "fr": "Guide pour tester l'intégrité de la carte SD avec H2testw", "it": "Guida per testare l'integrità della SD con H2testw", "pt": "Guia para testar integridade do cartão SD com H2testw", "de": "Anleitung zum Testen der SD-Karten-Integrität mit H2testw", "ja": "H2testw SDカード整合性テストガイド", "ko": "H2testw SD 카드 무결성 테스트 가이드" },
+      "videoYoutubeIds": ["KjQJyIqa-lE"]
+    },
+    {
+      "id": "4",
+      "label": { "en": "SD: RMP (SD Prep)", "es": "SD: RMP", "fr": "SD : RMP (Préparer SD)", "it": "SD: RMP", "pt": "SD: RMP", "de": "SD: RMP", "ja": "SD: RMP", "ko": "SD: RMP" },
+      "desc": { "en": "Guide to prepare SD card with RMP", "es": "Guía para preparar tarjeta SD con RMP", "fr": "Guide pour préparer la carte SD avec RMP", "it": "Guida per preparare la SD con RMP", "pt": "Guia para preparar cartão SD com RMP", "de": "Anleitung zum Vorbereiten der SD-Karte mit RMP", "ja": "RMP SDカード準備ガイド", "ko": "RMP SD 카드 준비 가이드" },
+      "videoYoutubeIds": ["HTojwb3kScY"]
+    },
+    {
+      "id": "5",
+      "label": { "en": "SD: Recognize SD on PC", "es": "SD: Reconocer SD en PC", "fr": "SD : Reconnaître SD sur PC", "it": "SD: Riconoscere SD su PC", "pt": "SD: Reconhecer SD no PC", "de": "SD: SD-Karte auf PC erkennen", "ja": "SD: PCでSDカードを認識", "ko": "SD: PC에서 SD 카드 인식" },
+      "desc": { "en": "Guide to recognize SD card on PC", "es": "Guía para reconocer tarjeta SD en Pc", "fr": "Guide pour reconnaître la carte SD sur PC", "it": "Guida per riconoscere la scheda SD sul PC", "pt": "Guia para reconhecer cartão SD no PC", "de": "Anleitung zum Erkennen einer SD-Karte auf dem PC", "ja": "PCでSDカードを認識するガイド", "ko": "PC에서 SD카드 인식 안내" },
+      "videoYoutubeIds": ["jBmMYJbEwKM"]
+    }
+  ],
+  "SONY": [],
+  "XBOX": []
+}
