@@ -1,0 +1,43 @@
+name: Actualizar primeras 50 guías al nuevo dominio
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Actualizar referencias
+        shell: bash
+        run: |
+          set -euo pipefail
+          mapfile -t files < <(git ls-files 'guias/*.html' | sort | head -n 50)
+          echo "Se actualizarán ${#files[@]} guías:"
+          printf '%s\n' "${files[@]}"
+
+          for f in "${files[@]}"; do
+            perl -0pi -e 's#https://kelonio-hub\.github\.io/Archivos-Kelonio#https://kelonio.eu.org#g; s#https://raw\.githubusercontent\.com/Kelonio-hub/Archivos-Kelonio/#https://raw.githubusercontent.com/Kelonio-hub/La-Presa/#g; s#Kelonio-hub/Archivos-Kelonio#Kelonio-hub/La-Presa#g' "$f"
+          done
+
+      - name: Commit y push
+        shell: bash
+        run: |
+          set -e
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "No hay cambios que guardar."
+            exit 0
+          fi
+          git add -- 'guias/*.html'
+          git commit -m "Actualizar 50 guías al dominio kelonio.eu.org"
+          git push origin HEAD:main
