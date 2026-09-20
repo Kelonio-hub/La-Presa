@@ -9,6 +9,7 @@ permissions:
 
 jobs:
   update:
+    if: ${{ github.actor != 'github-actions[bot]' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -16,15 +17,65 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Actualizar referencias
+      - name: Actualizar exactamente las primeras 50 guías
         shell: bash
         run: |
           set -euo pipefail
-          mapfile -t files < <(git ls-files 'guias/*.html' | sort | head -n 50)
-          echo "Se actualizarán ${#files[@]} guías:"
-          printf '%s\n' "${files[@]}"
-
+          files=(
+          "guias/3DS - 0 R4.html",
+          "guias/3DS - 1 Modelos y Regiones.html",
+          "guias/3DS - Act3ds.html",
+          "guias/3DS - Actualizar a9lh.html",
+          "guias/3DS - Actualizar boot9.html",
+          "guias/3DS - Anemone.html",
+          "guias/3DS - Arranque Roto.html",
+          "guias/3DS - Bax.html",
+          "guias/3DS - Beeshop.html",
+          "guias/3DS - Black lazarus.html",
+          "guias/3DS - Blue lazarus.html",
+          "guias/3DS - Botones.html",
+          "guias/3DS - Bricks.html",
+          "guias/3DS - Cartuchos.html",
+          "guias/3DS - Checkpoint.html",
+          "guias/3DS - Convertir 3ds a Cia.html",
+          "guias/3DS - Convertir 3dsx a cia.html",
+          "guias/3DS - Convertir cia a 3ds.html",
+          "guias/3DS - Convertir nds a cia.html",
+          "guias/3DS - Convertir retro a Cia.html",
+          "guias/3DS - Crash.html",
+          "guias/3DS - Ctrnand v1.html",
+          "guias/3DS - Ctrnand v2.html",
+          "guias/3DS - Custom.html",
+          "guias/3DS - Dsp1.html",
+          "guias/3DS - Eliminar hack.html",
+          "guias/3DS - FTP.html",
+          "guias/3DS - Faketik.html",
+          "guias/3DS - Ghost-eshop.html",
+          "guias/3DS - Godmode9.html",
+          "guias/3DS - Hack Kartdlphax.html",
+          "guias/3DS - Hack Kartminer7.html",
+          "guias/3DS - Hack Magnethax.html",
+          "guias/3DS - Hack Mset9.html",
+          "guias/3DS - Hack Ninjax.html",
+          "guias/3DS - Hack Safecerthax.html",
+          "guias/3DS - Hack Superskater.html",
+          "guias/3DS - Hshop 1.html",
+          "guias/3DS - Hshop 2 Error Qr.html",
+          "guias/3DS - Jksm.html",
+          "guias/3DS - Limeplayer.html",
+          "guias/3DS - Los3d.html",
+          "guias/3DS - Mandos.html",
+          "guias/3DS - Menuhax67.html",
+          "guias/3DS - Movable Format.html",
+          "guias/3DS - Mundo Pok#U00e9mon.html",
+          "guias/3DS - Mundo Pokémon.html",
+          "guias/3DS - Nand.html",
+          "guias/3DS - NtrBoot.html",
+          "guias/3DS - PCP.html"
+          )
+          echo "Total: ${#files[@]}"
           for f in "${files[@]}"; do
+            [ -f "$f" ] || { echo "Falta $f"; exit 1; }
             perl -0pi -e 's#https://kelonio-hub\.github\.io/Archivos-Kelonio#https://kelonio.eu.org#g; s#https://raw\.githubusercontent\.com/Kelonio-hub/Archivos-Kelonio/#https://raw.githubusercontent.com/Kelonio-hub/La-Presa/#g; s#Kelonio-hub/Archivos-Kelonio#Kelonio-hub/La-Presa#g' "$f"
           done
 
@@ -35,9 +86,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if git diff --quiet; then
-            echo "No hay cambios que guardar."
+            echo "Las 50 guías ya estaban actualizadas."
             exit 0
           fi
-          git add -- 'guias/*.html'
-          git commit -m "Actualizar 50 guías al dominio kelonio.eu.org"
+          git add -- guias/
+          git commit -m "Actualizar primeras 50 guías al dominio kelonio.eu.org"
           git push origin HEAD:main
