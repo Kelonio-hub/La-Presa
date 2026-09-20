@@ -22,55 +22,55 @@ jobs:
         run: |
           set -euo pipefail
           files=(
-          "guias/3DS - 0 R4.html",
-          "guias/3DS - 1 Modelos y Regiones.html",
-          "guias/3DS - Act3ds.html",
-          "guias/3DS - Actualizar a9lh.html",
-          "guias/3DS - Actualizar boot9.html",
-          "guias/3DS - Anemone.html",
-          "guias/3DS - Arranque Roto.html",
-          "guias/3DS - Bax.html",
-          "guias/3DS - Beeshop.html",
-          "guias/3DS - Black lazarus.html",
-          "guias/3DS - Blue lazarus.html",
-          "guias/3DS - Botones.html",
-          "guias/3DS - Bricks.html",
-          "guias/3DS - Cartuchos.html",
-          "guias/3DS - Checkpoint.html",
-          "guias/3DS - Convertir 3ds a Cia.html",
-          "guias/3DS - Convertir 3dsx a cia.html",
-          "guias/3DS - Convertir cia a 3ds.html",
-          "guias/3DS - Convertir nds a cia.html",
-          "guias/3DS - Convertir retro a Cia.html",
-          "guias/3DS - Crash.html",
-          "guias/3DS - Ctrnand v1.html",
-          "guias/3DS - Ctrnand v2.html",
-          "guias/3DS - Custom.html",
-          "guias/3DS - Dsp1.html",
-          "guias/3DS - Eliminar hack.html",
-          "guias/3DS - FTP.html",
-          "guias/3DS - Faketik.html",
-          "guias/3DS - Ghost-eshop.html",
-          "guias/3DS - Godmode9.html",
-          "guias/3DS - Hack Kartdlphax.html",
-          "guias/3DS - Hack Kartminer7.html",
-          "guias/3DS - Hack Magnethax.html",
-          "guias/3DS - Hack Mset9.html",
-          "guias/3DS - Hack Ninjax.html",
-          "guias/3DS - Hack Safecerthax.html",
-          "guias/3DS - Hack Superskater.html",
-          "guias/3DS - Hshop 1.html",
-          "guias/3DS - Hshop 2 Error Qr.html",
-          "guias/3DS - Jksm.html",
-          "guias/3DS - Limeplayer.html",
-          "guias/3DS - Los3d.html",
-          "guias/3DS - Mandos.html",
-          "guias/3DS - Menuhax67.html",
-          "guias/3DS - Movable Format.html",
-          "guias/3DS - Mundo Pok#U00e9mon.html",
-          "guias/3DS - Mundo Pokémon.html",
-          "guias/3DS - Nand.html",
-          "guias/3DS - NtrBoot.html",
+          "guias/3DS - 0 R4.html"
+          "guias/3DS - 1 Modelos y Regiones.html"
+          "guias/3DS - Act3ds.html"
+          "guias/3DS - Actualizar a9lh.html"
+          "guias/3DS - Actualizar boot9.html"
+          "guias/3DS - Anemone.html"
+          "guias/3DS - Arranque Roto.html"
+          "guias/3DS - Bax.html"
+          "guias/3DS - Beeshop.html"
+          "guias/3DS - Black lazarus.html"
+          "guias/3DS - Blue lazarus.html"
+          "guias/3DS - Botones.html"
+          "guias/3DS - Bricks.html"
+          "guias/3DS - Cartuchos.html"
+          "guias/3DS - Checkpoint.html"
+          "guias/3DS - Convertir 3ds a Cia.html"
+          "guias/3DS - Convertir 3dsx a cia.html"
+          "guias/3DS - Convertir cia a 3ds.html"
+          "guias/3DS - Convertir nds a cia.html"
+          "guias/3DS - Convertir retro a Cia.html"
+          "guias/3DS - Crash.html"
+          "guias/3DS - Ctrnand v1.html"
+          "guias/3DS - Ctrnand v2.html"
+          "guias/3DS - Custom.html"
+          "guias/3DS - Dsp1.html"
+          "guias/3DS - Eliminar hack.html"
+          "guias/3DS - FTP.html"
+          "guias/3DS - Faketik.html"
+          "guias/3DS - Ghost-eshop.html"
+          "guias/3DS - Godmode9.html"
+          "guias/3DS - Hack Kartdlphax.html"
+          "guias/3DS - Hack Kartminer7.html"
+          "guias/3DS - Hack Magnethax.html"
+          "guias/3DS - Hack Mset9.html"
+          "guias/3DS - Hack Ninjax.html"
+          "guias/3DS - Hack Safecerthax.html"
+          "guias/3DS - Hack Superskater.html"
+          "guias/3DS - Hshop 1.html"
+          "guias/3DS - Hshop 2 Error Qr.html"
+          "guias/3DS - Jksm.html"
+          "guias/3DS - Limeplayer.html"
+          "guias/3DS - Los3d.html"
+          "guias/3DS - Mandos.html"
+          "guias/3DS - Menuhax67.html"
+          "guias/3DS - Movable Format.html"
+          "guias/3DS - Mundo Pok#U00e9mon.html"
+          "guias/3DS - Mundo Pokémon.html"
+          "guias/3DS - Nand.html"
+          "guias/3DS - NtrBoot.html"
           "guias/3DS - PCP.html"
           )
           echo "Total: ${#files[@]}"
