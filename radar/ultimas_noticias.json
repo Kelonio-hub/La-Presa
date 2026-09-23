@@ -1,5 +1,11 @@
 [
   {
+    "tag": "Switch / Switch Theme Injector",
+    "title": "NXThemesInstaller 3.0.2",
+    "link": "https://github.com/exelix11/SwitchThemeInjector/releases/tag/nxt-3.0.2",
+    "date": "2026-09-22T20:47:51.000Z"
+  },
+  {
     "tag": "Switch / DBI",
     "title": "DBI 912 - Russian version only",
     "link": "https://github.com/rashevskyv/dbi/releases/tag/912ru",
@@ -16,12 +22,6 @@
     "title": "Checkpoint 5.2.0",
     "link": "https://github.com/BernardoGiordano/Checkpoint/releases/tag/v5.2.0",
     "date": "2026-08-26T13:31:51.000Z"
-  },
-  {
-    "tag": "Switch / Switch Theme Injector",
-    "title": "NXThemesInstaller 3.0.1",
-    "link": "https://github.com/exelix11/SwitchThemeInjector/releases/tag/nxt-3.0.1",
-    "date": "2026-08-19T20:37:45.000Z"
   },
   {
     "tag": "Switch / nxdumptool",
