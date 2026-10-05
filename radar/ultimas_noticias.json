@@ -1,5 +1,17 @@
 [
   {
+    "tag": "Wii U / Nimbus",
+    "title": "v2.2.0",
+    "link": "https://github.com/PretendoNetwork/nimbus/releases/tag/v2.2.0",
+    "date": "2026-10-04T18:18:03.000Z"
+  },
+  {
+    "tag": "3DS / Nimbus",
+    "title": "v2.2.0",
+    "link": "https://github.com/PretendoNetwork/nimbus/releases/tag/v2.2.0",
+    "date": "2026-10-04T18:18:03.000Z"
+  },
+  {
     "tag": "Switch / Switch Theme Injector",
     "title": "NXThemesInstaller 3.0.2",
     "link": "https://github.com/exelix11/SwitchThemeInjector/releases/tag/nxt-3.0.2",
@@ -64,18 +76,6 @@
     "title": "LUMA PINK 13.3.4",
     "link": "https://github.com/Kelonio-hub/Luma3DS_Pink/releases/tag/v13.3.4",
     "date": "2026-07-09T23:11:05.000Z"
-  },
-  {
-    "tag": "Wii U / Nimbus",
-    "title": "v2.1.1",
-    "link": "https://github.com/PretendoNetwork/nimbus/releases/tag/v2.1.1",
-    "date": "2026-06-09T22:33:30.000Z"
-  },
-  {
-    "tag": "3DS / Nimbus",
-    "title": "v2.1.1",
-    "link": "https://github.com/PretendoNetwork/nimbus/releases/tag/v2.1.1",
-    "date": "2026-06-09T22:33:30.000Z"
   },
   {
     "tag": "Wii / WiiFlow Lite",
