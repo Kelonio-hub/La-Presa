@@ -1,5 +1,17 @@
 [
   {
+    "tag": "Switch / Hekate",
+    "title": "hekate v6.5.4 & Nyx v1.9.4",
+    "link": "https://github.com/CTCaer/hekate/releases/tag/v6.5.4",
+    "date": "2026-10-13T07:45:10.000Z"
+  },
+  {
+    "tag": "3DS / TWiLight Menu++",
+    "title": "v27.25.1 (hotfix)",
+    "link": "https://github.com/DS-Homebrew/TWiLightMenu/releases/tag/v27.25.1",
+    "date": "2026-10-13T02:37:40.000Z"
+  },
+  {
     "tag": "Wii U / Nimbus",
     "title": "v2.2.0",
     "link": "https://github.com/PretendoNetwork/nimbus/releases/tag/v2.2.0",
@@ -28,12 +40,6 @@
     "title": "MissionControl 0.16.0",
     "link": "https://github.com/ndeadly/MissionControl/releases/tag/v0.16.0",
     "date": "2026-10-02T10:17:17.000Z"
-  },
-  {
-    "tag": "Switch / Hekate",
-    "title": "hekate v6.5.4 & Nyx v1.9.4",
-    "link": "https://github.com/CTCaer/hekate/releases/tag/v6.5.4",
-    "date": "2026-09-28T15:27:50.000Z"
   },
   {
     "tag": "Switch / CFW",
@@ -88,12 +94,6 @@
     "title": "v1.4",
     "link": "https://github.com/Fangal-Airbag/wup-installer-gx2/releases/tag/v1.4",
     "date": "2026-05-24T21:28:08.000Z"
-  },
-  {
-    "tag": "3DS / TWiLight Menu++",
-    "title": "v27.24.1 (hotfix)",
-    "link": "https://github.com/DS-Homebrew/TWiLightMenu/releases/tag/v27.24.1",
-    "date": "2026-05-24T03:18:20.000Z"
   },
   {
     "tag": "Switch / 90DNS Tester",
