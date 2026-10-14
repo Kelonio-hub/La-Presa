@@ -1,5 +1,11 @@
 [
   {
+    "tag": "Switch / Checkpoint",
+    "title": "Checkpoint 5.3.0",
+    "link": "https://github.com/BernardoGiordano/Checkpoint/releases/tag/v5.3.0",
+    "date": "2026-10-13T19:25:37.000Z"
+  },
+  {
     "tag": "Switch / Hekate",
     "title": "hekate v6.5.4 & Nyx v1.9.4",
     "link": "https://github.com/CTCaer/hekate/releases/tag/v6.5.4",
@@ -58,12 +64,6 @@
     "title": "Rekado 5.4",
     "link": "https://github.com/MenosGrante/Rekado/releases/tag/5.4",
     "date": "2026-09-16T08:56:16.000Z"
-  },
-  {
-    "tag": "Switch / Checkpoint",
-    "title": "Checkpoint 5.2.0",
-    "link": "https://github.com/BernardoGiordano/Checkpoint/releases/tag/v5.2.0",
-    "date": "2026-08-26T13:31:51.000Z"
   },
   {
     "tag": "Switch / nxdumptool",
