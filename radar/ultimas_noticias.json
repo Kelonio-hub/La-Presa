@@ -1,5 +1,11 @@
 [
   {
+    "tag": "Switch / nxdumptool",
+    "title": "nxdumptool-rewrite (latest commit build)",
+    "link": "https://github.com/DarkMatterCore/nxdumptool/releases/tag/rewrite-prerelease",
+    "date": "2026-10-22T21:24:32.000Z"
+  },
+  {
     "tag": "Switch / Switch Theme Injector",
     "title": "NXThemesInstaller 3.0.2",
     "link": "https://github.com/exelix11/SwitchThemeInjector/releases/tag/nxt-3.0.2",
@@ -64,12 +70,6 @@
     "title": "Rekado 5.4",
     "link": "https://github.com/MenosGrante/Rekado/releases/tag/5.4",
     "date": "2026-09-16T08:56:16.000Z"
-  },
-  {
-    "tag": "Switch / nxdumptool",
-    "title": "nxdumptool-rewrite (latest commit build)",
-    "link": "https://github.com/DarkMatterCore/nxdumptool/releases/tag/rewrite-prerelease",
-    "date": "2026-08-04T00:08:48.000Z"
   },
   {
     "tag": "Wii U / Inkay",
