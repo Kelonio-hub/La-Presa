@@ -1,5 +1,11 @@
 [
   {
+    "tag": "3DS / LUMA",
+    "title": "v13.5",
+    "link": "https://github.com/LumaTeam/Luma3DS/releases/tag/v13.5",
+    "date": "2026-11-02T00:46:59.000Z"
+  },
+  {
     "tag": "Switch / nxdumptool",
     "title": "nxdumptool-rewrite (latest commit build)",
     "link": "https://github.com/DarkMatterCore/nxdumptool/releases/tag/rewrite-prerelease",
@@ -112,12 +118,6 @@
     "title": "20260410",
     "link": "https://github.com/extremscorner/not64/releases/tag/20260410",
     "date": "2026-04-10T21:09:52.000Z"
-  },
-  {
-    "tag": "3DS / LUMA",
-    "title": "v13.4",
-    "link": "https://github.com/LumaTeam/Luma3DS/releases/tag/v13.4",
-    "date": "2026-04-03T23:48:44.000Z"
   },
   {
     "tag": "3DS / GodMode9",
