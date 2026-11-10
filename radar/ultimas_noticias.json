@@ -1,5 +1,11 @@
 [
   {
+    "tag": "Switch / NxNandManager",
+    "title": "NxNandManager_v5.2.30",
+    "link": "https://github.com/eliboa/NxNandManager/releases/tag/V5.2.30",
+    "date": "2026-11-10T02:45:54.000Z"
+  },
+  {
     "tag": "3DS / LUMA",
     "title": "v13.5",
     "link": "https://github.com/LumaTeam/Luma3DS/releases/tag/v13.5",
@@ -250,12 +256,6 @@
     "title": "v2.5.0",
     "link": "https://github.com/modmii/SysCheck-ModMii-Edition/releases/tag/2.5.0",
     "date": "2023-03-11T09:00:58.000Z"
-  },
-  {
-    "tag": "Switch / NxNandManager",
-    "title": "NxNandManager_v5.2",
-    "link": "https://github.com/eliboa/NxNandManager/releases/tag/v5.2",
-    "date": "2022-04-21T07:58:46.000Z"
   },
   {
     "tag": "Switch / TegraRcmGUI",
