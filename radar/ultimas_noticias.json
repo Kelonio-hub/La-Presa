@@ -1,5 +1,11 @@
 [
   {
+    "tag": "Switch / CFW",
+    "title": "Atmosphère 1.12.2",
+    "link": "https://github.com/Atmosphere-NX/Atmosphere/releases/tag/1.12.2",
+    "date": "2026-11-11T00:09:15.000Z"
+  },
+  {
     "tag": "Switch / NxNandManager",
     "title": "NxNandManager_v5.2.30",
     "link": "https://github.com/eliboa/NxNandManager/releases/tag/V5.2.30",
@@ -22,12 +28,6 @@
     "title": "NXThemesInstaller 3.0.2",
     "link": "https://github.com/exelix11/SwitchThemeInjector/releases/tag/nxt-3.0.2",
     "date": "2026-10-16T08:01:47.000Z"
-  },
-  {
-    "tag": "Switch / CFW",
-    "title": "Atmosphère 1.12.1",
-    "link": "https://github.com/Atmosphere-NX/Atmosphere/releases/tag/1.12.1",
-    "date": "2026-10-16T00:05:51.000Z"
   },
   {
     "tag": "Switch / Checkpoint",
