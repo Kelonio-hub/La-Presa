@@ -1,5 +1,17 @@
 [
   {
+    "tag": "Switch / Hekate",
+    "title": "hekate v6.5.5 & Nyx v1.9.5",
+    "link": "https://github.com/CTCaer/hekate/releases/tag/v6.5.5",
+    "date": "2026-11-11T20:49:10.000Z"
+  },
+  {
+    "tag": "Switch / Mission Control",
+    "title": "MissionControl 0.16.1",
+    "link": "https://github.com/ndeadly/MissionControl/releases/tag/v0.16.1",
+    "date": "2026-11-11T10:50:02.000Z"
+  },
+  {
     "tag": "Switch / CFW",
     "title": "Atmosphère 1.12.2",
     "link": "https://github.com/Atmosphere-NX/Atmosphere/releases/tag/1.12.2",
@@ -36,12 +48,6 @@
     "date": "2026-10-13T19:25:37.000Z"
   },
   {
-    "tag": "Switch / Hekate",
-    "title": "hekate v6.5.4 & Nyx v1.9.4",
-    "link": "https://github.com/CTCaer/hekate/releases/tag/v6.5.4",
-    "date": "2026-10-13T07:45:10.000Z"
-  },
-  {
     "tag": "3DS / TWiLight Menu++",
     "title": "v27.25.1 (hotfix)",
     "link": "https://github.com/DS-Homebrew/TWiLightMenu/releases/tag/v27.25.1",
@@ -64,12 +70,6 @@
     "title": "Discontinuation",
     "link": "https://github.com/WiiLink24/WiiLink24-Patcher/releases/tag/v3.0.0",
     "date": "2026-10-02T14:26:03.000Z"
-  },
-  {
-    "tag": "Switch / Mission Control",
-    "title": "MissionControl 0.16.0",
-    "link": "https://github.com/ndeadly/MissionControl/releases/tag/v0.16.0",
-    "date": "2026-10-02T10:17:17.000Z"
   },
   {
     "tag": "Switch / DBI",
