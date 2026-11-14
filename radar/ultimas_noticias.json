@@ -1,5 +1,11 @@
 [
   {
+    "tag": "Switch / CFW",
+    "title": "Atmosphère 1.12.2",
+    "link": "https://github.com/Atmosphere-NX/Atmosphere/releases/tag/1.12.2",
+    "date": "2026-11-13T20:08:07.000Z"
+  },
+  {
     "tag": "Switch / Hekate",
     "title": "hekate v6.5.5 & Nyx v1.9.5",
     "link": "https://github.com/CTCaer/hekate/releases/tag/v6.5.5",
@@ -10,12 +16,6 @@
     "title": "MissionControl 0.16.1",
     "link": "https://github.com/ndeadly/MissionControl/releases/tag/v0.16.1",
     "date": "2026-11-11T10:50:02.000Z"
-  },
-  {
-    "tag": "Switch / CFW",
-    "title": "Atmosphère 1.12.2",
-    "link": "https://github.com/Atmosphere-NX/Atmosphere/releases/tag/1.12.2",
-    "date": "2026-11-11T00:09:15.000Z"
   },
   {
     "tag": "Switch / NxNandManager",
